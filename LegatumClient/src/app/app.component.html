@@ -1,27 +1,2 @@
-<div id="glass">
-  <div id="main">
-    <div class="nav">
-      <a href="#"><span id="nav-button">Home</span></a>
-      <a href="#"><span id="nav-button">About</span></a>
-      <a href="#"><span id="nav-button">login</span></a>
-      <a href="#"><span id="nav-button">Sign Up</span></a>
-    </div>
-    <div style="text-align:center">
-      <h1>
-        LEGATUM
-      </h1>
-    </div>
-    <h2>Decentralized legal documents of the future</h2>
-
-    <h3>What is Legatum.io?</h3>
-    <p> 
-    Legatum.io uses cutting-edge blockchain technology to allow
-    users a simple way to upload decentralized legal documents and 
-    intellectual property.
-    </p>
-    <br>
-    <br>
-    <a href="#"><span id="get-started">Get Started</span></a>
-  </div>
-</div>  
-
+<app-home *ngIf="!loggedIn; else elseBlock"></app-home>
+<ng-template #elseBlock><app-dashboard></app-dashboard></ng-template>
