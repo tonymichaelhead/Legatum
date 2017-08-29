@@ -1,0 +1,29 @@
+.main {
+    text-align: center;
+
+}
+
+h1 {
+    font-family: "Ancient Roman", "Times New Roman";
+    color: #830083;
+    font-size: 50px;
+}
+
+h2 {
+    color: grey;
+    text-align: center;
+}
+
+.nav {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+#get-started {
+    font-size: 20px;
+    border: 1px solid white;
+    border-radius: 10%;
+    padding: 5px;
+    text-transform: uppercase;
+   
+}
