@@ -4,6 +4,7 @@
 }
 
 body {
+    height: 100%;
     background-color: black;
     /* background-image: url("background.jpg"); */
     
@@ -14,6 +15,11 @@ body {
     background-size: cover;
     color: white;
     text-align: center;
+}
+
+#glass {
+    background: rgba(0, 0, 0, 0.70);
+    height: 100%;
 }
 
 a {
