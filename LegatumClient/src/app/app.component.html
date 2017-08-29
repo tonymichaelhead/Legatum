@@ -1,1 +1,2 @@
-<app-home></app-home>
+<app-home *ngIf="!loggedIn; else elseBlock"></app-home>
+<app-dashboard #elseBlock></app-dashboard>
