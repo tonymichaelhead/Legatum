@@ -14,7 +14,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: white;
-    text-align: center;
+    /* text-align: center; */
 }
 
 #glass {
