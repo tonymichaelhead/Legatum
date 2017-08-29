@@ -1,9 +1,22 @@
-.main {
-    text-align: center;
-
+#glass {
+    /* background: black;
+    opacity: 0.5;
+    filter: alpha(opacity=50); For IE8 and earlier */
+}
+#main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.70);
+    /* background: black; */
+    /* opacity: 0.5;
+    filter: alpha(opacity=50); For IE8 and earlier */
 }
 
 h1 {
+   
+
+    
     font-family: "Ancient Roman", "Times New Roman";
     color: #830083;
     font-size: 50px;
@@ -19,11 +32,25 @@ h2 {
     text-transform: uppercase;
 }
 
+#nav-button {
+    color: white;
+    margin: 10px;
+}
+
+#nav-button:hover {
+    color: #830083;
+}
+
 #get-started {
+    color: white;
     font-size: 20px;
     border: 1px solid white;
     border-radius: 10%;
     padding: 5px;
-    text-transform: uppercase;
-   
+    text-transform: uppercase; 
+}
+
+#get-started:hover {
+    color: #830083;
+    border-color: #830083;
 }
