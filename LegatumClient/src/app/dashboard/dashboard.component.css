@@ -37,9 +37,37 @@
 
 #contract-preview {
     margin: 10px;
+    padding: 5px;
     background-color: #fdfcff;
     box-shadow: 2px 2px 5px #888888;
     border-top: 4px solid gray;
+    font-size: 11px;
+}
+
+table { 
+    margin: 10px;
+    width: 300px;
+}
+
+td {
+    text-align: center;
+}
+
+.link {
+    color: blue;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+#etherscan-link {
+    margin-left: 10px;
+}
+
+#details-link {
+    margin-left: 29px;
+    margin-right: 10px;
 }
 
 /* Buttons */
@@ -60,6 +88,23 @@
 #dash-signout:hover {
     border-color: #830083;
     color: #830083;
+}
+
+#create-button {
+    margin-left: 10px;
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    font-size: 12px;
+    background: grey;
+    color: white;
+}
+
+#create-button:hover {
+    border-color: #1D001D;
+    color: #1C001C;
 }
 
 #mid-nav-button {
