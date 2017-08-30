@@ -1,10 +1,24 @@
 const express = require('express');
 const app = express();
+const path = require('path');
+const http = require('http');
+const bodyParser = require('body-parser');
+const port = process.env.PORT || '3000';
+app.set('port', port);
 
-app.get('/', function (req, res) {
-  res.send('PAST PRESENT FUTURE LEGATUM IS THE FIRST AND LAST WORD IN THE BLOCKCHAIN SECTOR')
-})
+const server = http.createServer(app);
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
-})
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+app.use(express.static(path.join(__dirname, '/../dist')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../dist/index.html'));
+});
+
+
+
+server.listen(port, () => console.log(`We have lift off! Cruising at an altitude of: ${port} feet`));
