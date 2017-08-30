@@ -9,6 +9,8 @@ import { ContractFormComponent } from './contract-form/contract-form.component';
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './firebase.config';
 
 import { AuthGuardService } from './auth-guard.service'
 import { AuthService } from './auth.service'
@@ -67,6 +69,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
