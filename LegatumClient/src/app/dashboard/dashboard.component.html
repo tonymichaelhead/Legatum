@@ -6,6 +6,9 @@
   <a href="#"><span id="mid-nav-button">My Contracts</span></a>
 </div>
 <div id="main-content">
+
+  <app-contract-form *ngIf="createFormWasClicked"></app-contract-form>
+
   <div id="contract-preview">
     <table>
       <tr>
@@ -22,5 +25,5 @@
     <a class="link" id="details-link" href="#">Contract details</a> |
     <a class="link" id="etherscan-link" href="#">View on Etherscan</a>
   </div>
-  <a href="#"><div id="create-button">Create contract</div></a>
+  <a href="#"><div id="create-button" (click)="showCreateForm()">Create contract</div></a>
 </div>

@@ -24,7 +24,16 @@ export class DashboardComponent implements OnInit {
     pubKey: '1231ars',
     ssn: 12341321
   }
-  constructor() { }
+
+  createFormWasClicked = false;
+
+  constructor() { 
+
+  }
+
+  showCreateForm() {
+    this.createFormWasClicked = true;
+  }
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
