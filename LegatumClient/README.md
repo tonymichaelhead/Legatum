@@ -26,3 +26,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Who we are
+
+We are the new kids on the blockchain. We like to code, and we like to disrupt systems. Follow for more info......
