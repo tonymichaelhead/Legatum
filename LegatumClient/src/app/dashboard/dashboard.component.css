@@ -24,8 +24,21 @@
     right: 0;
     bottom: 0;
     width: 100%;
-    background-color: #fdfcff;
     color: black;
+    background-color: #DBD5E7;
+}
+
+#dash-greeting {
+    margin-left: 40px;
+    margin-top: 40px;
+    font-weight: 300;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#contract-preview {
+    margin: 10px;
+    background-color: #fdfcff;
+    box-shadow: 2px 2px 5px #888888;
 }
 
 /* Buttons */
@@ -55,7 +68,6 @@
     margin-top: 7px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
-    
 }
 
 #mid-nav-button:hover {
