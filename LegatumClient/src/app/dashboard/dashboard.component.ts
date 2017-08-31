@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   }
 
   createFormWasClicked = false;
+  showMyContracts = true;
 
   constructor() { 
 
@@ -33,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   showCreateForm() {
     this.createFormWasClicked = true;
+    this.showMyContracts = false;
   }
 
 <<<<<<< HEAD

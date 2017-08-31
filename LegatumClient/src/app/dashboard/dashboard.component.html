@@ -7,6 +7,6 @@
   <a href="#"><span class="mid-nav-button" id="nav-create-contracts-button">Create Contract</span></a>
 </div>
 <div id="main-content">
-  <app-my-contracts (onCreateFormClick)="onCreateFormClick($event)"></app-my-contracts>
+  <app-my-contracts *ngIf="showMyContracts"(onCreateFormClick)="onCreateFormClick($event)"></app-my-contracts>
   <app-contract-form *ngIf="createFormWasClicked"></app-contract-form>
 </div>
