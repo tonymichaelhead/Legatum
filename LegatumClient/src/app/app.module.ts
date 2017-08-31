@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ContractFormComponent } from './contract-form/contract-form.component';
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
+import { LoginComponent } from './login/login.component';
 
 import { AuthGuardService } from './auth-guard.service'
 import { AuthService } from './auth.service'
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     ContractFormComponent,
     MyContractsComponent,
     ContractPreviewComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
