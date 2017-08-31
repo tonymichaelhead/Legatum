@@ -15,9 +15,9 @@ declare var window: any;
   styleUrls: ['./dashboard.component.css']
 })
 
-  web3: any;
 
 export class DashboardComponent implements OnInit {
+  web3: any;
   user = {
     user_id: 1,
     username: 'Tony',
