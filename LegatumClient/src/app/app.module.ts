@@ -10,11 +10,40 @@ import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 
 const appRoutes: Routes = [
+  
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { someShizz: 'some interesting data' }
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    data: { someShizz: 'some interesting data' }
+    children: [
+      {
+        path: 'my-contracts',
+        component: MyContractsComponent
+      },
+      {
+        path: 'create-contract',
+        component: ContractFormComponent 
+      },
+      {
+        path: '',
+        redirectTo: 'my-contracts', pathMatch: 'full'
+      },
+    ]
   },
+
+
+  {
+    path: '**',
+    redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'home', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
