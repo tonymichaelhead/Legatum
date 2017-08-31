@@ -1,3 +1,12 @@
-<p>
-  dashboard works!
-</p>
+<div id="pic-box">
+  <a href="#"><div id="dash-signout">Sign out</div></a>
+  <h2 id="dash-greeting">Good evening, {{this.user.username}}</h2>
+</div>
+<div id="mid-nav">
+  <a href="#"><span class="mid-nav-button" id="my-contracts-button">My Contracts</span></a>
+  <a href="#"><span class="mid-nav-button" id="nav-create-contracts-button">Create Contract</span></a>
+</div>
+<div id="main-content">
+  <app-my-contracts *ngIf="showMyContracts"(onCreateFormClick)="onCreateFormClick($event)"></app-my-contracts>
+  <app-contract-form *ngIf="createFormWasClicked"></app-contract-form>
+</div>

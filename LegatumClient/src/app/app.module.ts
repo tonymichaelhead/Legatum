@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { ContractFormComponent } from './contract-form/contract-form.component';
+import { MyContractsComponent } from './my-contracts/my-contracts.component';
+import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 
 const appRoutes: Routes = [
   {
@@ -17,7 +20,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
-    HomeComponent
+    HomeComponent,
+    ContractFormComponent,
+    MyContractsComponent,
+    ContractPreviewComponent
   ],
   imports: [
     BrowserModule,

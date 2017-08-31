@@ -14,11 +14,27 @@ declare var window: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
+
 export class DashboardComponent implements OnInit {
-
   web3: any;
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  }
 
-  constructor() { }
+  createFormWasClicked = false;
+  showMyContracts = true;
+  constructor() { 
+
+  }
+
+  showCreateForm() {
+    this.createFormWasClicked = true;
+    this.showMyContracts = false;
+  }
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
@@ -40,9 +56,17 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  onCreateFormClick() {
+    console.log('event was heard from dashboard')
+    this.showCreateForm();
+
+  }
 
   ngOnInit() {
     this.checkAndInstantiateWeb3();
+    //send get request for user profile info
+    //set state with that info
+    console.log('user info: ', this.user);
   }
 
 }
