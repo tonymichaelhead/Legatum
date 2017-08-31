@@ -14,10 +14,16 @@ declare var window: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
 
   web3: any;
 
+export class DashboardComponent implements OnInit {
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  }
   constructor() { }
 
   checkAndInstantiateWeb3 = () => {
@@ -43,6 +49,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.checkAndInstantiateWeb3();
+    //send get request for user profile info
+    //set state with that info
+    console.log('user info: ', this.user);
   }
 
 }
