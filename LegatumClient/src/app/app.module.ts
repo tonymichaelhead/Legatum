@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -9,11 +10,40 @@ import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 
 const appRoutes: Routes = [
+  
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { someShizz: 'some interesting data' }
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    data: { someShizz: 'some interesting data' }
+    children: [
+      {
+        path: 'my-contracts',
+        component: MyContractsComponent
+      },
+      {
+        path: 'create-contract',
+        component: ContractFormComponent 
+      },
+      {
+        path: '',
+        redirectTo: 'my-contracts', pathMatch: 'full'
+      },
+    ]
   },
+
+
+  {
+    path: '**',
+    redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'home', pathMatch: 'full'
+  }
 ];
 
 @NgModule({
@@ -30,7 +60,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
