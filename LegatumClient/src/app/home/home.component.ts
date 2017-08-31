@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Account } from '../models/account/account.interface';
@@ -15,6 +15,7 @@ declare var $: any;
 export class HomeComponent implements OnInit {
 
   public email: string;
+  @Output() loginStatus: EventEmitter<any>;
 
   constructor(private afAuth: AngularFireAuth) {}
 
