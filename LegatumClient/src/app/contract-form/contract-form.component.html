@@ -8,9 +8,9 @@
   <input type="file" accept="text/*"><br>
   <br>
   Additional Beneficiary Address (optional)<br>
-  <input type="text"  /><br>
+  <input type="text" [(ngModel)]="text" name="userText" /><br>
   <button>Add another beneficiary</button>
 </form>
 </div>
-<div id="submit-button">Review Details</div>
+<div id="submit-button" (click)="handleClickOnReview()">Review Details</div>
 <div id="cancel-button">Cancel</div>

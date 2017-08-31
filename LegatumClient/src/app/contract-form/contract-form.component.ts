@@ -12,6 +12,10 @@ export class ContractFormComponent implements OnInit {
 
   constructor() { }
 
+  handleClickOnReview() {
+    console.log('Details: ', this.text)
+  }
+
   ngOnInit() {
   }
 
