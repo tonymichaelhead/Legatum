@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-contract-form',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contract-form.component.css']
 })
 export class ContractFormComponent implements OnInit {
+
+  text: string = '';
 
   constructor() { }
 
