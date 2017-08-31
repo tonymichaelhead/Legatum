@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
     this.createFormWasClicked = true;
   }
 
+<<<<<<< HEAD
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof typeof window.web3 !== 'undefined') {
@@ -55,6 +56,13 @@ export class DashboardComponent implements OnInit {
   }
 
 
+=======
+  onCreateFormClick() {
+    console.log('event was heard from dashboard')
+    this.showCreateForm();
+
+  }
+>>>>>>> AUpdate nav bar, contract component renders dynamically
 
   ngOnInit() {
     this.checkAndInstantiateWeb3();

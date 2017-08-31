@@ -1,0 +1,16 @@
+#create-button {
+    margin-left: 10px;
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    font-size: 12px;
+    background: grey;
+    color: white;
+}
+
+#create-button:hover {
+    border-color: #1D001D;
+    color: #1C001C;
+}
