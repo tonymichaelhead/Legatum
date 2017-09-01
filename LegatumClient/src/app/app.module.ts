@@ -11,6 +11,7 @@ import { ContractPreviewComponent } from './contract-preview/contract-preview.co
 import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.config';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 import { AuthGuardService } from './auth-guard.service'
 import { AuthService } from './auth.service'
@@ -76,7 +77,7 @@ const appRoutes: Routes = [
     ),
     FormsModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
