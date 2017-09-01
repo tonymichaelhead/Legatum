@@ -5,6 +5,7 @@ import { Account } from '../models/account/account.interface';
 import { NgModel, FormsModule } from '@angular/forms';
 import { AppComponent } from '../../app/app.component';
 import { AngularFireModule } from 'angularfire2';
+import { AuthService } from '../auth.service';
 
 declare var swal: any;
 declare var $: any;
@@ -69,9 +70,9 @@ export class HomeComponent implements OnInit {
         // add a realtime listener
         context.afAuth.auth.onAuthStateChanged(firebaseUser => {
           if (firebaseUser) {
-            console.log('user exists!!!!!!!! Now we need to redirect user to dashboard');
+            console.log(firebaseUser, 'user is logged in!!!!!!!! Now we need to redirect user to dashboard');
           } else {
-            console.log('user does not exist. Now we need to display an error message');
+            console.log('user is not logged in. Now we need to display an error message');
           }
         });
     }, function (dismiss) {

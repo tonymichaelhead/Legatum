@@ -28,6 +28,16 @@ export class DashboardComponent {
   createFormWasClicked = false;
   showMyContracts = true;
 
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  }
+
+  createFormWasClicked = false;
+  showMyContracts = true;
+
   willContract = contract(will);
   defaultAddress: string;
   contractAddress: string;
@@ -52,7 +62,12 @@ export class DashboardComponent {
   @HostListener('window:load')
   windowLoaded() {
     this.checkAndInstantiateWeb3();
+<<<<<<< HEAD
     this.onReady()};
+=======
+    this.onReady();
+  }
+>>>>>>> Prep for login routes
 
   showCreateForm() {
     this.createFormWasClicked = true;
@@ -124,7 +139,6 @@ export class DashboardComponent {
         console.log(e);
       });
     }
-      
   setWillData = () => {
     const sender = this.userAddress;
     console.log('this is the user address', this.userAddress);
