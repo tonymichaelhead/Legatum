@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit {
         //   // context.loginStatus.emit(data);
         // })
         .catch(error => {
-          console.log('Error: user was not authenticated', error);
+          console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
           // this.loginStatus.emit(error);
         });
         // add a realtime listener
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
           confirmButtonText: 'Register',
           showCancelButton: true,
           html:
-            '<input id="register-email" type="email" placeholder="desired email" class="swal2-input">' +
+            '<input id="register-email" type="email" placeholder="email" class="swal2-input">' +
             '<input id="register-password" type="password" placeholder="password" class="swal2-input">',
           preConfirm: function () {
             return new Promise(function (resolve) {
@@ -92,6 +92,9 @@ export class HomeComponent implements OnInit {
                 $('#register-password').val()
               ]);
             });
+          },
+          onOpen: function() {
+            $('#register-email').focus();
           }
         }).then(function (result2) {
           const userEmail2 = result2[0];
@@ -107,7 +110,4 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-
-  
-
 }
