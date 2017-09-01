@@ -5,6 +5,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 
+console.log('authService runs!');
+
 @Injectable()
 export class AuthService {
   isLoggedIn = false;
@@ -22,4 +24,3 @@ export class AuthService {
     this.isLoggedIn = false;
   }
 }
-console.log('AuthService runs!!')
