@@ -64,7 +64,7 @@ const appRoutes: Routes = [
     HomeComponent,
     ContractFormComponent,
     MyContractsComponent,
-    ContractPreviewComponent
+    ContractPreviewComponent,
     LoginComponent
   ],
   imports: [
