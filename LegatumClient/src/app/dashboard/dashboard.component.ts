@@ -18,6 +18,16 @@ declare var window: any;
 
 export class DashboardComponent {
 
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  };
+
+  createFormWasClicked = false;
+  showMyContracts = true;
+
   willContract = contract(will);
   defaultAddress: string;
   contractAddress: string;
@@ -43,19 +53,10 @@ export class DashboardComponent {
   windowLoaded() {
     this.checkAndInstantiateWeb3();
     this.onReady();
-
-
-
-  user = {
-    user_id: 1,
-    username: 'Tony',
-    pubKey: '1231ars',
-    ssn: 12341321
   }
 
-  createFormWasClicked = false;
-  showMyContracts = true;
- 
+
+
   showCreateForm() {
     this.createFormWasClicked = true;
     this.showMyContracts = false;
@@ -125,46 +126,47 @@ export class DashboardComponent {
       .catch(e => {
         console.log(e);
       });
- 
-  setWillData = () => {
-    const sender = this.userAddress;
-    console.log('this is the user address', this.userAddress);
-    console.log('this is the default Address', this.defaultAddress);
-    // const willInstance = this.willContract.deployed();
-    // const receipt = this.web3.eth.getTransactionReceipt('0xfeef97c46e52330be1f6d24ef1a7a2ef87e660cc', (error, result) => {
-    //   if (!error) {
-    //     console.log(result);
-    //   } else {
-    //     console.error(error);
-    //   }
-    // });
-    // console.log(this.willContract.deployed(), "@@@@@@@@@@@@@@@");
-    // console.log(receipt);
-    console.log(this.contractInstance, 'yat this is the instance');
-    this.contractInstance.setWillContents(this.userAddress, this.userData, { from: this.defaultAddress.toString() })
-      .then((result) => {
-        console.log('this is result', result);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
+    }
 
-  getWillText = () => {
-    this.contractInstance.getWillData()
-      .then((result) => {
-        console.log('this is result', result);
-        this.receivedHash = result;
-        this.decodedHash = this.web3.utils.toAscii(this.receivedHash.toString());
-        // this.web3.hexToUTF8(this.receivedHash.toString());
-        // this.decodedHash = abiDecoder.decodeMethod(this.receivedHash);
-        // this.web3.eth.getTransactionReceipt(result.receipt, function(e, receipt) {
-        //   this.decodedLogs = abiDecoder.decodeLogs(receipt.logs);
-        // });
-        console.log(this.decodedHash);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+    setWillData = () => {
+      const sender = this.userAddress;
+      console.log('this is the user address', this.userAddress);
+      console.log('this is the default Address', this.defaultAddress);
+      // const willInstance = this.willContract.deployed();
+      // const receipt = this.web3.eth.getTransactionReceipt('0xfeef97c46e52330be1f6d24ef1a7a2ef87e660cc', (error, result) => {
+      //   if (!error) {
+      //     console.log(result);
+      //   } else {
+      //     console.error(error);
+      //   }
+      // });
+      // console.log(this.willContract.deployed(), "@@@@@@@@@@@@@@@");
+      // console.log(receipt);
+      console.log(this.contractInstance, 'yat this is the instance');
+      this.contractInstance.setWillContents(this.userAddress, this.userData, { from: this.defaultAddress.toString() })
+        .then((result) => {
+          console.log('this is result', result);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    }
+
+    getWillText = () => {
+      this.contractInstance.getWillData()
+        .then((result) => {
+          console.log('this is result', result);
+          this.receivedHash = result;
+          this.decodedHash = this.web3.utils.toAscii(this.receivedHash.toString());
+          // this.web3.hexToUTF8(this.receivedHash.toString());
+          // this.decodedHash = abiDecoder.decodeMethod(this.receivedHash);
+          // this.web3.eth.getTransactionReceipt(result.receipt, function(e, receipt) {
+          //   this.decodedLogs = abiDecoder.decodeLogs(receipt.logs);
+          // });
+          console.log(this.decodedHash);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
   }
-}
