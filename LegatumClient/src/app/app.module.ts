@@ -9,6 +9,8 @@ import { ContractFormComponent } from './contract-form/contract-form.component';
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 
+import { AuthGuardService } from './auth-guard.service'
+import { AuthService } from './auth.service'
 const appRoutes: Routes = [
   
   {
@@ -19,18 +21,24 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
-        path: 'my-contracts',
-        component: MyContractsComponent
-      },
-      {
-        path: 'create-contract',
-        component: ContractFormComponent 
-      },
-      {
         path: '',
-        redirectTo: 'my-contracts', pathMatch: 'full'
+        children: [
+          {
+            path: 'my-contracts',
+            component: MyContractsComponent
+          },
+          {
+            path: 'create-contract',
+            component: ContractFormComponent 
+          },
+          {
+            path: '',
+            redirectTo: 'my-contracts', pathMatch: 'full'
+          },
+        ]
       },
     ]
   },
@@ -63,7 +71,7 @@ const appRoutes: Routes = [
     ),
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

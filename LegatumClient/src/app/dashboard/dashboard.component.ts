@@ -17,6 +17,16 @@ declare var window: any;
 })
 
 export class DashboardComponent {
+  
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  };
+  
+  createFormWasClicked = false;
+  showMyContracts = true;
 
   willContract = contract(will);
   defaultAddress: string;
@@ -29,7 +39,7 @@ export class DashboardComponent {
   receivedHash: string;
   decodedHash: any;
   decodedLogs: any;
-
+  
   constructor() {
     abiDecoder.addABI(will['abi']);
     // console.log('@@@@', this.decodedHash);
@@ -42,20 +52,8 @@ export class DashboardComponent {
   @HostListener('window:load')
   windowLoaded() {
     this.checkAndInstantiateWeb3();
-    this.onReady();
+    this.onReady()};
 
-
-
-  user = {
-    user_id: 1,
-    username: 'Tony',
-    pubKey: '1231ars',
-    ssn: 12341321
-  }
-
-  createFormWasClicked = false;
-  showMyContracts = true;
- 
   showCreateForm() {
     this.createFormWasClicked = true;
     this.showMyContracts = false;
@@ -125,7 +123,8 @@ export class DashboardComponent {
       .catch(e => {
         console.log(e);
       });
- 
+    }
+      
   setWillData = () => {
     const sender = this.userAddress;
     console.log('this is the user address', this.userAddress);
