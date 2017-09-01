@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 
 // MariaDB connection
 // **************** You have to enter the connection string before running. DO NOT LEAVE IT IN THE FILE WHEN YOU ADD OR COMMIT!!!!!!!! ******************
-const db = new sequelize('mysql://aren2:GleerGleer123!!@cvrcle-dev.cixe27doo37n.us-west-2.rds.amazonaws.com:3306/aren1');
+const db = new sequelize('');
 
 // Connection Authentication & Successfull connection
 db
