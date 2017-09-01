@@ -13,10 +13,9 @@ import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { AuthGuardService } from './auth-guard.service'
-import { AuthService } from './auth.service'
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 const appRoutes: Routes = [
-  
   {
     path: 'home',
     component: HomeComponent,
@@ -36,7 +35,7 @@ const appRoutes: Routes = [
           },
           {
             path: 'create-contract',
-            component: ContractFormComponent 
+            component: ContractFormComponent
           },
           {
             path: '',
@@ -77,7 +76,7 @@ const appRoutes: Routes = [
     ),
     FormsModule
   ],
-  providers: [AuthGuardService, AuthService, AngularFireAuth],
+  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
