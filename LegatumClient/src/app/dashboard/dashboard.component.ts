@@ -15,6 +15,7 @@ declare var window: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent {
 
   willContract = contract(will);
@@ -42,6 +43,27 @@ export class DashboardComponent {
   windowLoaded() {
     this.checkAndInstantiateWeb3();
     this.onReady();
+
+
+
+  user = {
+    user_id: 1,
+    username: 'Tony',
+    pubKey: '1231ars',
+    ssn: 12341321
+  }
+
+  createFormWasClicked = false;
+  showMyContracts = true;
+ 
+  showCreateForm() {
+    this.createFormWasClicked = true;
+    this.showMyContracts = false;
+  }
+
+  onCreateFormClick() {
+    console.log('event was heard from dashboard')
+    this.showCreateForm();
   }
 
   checkAndInstantiateWeb3 = () => {
@@ -83,7 +105,6 @@ export class DashboardComponent {
       console.log('callback ignored');
       this.userAccounts = accs;
       this.userAddress = this.userAccounts[0];
-
     });
     this.web3.eth.getAccounts().then(console.log)
   }
@@ -104,8 +125,7 @@ export class DashboardComponent {
       .catch(e => {
         console.log(e);
       });
-  }
-
+ 
   setWillData = () => {
     const sender = this.userAddress;
     console.log('this is the user address', this.userAddress);
@@ -147,12 +167,4 @@ export class DashboardComponent {
         console.log(e);
       });
   }
-
-
-
-  // ngOnInit() {
-  //   this.checkAndInstantiateWeb3();
-  //   // this.decodeHash();
-  // }
-
 }

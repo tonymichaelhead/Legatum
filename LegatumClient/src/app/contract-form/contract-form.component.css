@@ -1,0 +1,31 @@
+#create-form {
+    margin: 10px;
+    padding: 5px;
+    background-color: #fdfcff;
+    box-shadow: 2px 2px 5px #888888;
+    border-top: 4px solid gray;
+    font-size: 11px;
+}
+
+#submit-button {
+    margin-left: 10px;
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    font-size: 12px;
+    background: grey;
+    color: white;
+}
+
+#cancel-button {
+    display: inline;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    font-size: 12px;
+    background: #F23B3B;
+    color: white;
+}

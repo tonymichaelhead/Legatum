@@ -1,0 +1,16 @@
+<div id="create-form">
+<h3>Create Will</h3>
+<form action="">
+  Last Will and Testament Text<br> 
+  <textarea></textarea><br>
+  <br>
+  Upload Text Document (optional)<br>
+  <input type="file" accept="text/*"><br>
+  <br>
+  Additional Beneficiary Address (optional)<br>
+  <input type="text" [(ngModel)]="text" name="userText" /><br>
+  <button>Add another beneficiary</button>
+</form>
+</div>
+<a href="#"><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
+<a routerLink="/dashboard" ><div id="cancel-button">Cancel</div></a>
