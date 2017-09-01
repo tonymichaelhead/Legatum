@@ -12,7 +12,7 @@ contract will {
     willData = uploadedText;
   }
 
-  function getWillData() returns (bytes) {
+  function getWillData() constant returns (bytes) {
     return willData;
   }
 
