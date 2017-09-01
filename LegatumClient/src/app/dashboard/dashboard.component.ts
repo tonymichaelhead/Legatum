@@ -18,6 +18,7 @@ declare var window: any;
 export class DashboardComponent {
 
   willContract = contract(will);
+  defaultAddress: string;
   contractAddress: string;
   contractInstance: any;
   userAddress: string;
@@ -64,10 +65,12 @@ export class DashboardComponent {
   onReady = () => {
     // Bootstrap the willContract abstraction for Use.
     this.willContract.setProvider(this.web3.currentProvider);
+    this.web3.eth.defaultAccount = '0x34bCd731cAB7705e396e13521BdC3fdbD31359d7';
+    this.defaultAddress = this.web3.eth.defaultAccount;
     console.log('preparing contract, setting provider: ', this.web3.currentProvider);
     // Get the initial account balance so it can be displayed.
-    this.web3.eth.getAccounts((err, accs) => {
-      if (err != null) {
+    this.web3.eth.getAccounts((error, accs) => {
+      if (error) {
         console.log('There was an error fetching your accounts.');
         return;
       }
@@ -83,6 +86,7 @@ export class DashboardComponent {
       this.userAddress = this.userAccounts[0];
 
     });
+    this.web3.eth.getAccounts().then(console.log)
   }
 
   deployWill = () => {
@@ -105,6 +109,8 @@ export class DashboardComponent {
 
   setWillData = () => {
     const sender = this.userAddress;
+    console.log('this is the user address', this.userAddress);
+    console.log('this is the default Address', this.defaultAddress);
     // const willInstance = this.willContract.deployed();
     // const receipt = this.web3.eth.getTransactionReceipt('0xfeef97c46e52330be1f6d24ef1a7a2ef87e660cc', (error, result) => {
     //   if (!error) {
@@ -115,16 +121,29 @@ export class DashboardComponent {
     // });
     // console.log(this.willContract.deployed(), "@@@@@@@@@@@@@@@");
     // console.log(receipt);
-    console.log(this.contractInstance, 'yat this is the instance')
-    this.contractInstance.setWillContents('0x34bCd731cAB7705e396e13521BdC3fdbD31359d7', this.userData)
+    console.log(this.contractInstance, 'yat this is the instance');
+    this.contractInstance.setWillContents(this.userAddress, this.userData, {from: this.defaultAddress.toString()})
       .then((result) => {
         console.log('this is result', result);
       })
       .catch(e => {
         console.log(e);
       });
-
   }
+
+  getWillText = () => {
+    this.contractInstance.getWillData()
+      .then((result) => {
+        console.log('this is result', result);
+        this.receivedHash = this.web3.toAscii(result.toString());
+        console.log(this.receivedHash);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+  }
+
+
 
   // decodeHash = () => {
   //   this.web3.eth.getTransactionReceipt("0x33040cee97def1c472e4db2f80f429e5a7d87e66970db3b2af34cc7ab8bae654", function(e, receipt) {
