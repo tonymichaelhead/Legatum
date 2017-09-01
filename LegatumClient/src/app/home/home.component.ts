@@ -67,16 +67,13 @@ export class HomeComponent implements OnInit {
           // this.loginStatus.emit(error);
         });
         // add a realtime listener
-        // TODO: might have to remove the .then statements
         context.afAuth.auth.onAuthStateChanged(firebaseUser => {
           if (firebaseUser) {
-            console.log('user exists!!!!!!!!');
+            console.log('user exists!!!!!!!! Now we need to redirect user to dashboard');
           } else {
-            console.log('user does not exist.');
+            console.log('user does not exist. Now we need to display an error message');
           }
         });
-
-      // console.log('resultObj = ', resultObj);
     }, function (dismiss) {
       // 'cancel' in this case refers to the register button
       // going into register function logic
@@ -97,18 +94,14 @@ export class HomeComponent implements OnInit {
             });
           }
         }).then(function (result2) {
-          // TODO: redirect user to login page
-          // display error message if can't register
-          // console.log('result2 = ', result2);
           const userEmail2 = result2[0];
           const userPassword2 = result2[1];
-          // TODO: handle user registration
           const resultObj2 = context.afAuth.auth.createUserWithEmailAndPassword(userEmail2, userPassword2)
             .then(success => {
-              console.log(success, 'Success registering user');
+              console.log(success, 'Success registering user. Now we need to display success message and redirect to login');
             })
             .catch(error => {
-              console.log(error, 'error occurred');
+              console.log(error, 'error occurred. Now we need to display error message.');
             });
         });
       }
