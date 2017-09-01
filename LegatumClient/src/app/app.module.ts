@@ -8,11 +8,14 @@ import { HomeComponent } from './home/home.component';
 import { ContractFormComponent } from './contract-form/contract-form.component';
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
+import { LoginComponent } from './login/login.component';
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './firebase.config';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-import { AuthGuardService } from './auth-guard.service'
-import { AuthService } from './auth.service'
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 const appRoutes: Routes = [
-  
   {
     path: 'home',
     component: HomeComponent,
@@ -32,7 +35,7 @@ const appRoutes: Routes = [
           },
           {
             path: 'create-contract',
-            component: ContractFormComponent 
+            component: ContractFormComponent
           },
           {
             path: '',
@@ -61,17 +64,19 @@ const appRoutes: Routes = [
     HomeComponent,
     ContractFormComponent,
     MyContractsComponent,
-    ContractPreviewComponent
+    ContractPreviewComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
     FormsModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private login: LoginComponent) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  handleLogin(): any {
+    this.login.handleLogin();
   }
 
 }
