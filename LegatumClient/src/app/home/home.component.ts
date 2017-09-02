@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
     this.login.handleLogin();
   }
 
+  handleRegister(): any {
+    this.login.handleRegister();
+  }
+
 }
