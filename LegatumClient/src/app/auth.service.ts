@@ -19,12 +19,12 @@ export class AuthService {
   redirectUrl: string;
 
   // login(): Observable<boolean> {
-  login(): void {
+  login(email: string): void {
   console.log('AuthService was called');
     // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
     
     this.isLoggedIn = true;
-    this.router.navigateByUrl('dashboard');
+    this.router.navigate(['dashboard/my-contracts'], { queryParams: { name: email }});
   }
 
   logout(): void {

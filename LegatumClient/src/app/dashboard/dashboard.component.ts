@@ -1,6 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import * as Web3 from 'web3';
 import * as contract from 'truffle-contract';
@@ -18,7 +18,9 @@ declare var window: any;
 })
 
 export class DashboardComponent {
-  
+  name: string;
+  sub: any;
+
   user = {
     user_id: 1,
     username: 'Tony',
@@ -41,7 +43,10 @@ export class DashboardComponent {
   decodedHash: any;
   decodedLogs: any;
   
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private route: ActivatedRoute) {
     abiDecoder.addABI(will['abi']);
     // console.log('@@@@', this.decodedHash);
     // console.log('these are decoded logs', this.decodedLogs);
@@ -176,5 +181,15 @@ export class DashboardComponent {
       .catch((e) => {
         console.log(e);
       });
+  }
+
+  ngOnInit() {
+    
+    this.sub = this.route
+    .queryParams
+    .subscribe(params => {
+      this.name = params['name'];
+      console.log('The props passed through router is: ', this.name)
+    })
   }
 }

@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       context.afAuth.auth.onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
           console.log(firebaseUser, 'user is logged in!!!!!!!! Now we need to redirect user to dashboard');
-          context.authService.login();
+          context.authService.login(firebaseUser.email);
         } else {
           console.log('user is not logged in. Now we need to display an error message');
         }
