@@ -1,9 +1,9 @@
 <div id="main">
   <span class="nav">
-    <a href="#"><span id="nav-button">Home</span></a>
+    <!-- <a href="#"><span id="nav-button">Home</span></a> -->
     <a href="/home#about-section"><span id="nav-button">About</span></a>
-    <a routerLink="/dashboard" routerLinkActive="active"><span id="nav-button">login</span></a>
-    <a href="#"><span id="nav-button">Signup</span></a>
+    <a (click)="handleLogin()"><span id="nav-button">login</span></a>
+    <a (click)="handleRegister()"><span id="nav-button">Signup</span></a>
   </span>
     <h1>
       LEGATUM

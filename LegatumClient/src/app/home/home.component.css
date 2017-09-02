@@ -39,6 +39,7 @@ h3 {
 
 #nav-button:hover {
     color: #830083;
+    cursor: pointer; cursor: hand;
 }
 
 #get-started {
@@ -52,6 +53,7 @@ h3 {
 }
 
 #get-started:hover {
+    cursor: pointer; cursor: hand;
     color: #830083;
     border-color: #830083;
 }

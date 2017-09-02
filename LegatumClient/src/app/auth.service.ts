@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -12,7 +13,7 @@ console.log('authService runs!');
 export class AuthService {
   isLoggedIn = false;
 
-  constructor(private afAuth: AngularFireAuth) {}
+  constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
   //For storing URL for redirection after logging in
   redirectUrl: string;
@@ -21,7 +22,9 @@ export class AuthService {
   login(): void {
   console.log('AuthService was called');
     // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+    
     this.isLoggedIn = true;
+    this.router.navigateByUrl('dashboard');
   }
 
   logout(): void {
