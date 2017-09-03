@@ -16,6 +16,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { ReviewContractComponent } from './review-contract/review-contract.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthService } from './auth.service';
     ContractFormComponent,
     MyContractsComponent,
     ContractPreviewComponent,
-    LoginComponent
+    LoginComponent,
+    ReviewContractComponent
   ],
   imports: [
     BrowserModule,

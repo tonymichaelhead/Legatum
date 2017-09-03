@@ -12,6 +12,7 @@ console.log('authService runs!');
 @Injectable()
 export class AuthService {
   isLoggedIn = false;
+  email = '';
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
@@ -24,7 +25,8 @@ export class AuthService {
     // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
     
     this.isLoggedIn = true;
-    this.router.navigate(['dashboard/my-contracts'], { queryParams: { name: email }});
+    this.email = email;
+    this.router.navigateByUrl('dashboard/my-contracts');
   }
 
   logout(): void {

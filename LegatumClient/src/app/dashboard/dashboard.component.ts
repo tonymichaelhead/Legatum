@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DashboardService } from '../dashboard.service';
 
 import * as Web3 from 'web3';
 import * as contract from 'truffle-contract';
@@ -14,7 +15,8 @@ declare var window: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [DashboardService]
 })
 
 export class DashboardComponent {
@@ -45,6 +47,7 @@ export class DashboardComponent {
   
   constructor(
     private authService: AuthService, 
+    private dashboardService: DashboardService,
     private router: Router,
     private route: ActivatedRoute) {
     abiDecoder.addABI(will['abi']);
@@ -184,12 +187,7 @@ export class DashboardComponent {
   }
 
   ngOnInit() {
+    this.name = this.authService.email;
     
-    this.sub = this.route
-    .queryParams
-    .subscribe(params => {
-      this.name = params['name'];
-      console.log('The props passed through router is: ', this.name)
-    })
   }
 }
