@@ -29,10 +29,69 @@ h3 {
 }
 
 .nav {
+    position: absolute;
+    right: 0;
     float: right;
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
+
+#menu-container {
+
+    
+}
+
+ul {
+    position: absolute;
+    z-index: 1;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+ul li {
+    float: left;
+    width: 100px;
+    height: 30px;
+    /* background-color: black; */
+    /* opacity: .3; */
+    line-height: 30px;
+    text-align: center;
+}
+
+ul li a {
+    display: block;
+}
+/* ul.drop-menu {
+
+} */
+
+ul li a:hover {
+    background-color: rgba(219, 112, 147, 0.65);
+}
+
+ul li ul li {
+    display: none;
+}
+
+ul li:hover ul li {
+    display: block;
+    opacity: 0;
+    animation-name: menu;
+    animation-duration: 400ms;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+     /* ease-in-out forwards; */
+}
+/* li:hover > ul.drop-menu li {
+    display: block;
+} */
+@keyFrames menu {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+
 
 #nav-button {
     color: white;

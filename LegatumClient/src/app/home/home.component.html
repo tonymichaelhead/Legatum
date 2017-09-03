@@ -1,10 +1,17 @@
 <div id="main">
-  <span class="nav">
+  <ul class="nav">
     <!-- <a href="#"><span id="nav-button">Home</span></a> -->
-    <a href="/home#about-section"><span id="nav-button">About</span></a>
-    <a (click)="handleLogin()"><span id="nav-button">login</span></a>
-    <a (click)="handleRegister()"><span id="nav-button">Signup</span></a>
-  </span>
+    <!-- <li><a href="/home#about-section"><span id="nav-button">About</span></a> -->
+    <li><a (click)="handleLogin()"><span id="nav-button">login</span></a>
+    <li><a (click)="handleRegister()"><span id="nav-button">Signup</span></a>  
+    <li><a>Menu</a>
+      <ul class="drop-menu"> 
+        <li><a>Blockchain</a></li>
+        <li><a>Our Team</a></li>
+        <li><a>Contact</a></li>
+      </ul>
+    </li>
+  </ul>
     <h1>
       LEGATUM
     </h1>
