@@ -19,6 +19,10 @@
     color: white;
 }
 
+#submit-button:hover {
+    cursor: pointer; cursor: hand;
+}
+
 #cancel-button {
     display: inline;
     padding: 5px;

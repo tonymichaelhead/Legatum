@@ -1,16 +1,18 @@
 <div id="create-form">
 <h3>Create Will</h3>
 <form action="">
+  Please choose a nickname for your contract<br>
+  <input type="text" [(ngModel)]="newContract.contractNickname" name="nickName"/><br>
   Last Will and Testament Text<br> 
-  <textarea></textarea><br>
+  <textarea [(ngModel)]="newContract.willText" name="willText"></textarea><br>
   <br>
   Upload Text Document (optional)<br>
   <input type="file" accept="text/*"><br>
   <br>
   Additional Beneficiary Address (optional)<br>
-  <input type="text" [(ngModel)]="text" name="userText" /><br>
+  <input type="text" [(ngModel)]="newContract.beneficiaries" name="benificiaries"/><br>
   <button>Add another beneficiary</button>
 </form>
 </div>
-<a href="#"><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
-<a routerLink="/dashboard" ><div id="cancel-button">Cancel</div></a>
+<a><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
+<a routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Cancel</div></a>

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { ContractFormComponent } from './contract-form/contract-form.component';
+import { ReviewContractComponent } from './review-contract/review-contract.component';
+
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +33,10 @@ const appRoutes: Routes = [
             {
               path: 'create-contract',
               component: ContractFormComponent
+            },
+            {
+              path: 'review-contract',
+              component: ReviewContractComponent
             },
             {
               path: '',
