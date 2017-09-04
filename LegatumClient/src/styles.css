@@ -48,7 +48,8 @@ a:hover {
   ====================================
 */
 
-.login-popup {
+.swal2-modal {
+    background: rgba(0,0,0,74);
     background-color: rgba(0,0,0,0.74);
     letter-spacing: 1.5em;
     height: 80%;
@@ -58,15 +59,15 @@ a:hover {
     color: white;
 }
 
-#email {
+#email, #register-email {
     margin-top: 25%;
 }
 
-#password {
+#password, #register-password {
     margin-bottom: 15%;
 }
 
-#email, #password {
+#email, #password, #register-email, #register-password {
     width: 80%;
     /* background-color: rgba(0,0,0,0.5); */
     border: none;
@@ -77,15 +78,12 @@ a:hover {
     border-radius: 0;
 }
 
-#email:focus, #password:focus {
+#email:focus, #password:focus, #register-email:focus, #register-password:focus {
     box-shadow: none;
     border-bottom: 3px solid #830083;
 }
 
-.confirm-btn, .register-btn {
+.login-btn, .register-btn {
     outline: none;
     /* box-shadow: none; */
-}
-
-.register-btn:active {
 }

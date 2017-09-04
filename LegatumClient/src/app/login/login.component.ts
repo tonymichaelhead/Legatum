@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       title: 'LOGIN',
       confirmButtonText: 'LOGIN',
       confirmButtonColor: '#830083',
-      confirmButtonClass: 'confirm-btn',
+      confirmButtonClass: 'login-btn',
       reverseButtons: true,
       showCancelButton: true,
       cancelButtonColor: 'transparent',
@@ -71,7 +71,15 @@ export class LoginComponent implements OnInit {
         swal({
           title: 'REGISTER',
           confirmButtonText: 'REGISTER',
+          confirmButtonColor: '#830083',
+          confirmButtonClass: 'register-btn',
+          reverseButtons: true,
           showCancelButton: true,
+          cancelButtonColor: 'transparent',
+          cancelButtonText: 'CANCEL',
+          cancelButtonClass: 'cancel-btn',
+          customClass: 'register-popup',
+          background: '',
           html:
           '<input id="register-email" type="email" placeholder="email" class="swal2-input">' +
           '<input id="register-password" type="password" placeholder="password" class="swal2-input">',
