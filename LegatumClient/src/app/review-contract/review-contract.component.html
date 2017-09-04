@@ -1,4 +1,4 @@
-<div>
+<div id="review-contract">
   <h2>Please review details carefully before submitting</h2>
   Contract Nickname: {{ this.newContract.contractNickname }}<br>
   Contract ID: {{ this.newContract.contractId }}<br>
@@ -7,6 +7,9 @@
   Attached File: {{ this.newContract.fileName }}<br>
   Beneficiary address(es): {{ this.newContract.beneficiaries }}
 </div>
+
+<a><div id="submit-button" (click)="handleClickOnFinalize()">Finalize and Submit</div></a>
+<a routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Delete Contract</div></a>
 
 
 <!-- contractNickname: 'default',

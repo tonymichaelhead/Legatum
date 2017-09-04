@@ -1,6 +1,6 @@
 #main {
     position: absolute;
-    width: 100;
+    width: 100%;
     height: 100%;
     top: 30px;
     text-align: center;
@@ -28,16 +28,21 @@ h3 {
     font-family: 'Ubuntu Condensed', sans-serif;
 }
 
+#main-pitch {
+    margin: auto;
+    width: 230px;
+}
+
 .nav {
     position: absolute;
     right: 0;
-    float: right;
+    
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
 
 #menu-container {
-
+    
     
 }
 
@@ -102,13 +107,20 @@ ul li:hover ul li {
     color: #FE28A8;
     cursor: pointer; cursor: hand;
 }
-
+#button-table {
+    display: table;
+    position: absolute;
+    height: 100%; 
+    width: 100%;
+}
 #button-container {
     perspective: 700;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #get-started {
-    position: relative;
+    
     color: white;
     font-size: 20px;
     margin: auto;
@@ -118,7 +130,7 @@ ul li:hover ul li {
     padding: 5;
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif; 
-    transition: all 0.6s linear;
+    transition: all .6s ease-in-out;
     transform-style: preserve-3d;
 }
 
