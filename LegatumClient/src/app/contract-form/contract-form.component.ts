@@ -57,7 +57,7 @@ export class ContractFormComponent {
 
 
 
-    this.userAddress = '0xFc8297cb553Ffaa2Bb45CdF0774D9784DE7c681C';
+    this.userAddress = '0x9DF513C71A014A4a6D131Fd2E93A0F78022d9E54';
   }
 
   @HostListener('window:load')
@@ -73,17 +73,17 @@ export class ContractFormComponent {
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof typeof window.web3 !== 'undefined') {
+    if (typeof typeof window.web3 === 'undefined') {
       // Use Mist/MetaMask's provider
       console.log('attaching to metamask');
       this.web3 = new Web3(window.web3.currentProvider);
     } else {
       console.log(
-        'No web3 detected. Falling back to http://localhost:8545.'
+        'No web3 detected. Falling back to infura.'
       );
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('http://localhost:8545')
+        new Web3.providers.HttpProvider('https://ropsten.infura.io/mm9Q2HbEIQKJkV9Sy4xb ')
       );
     }
   }
@@ -91,7 +91,7 @@ export class ContractFormComponent {
   onReady = () => {
     // Bootstrap the willContract abstraction for Use.
     this.willContract.setProvider(this.web3.currentProvider);
-    this.web3.eth.defaultAccount = '0xFc8297cb553Ffaa2Bb45CdF0774D9784DE7c681C';
+    this.web3.eth.defaultAccount = '0x9DF513C71A014A4a6D131Fd2E93A0F78022d9E54';
     this.defaultAddress = this.web3.eth.defaultAccount;
     console.log('preparing contract, setting provider: ', this.web3.currentProvider);
 
