@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
       background: '',
       html:
       '<input id="email" type="email" placeholder="email" class="swal2-input">' +
-      '<input id="password" type="password" placeholder="password" class="swal2-input">',
+      '<div id="msg-invalid-email"><p>invalid email address</p></div>' +
+      '<input id="password" type="password" placeholder="password" class="swal2-input">' +
+      '<div id="msg-invalid-password"><p>invalid email address</p></div>',
       preConfirm: function () {
         return new Promise(function (resolve) {
           resolve([
@@ -56,10 +58,10 @@ export class LoginComponent implements OnInit {
       // authenticate user with stored data passed to the result variable
       const email = result[0];
       const userPassword = result[1];
-      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, userPassword)
-        .catch(error => {
-          console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
-        });
+      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, userPassword);
+        // .catch(error => {
+        //   console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
+        // });
       // add a realtime listener
       context.afAuth.auth.onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
