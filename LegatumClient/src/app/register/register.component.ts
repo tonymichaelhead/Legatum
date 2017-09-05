@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleRegister(): void {
+  registerUser(): void {
     const context = this;
     swal({
       title: 'REGISTER',
