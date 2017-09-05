@@ -1,10 +1,11 @@
 // Dependencies
 const sequelize = require('sequelize');
 const mysql = require('mysql2');
+const credentials = require('../env/db.config');
 
 // MariaDB connection
 // **************** You have to enter the connection string before running. DO NOT LEAVE IT IN THE FILE WHEN YOU ADD OR COMMIT!!!!!!!! ******************
-const db = new sequelize('');
+const db = new sequelize(credentials.DB_PATH);
 
 // Connection Authentication & Successfull connection
 db
@@ -21,6 +22,7 @@ db
 const User = db.define('user', {
   user_id: { type: sequelize.UUID, allowNull: false, primaryKey: true, defaultValue: sequelize.UUIDV4},
   username: { type: sequelize.STRING, unique: true, allowNull: false },
+  email: { type: sequelize.STRING, unique: true, allowNull: false },
   pub_key: { type: sequelize.STRING, unique: true, allowNull: false },
   ssn: { type: sequelize.INTEGER, unique: true, allowNull: false }
 });
@@ -51,6 +53,7 @@ User.sync({force: true}).then(() => {
   // Table created
   return User.create({
     username: 'johndoe',
+    email: 'johndoe@johndoe.com',
     pub_key: 'this is a test 1234342342342',
     ssn: 2345433
   });

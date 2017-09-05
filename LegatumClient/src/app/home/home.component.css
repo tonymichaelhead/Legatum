@@ -1,22 +1,31 @@
-#main {
-    position: absolute;
+#container {
+    display: flex;
+    flex-direction: column;
+}
+#glass {
     width: 100%;
-    height: 100%;
-    top: 30px;
-    text-align: center;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.70);
+    /* border: solid 1px red; */
 }
 
-h1 {
-    margin-top: -3px;
-    font-family: "Ancient Roman", "Times New Roman";
-    /* color: #830083; */
-    color: #FE28A8;
-    font-size: 30px;
-    float: left;
+#main-content {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.70);
+    /* border: solid 1px green; */
+    
 }
 
 h2 {
-    color: grey;
+    position: absolute;
+    top: 60%;
+    /* left: 50%; */
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B9B9B9;
     text-align: center;
     clear: both;
     font-family: 'Niconne', cursive;
@@ -33,10 +42,15 @@ h3 {
     width: 230px;
 }
 
+/* .nav-container {
+    border: solid 1px red;
+    min-width: 500px;
+} */
+
 .nav {
-    position: absolute;
-    right: 0;
-    
+    position: relative;
+    float: right;
+    /* border: solid 1px blue; */
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif;
 }
@@ -45,6 +59,8 @@ h3 {
     
     
 }
+
+
 
 ul {
     position: absolute;
@@ -66,6 +82,7 @@ ul li {
 
 ul li a {
     display: block;
+    /* background-color: rgba(0, 0, 0, 0.41); */
 }
 /* ul.drop-menu {
 
@@ -104,7 +121,7 @@ ul li:hover ul li {
 }
 
 #nav-button:hover {
-    color: #FE28A8;
+    /* color: #FE28A8; */
     cursor: pointer; cursor: hand;
 }
 #button-table {

@@ -1,4 +1,9 @@
 <div id="pic-box">
+  <div id="account-icon">
+      <a routerLink="/home">
+        <h1>Legatum</h1>
+      </a>
+  </div>
   <a routerLink="/home" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
   <h2 id="dash-greeting">Good evening, {{this.name}}</h2>
 </div>
@@ -12,7 +17,7 @@
   <router-outlet></router-outlet>
 </div>
 
-<div>
+<!-- <div>
   <button (click)=this.deployWill()>Test Contract </button>
 </div>
 
@@ -22,4 +27,4 @@
 
 <div>
   <button (click)=this.getWillText()> Get Will Text </button>
-</div>
+</div> -->
