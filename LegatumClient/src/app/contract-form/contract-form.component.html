@@ -8,9 +8,22 @@
   <input type="file" accept="text/*"><br>
   <br>
   Additional Beneficiary Address (optional)<br>
-  <input type="text" [(ngModel)]="text" name="userText" /><br>
+  <input type="text" [(ngModel)]="inputText" name="userText" /><br>
   <button>Add another beneficiary</button>
 </form>
 </div>
 <a href="#"><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
 <a routerLink="/dashboard" ><div id="cancel-button">Cancel</div></a>
+
+<div>
+  <button (click)=this.deployWill()>Test Contract </button>
+</div>
+
+<div>
+  <button (click)=this.setWillData()>Set Will Data</button>
+</div>
+
+<div>
+  <button (click)=this.getWillText()> Get Will Text </button>
+</div>
+
