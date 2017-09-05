@@ -75,6 +75,6 @@ export class LoginComponent implements OnInit {
   }
 
   handleRegister(): void {
-    this.register.handleRegister();
+    this.register.registerUser();
   }
 }
