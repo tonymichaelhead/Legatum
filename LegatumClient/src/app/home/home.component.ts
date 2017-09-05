@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
+import { AuthService } from '../auth.service'; 
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,25 @@ import { LoginComponent } from '../login/login.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private login: LoginComponent) {}
+  isLoggedIn: boolean = false;
 
-  ngOnInit() {}
+  constructor(
+    private authService: AuthService,
+    private login: LoginComponent) {}
+  
+  //Check to see if user is logged in and if so display logged in features
+  checkIfLoggedIn() {
+    if (this.authService.isLoggedIn) {
+      console.log('Is logged in: true');
+        this.isLoggedIn = true; 
+    } else {
+      console.log('User is not logged in');
+    }
+  }
+  
+  ngOnInit() {
+    this.checkIfLoggedIn();
+  }
 
   handleLogin(): any {
     this.login.handleLogin();
