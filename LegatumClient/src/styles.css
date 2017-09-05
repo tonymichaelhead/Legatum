@@ -42,5 +42,49 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+/*
+  ====================================
+  Login Modal Styles
+  ====================================
+*/
+
+.swal2-modal {
+    background: rgba(0,0,0,74);
+    background-color: rgba(0,0,0,0.74);
+    letter-spacing: 1.5em;
+    height: 80%;
+}
+
+#swal2-title {
+    color: white;
+}
+
+#email, #register-email {
+    margin-top: 25%;
+}
+
+#password, #register-password {
+    margin-bottom: 15%;
+}
+
+#email, #password, #register-email, #register-password {
+    width: 80%;
+    border: none;
+    border-bottom: 2px solid #830083;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+#email:focus, #password:focus, #register-email:focus, #register-password:focus {
+    box-shadow: none;
+    border-bottom: 3px solid #830083;
+}
+
+.login-btn, .register-btn {
+    outline: none;
     cursor: pointer; cursor: hand;
 }

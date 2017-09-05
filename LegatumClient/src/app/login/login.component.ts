@@ -21,11 +21,18 @@ export class LoginComponent implements OnInit {
   handleLogin(): void {
     const context = this;
     swal({
-      title: 'Login',
-      confirmButtonText: 'Login',
+      title: 'LOGIN',
+      confirmButtonText: 'LOGIN',
+      confirmButtonColor: '#830083',
+      confirmButtonClass: 'login-btn',
+      reverseButtons: true,
       showCancelButton: true,
-      cancelButtonText: 'Register',
+      cancelButtonColor: 'transparent',
+      cancelButtonText: 'REGISTER',
+      cancelButtonClass: 'register-btn',
       allowEnterKey: true,
+      customClass: 'login-popup',
+      background: '',
       html:
       '<input id="email" type="email" placeholder="email" class="swal2-input">' +
       '<input id="password" type="password" placeholder="password" class="swal2-input">',
@@ -44,7 +51,6 @@ export class LoginComponent implements OnInit {
       // authenticate user with stored data passed to the result variable
       const email = result[0];
       const userPassword = result[1];
-      // TODO: handle user login
       const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, userPassword)
         .catch(error => {
           console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
@@ -63,9 +69,17 @@ export class LoginComponent implements OnInit {
       // going into register function logic
       if (dismiss === 'cancel') {
         swal({
-          title: 'Register',
-          confirmButtonText: 'Register',
+          title: 'REGISTER',
+          confirmButtonText: 'REGISTER',
+          confirmButtonColor: '#830083',
+          confirmButtonClass: 'register-btn',
+          reverseButtons: true,
           showCancelButton: true,
+          cancelButtonColor: 'transparent',
+          cancelButtonText: 'CANCEL',
+          cancelButtonClass: 'cancel-btn',
+          customClass: 'register-popup',
+          background: '',
           html:
           '<input id="register-email" type="email" placeholder="email" class="swal2-input">' +
           '<input id="register-password" type="password" placeholder="password" class="swal2-input">',
