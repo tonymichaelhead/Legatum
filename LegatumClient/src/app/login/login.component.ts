@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  handleRegister(): void {
+    this.register.registerUser();
+  }
+
   handleLogin(): void {
     const context = this;
     swal({
@@ -67,14 +71,9 @@ export class LoginComponent implements OnInit {
       });
     }, function (dismiss) {
       // 'cancel' in this case refers to the register button
-      // going into register function logic
       if (dismiss === 'cancel') {
         context.handleRegister();
       }
     });
-  }
-
-  handleRegister(): void {
-    this.register.registerUser();
   }
 }
