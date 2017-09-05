@@ -88,3 +88,22 @@ a:hover {
     outline: none;
     cursor: pointer; cursor: hand;
 }
+
+#msg-invalid-email, #msg-invalid-password {
+    color: rgba(255, 255, 255, 0.80);
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0 auto;
+    width: 80%;
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+    letter-spacing: 0em;
+    display: block;
+    display: none;
+}
+
+#msg-invalid-password {
+    display: none;
+    margin-top: -50px;
+    margin-bottom: 10px;
+}
