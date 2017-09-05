@@ -41,3 +41,51 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+/*
+  ====================================
+  Login Modal Styles
+  ====================================
+*/
+
+.login-popup {
+    background-color: rgba(0,0,0,0.74);
+    letter-spacing: 1.5em;
+    height: 80%;
+}
+
+#swal2-title {
+    color: white;
+}
+
+#email {
+    margin-top: 25%;
+}
+
+#password {
+    margin-bottom: 15%;
+}
+
+#email, #password {
+    width: 80%;
+    /* background-color: rgba(0,0,0,0.5); */
+    border: none;
+    border-bottom: 2px solid #830083;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+#email:focus, #password:focus {
+    box-shadow: none;
+    border-bottom: 3px solid #830083;
+}
+
+.confirm-btn, .register-btn {
+    outline: none;
+    /* box-shadow: none; */
+}
+
+.register-btn:active {
+}

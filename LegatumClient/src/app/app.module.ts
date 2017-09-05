@@ -17,6 +17,48 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ReviewContractComponent } from './review-contract/review-contract.component';
+import { RegisterComponent } from './register/register.component';
+const appRoutes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+    data: { someShizz: 'some interesting data' }
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        children: [
+          {
+            path: 'my-contracts',
+            component: MyContractsComponent
+          },
+          {
+            path: 'create-contract',
+            component: ContractFormComponent
+          },
+          {
+            path: '',
+            redirectTo: 'my-contracts', pathMatch: 'full'
+          },
+        ]
+      },
+    ]
+  },
+
+
+  {
+    path: '**',
+    redirectTo: 'home', pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'home', pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -27,7 +69,8 @@ import { ReviewContractComponent } from './review-contract/review-contract.compo
     MyContractsComponent,
     ContractPreviewComponent,
     LoginComponent,
-    ReviewContractComponent
+    ReviewContractComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
