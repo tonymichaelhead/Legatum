@@ -46,14 +46,18 @@ a:hover {
 
 /*
   ====================================
-  Login Modal Styles
+  Login & Register Modal Styles
   ====================================
 */
 
 .swal2-modal {
     background: rgba(0,0,0,74);
-    background-color: rgba(0,0,0,0.74);
     letter-spacing: 1.5em;
+    height: 80%;
+}
+
+.msg-reg-success, .msg-reg-fail {
+    background: rgba(0,0,0,74);
     height: 80%;
 }
 
@@ -106,4 +110,8 @@ a:hover {
     display: none;
     margin-top: -50px;
     margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
 }
