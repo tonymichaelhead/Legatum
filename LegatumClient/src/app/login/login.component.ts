@@ -19,6 +19,20 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  displayLoginError(): void {
+    const context = this;
+    swal({
+      title: 'Please try again.',
+      text: 'An error has occurred, please try your email and password again.',
+      confirmButtonText: 'Retry',
+      confirmButtonColor: '#830083',
+      background: '',
+      customClass: 'msg-reg-fail',
+    }).then(function() {
+      context.handleLogin();
+    });
+  }
+
   handleRegister(): void {
     this.register.registerUser();
   }
@@ -40,9 +54,7 @@ export class LoginComponent implements OnInit {
       background: '',
       html:
       '<input id="email" type="email" placeholder="email" class="swal2-input">' +
-      '<div id="msg-invalid-email"><p>invalid email address</p></div>' +
-      '<input id="password" type="password" placeholder="password" class="swal2-input">' +
-      '<div id="msg-invalid-password"><p>invalid email address</p></div>',
+      '<input id="password" type="password" placeholder="password" class="swal2-input">',
       preConfirm: function () {
         return new Promise(function (resolve) {
           resolve([
@@ -57,18 +69,15 @@ export class LoginComponent implements OnInit {
     }).then(function (result) {
       // authenticate user with stored data passed to the result variable
       const email = result[0];
-      const userPassword = result[1];
-      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, userPassword);
-        // .catch(error => {
-        //   console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
-        // });
+      const password = result[1];
+      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .catch(error => {
+          context.displayLoginError();
+        });
       // add a realtime listener
       context.afAuth.auth.onAuthStateChanged(firebaseUser => {
         if (firebaseUser) {
-          console.log(firebaseUser, 'user is logged in!!!!!!!! Now we need to redirect user to dashboard');
           context.authService.login(firebaseUser.email);
-        } else {
-          console.log('user is not logged in. Now we need to display an error message');
         }
       });
     }, function (dismiss) {
