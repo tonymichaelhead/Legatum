@@ -37,6 +37,14 @@
 
 /* Buttons */
 
+#account-icon {
+    display: inline;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    /* z-index: 1; */
+}
+
 #dash-signout {
     display: inline;
     position: absolute;

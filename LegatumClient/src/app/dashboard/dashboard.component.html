@@ -1,6 +1,11 @@
 <div id="pic-box">
-  <a routerLink="/home" ><div id="dash-signout">Sign out</div></a>
-  <h2 id="dash-greeting">Good evening, {{this.user.username}}</h2>
+  <div id="account-icon">
+      <a routerLink="/home">
+        <h1>Legatum</h1>
+      </a>
+  </div>
+  <a routerLink="/home" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
+  <h2 id="dash-greeting">Good evening, {{this.name}}</h2>
 </div>
 <div id="mid-nav">
   <a href="#"><span class="mid-nav-button" id="my-contracts-button">My Contracts</span></a>
