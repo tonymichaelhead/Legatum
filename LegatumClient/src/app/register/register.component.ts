@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
       text: user + 'has registered successfully, please login.',
       confirmButtonText: 'OK',
       confirmButtonColor: '#830083',
+      confirmButtonClass: 'msg-btn',
       background: '',
       customClass: 'msg-reg-success',
     });
@@ -37,6 +38,7 @@ export class RegisterComponent implements OnInit {
       text: 'An error has occurred, please try your email and password again.',
       confirmButtonText: 'Retry',
       confirmButtonColor: '#830083',
+      confirmButtonClass: 'msg-btn',
       background: '',
       customClass: 'msg-reg-fail',
     }).then(function() {
