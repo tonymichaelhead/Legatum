@@ -58,11 +58,22 @@ a:hover {
 
 .msg-reg-success, .msg-reg-fail {
     background: rgba(0,0,0,74);
-    height: 80%;
+    height: 60%;
+    letter-spacing: 0em;
 }
 
-#swal2-title {
+.msg-reg-fail #swal2-title, .msg-req-success #swal2-title {
     color: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.msg-btn {
+    outline: none;
+}
+
+.msg-reg-fail #swal2-content {
+    padding-bottom: 40px;
 }
 
 #email, #register-email {
