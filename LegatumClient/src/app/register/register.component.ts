@@ -11,9 +11,37 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth) {}
+
 
   ngOnInit() {
+  }
+
+  displayRegisterSuccess(user): void {
+    // swal(user, ' has succesfully registered!');
+    const context = this;
+    swal({
+      title: 'Success!',
+      text: user + 'has registered successfully, please login.',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#830083',
+      background: '',
+      customClass: 'msg-reg-success',
+    });
+  }
+
+  displayRegisterError(): void {
+    const context = this;
+    swal({
+      title: 'Please try again.',
+      text: 'An error has occurred, please try your email and password again.',
+      confirmButtonText: 'Retry',
+      confirmButtonColor: '#830083',
+      background: '',
+      customClass: 'msg-reg-fail',
+    }).then(function() {
+      context.registerUser();
+    });
   }
 
   registerUser(): void {
@@ -44,15 +72,15 @@ export class RegisterComponent implements OnInit {
       onOpen: function () {
         $('#register-email').focus();
       }
-    }).then(function (result2) {
-      const userEmail2 = result2[0];
-      const userPassword2 = result2[1];
-      const resultObj2 = context.afAuth.auth.createUserWithEmailAndPassword(userEmail2, userPassword2)
+    }).then(function (result) {
+      const userEmail = result[0];
+      const userPassword = result[1];
+      const resultObj = context.afAuth.auth.createUserWithEmailAndPassword(userEmail, userPassword)
         .then(success => {
-          console.log(success, 'Success registering user. Now we need to display success message and redirect to login');
+          context.displayRegisterSuccess(userEmail);
         })
         .catch(error => {
-          console.log(error, 'error occurred. Now we need to display error message.');
+          context.displayRegisterError();
         });
     });
   }
