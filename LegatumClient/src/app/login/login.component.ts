@@ -68,19 +68,19 @@ export class LoginComponent implements OnInit {
         $('#email').focus();
       }
     }).then(function (result) {
-      // authenticate user with stored data passed to the result variable
+      console.log('RESULT from logging in user', result);
       const email = result[0];
       const password = result[1];
       const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .catch(error => {
+        .then(function() {
+          context.afAuth.auth.onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+              context.authService.login(firebaseUser.email);
+            }
+          });
+        }).catch(function() {
           context.displayLoginError();
         });
-      // add a realtime listener
-      context.afAuth.auth.onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-          context.authService.login(firebaseUser.email);
-        }
-      });
     }, function (dismiss) {
       // 'cancel' in this case refers to the register button
       if (dismiss === 'cancel') {

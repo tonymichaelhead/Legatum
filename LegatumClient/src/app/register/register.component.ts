@@ -18,7 +18,6 @@ export class RegisterComponent implements OnInit {
   }
 
   displayRegisterSuccess(user): void {
-    // swal(user, ' has succesfully registered!');
     const context = this;
     swal({
       title: 'Success!',
@@ -75,6 +74,7 @@ export class RegisterComponent implements OnInit {
         $('#register-email').focus();
       }
     }).then(function (result) {
+      console.log('RESULT from registering user', result);
       const userEmail = result[0];
       const userPassword = result[1];
       const resultObj = context.afAuth.auth.createUserWithEmailAndPassword(userEmail, userPassword)
