@@ -53,6 +53,15 @@ export class ContractFormComponent {
   decodedLogs: any;
   dataSetEvent: any;
 
+  newContract: Contract = {
+    contractNickname: '',
+    contractId: 10000000,
+    createdAt: '01/01/0001',
+    willText: 'No text',
+    fileName: 'No file attached.',
+    beneficiaries: ''
+  };
+
   constructor(
     private router: Router,
     private dashboardService: DashboardService) {
@@ -68,11 +77,6 @@ export class ContractFormComponent {
   windowLoaded() {
     this.checkAndInstantiateWeb3();
     this.onReady();
-  }
-
-
-  handleClickOnReview() {
-    console.log('Details: ', this.inputText);
   }
 
   checkAndInstantiateWeb3 = () => {
@@ -159,15 +163,7 @@ export class ContractFormComponent {
       .catch(e => {
         console.log(e);
       });
-
-  newContract: Contract = {
-    contractNickname: '',
-    contractId: 10000000,
-    createdAt: '01/01/0001',
-    willText: 'No text',
-    fileName: 'No file attached.',
-    beneficiaries: ''
-  }
+    }
 
   handleClickOnReview() {
     console.log('Details: ', this.newContract);
