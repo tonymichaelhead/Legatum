@@ -30,11 +30,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  displayRegisterError(): void {
+  displayRegisterError(error): void {
     const context = this;
     swal({
       title: 'Please try again.',
-      text: 'An error has occurred, please try your email and password again.',
+      text: error,
       confirmButtonText: 'Retry',
       confirmButtonColor: '#830083',
       confirmButtonClass: 'msg-btn',
@@ -74,7 +74,6 @@ export class RegisterComponent implements OnInit {
         $('#register-email').focus();
       }
     }).then(function (result) {
-      console.log('RESULT from registering user', result);
       const userEmail = result[0];
       const userPassword = result[1];
       const resultObj = context.afAuth.auth.createUserWithEmailAndPassword(userEmail, userPassword)
@@ -82,7 +81,7 @@ export class RegisterComponent implements OnInit {
           context.displayRegisterSuccess(userEmail);
         })
         .catch(error => {
-          context.displayRegisterError();
+          context.displayRegisterError(error);
         });
     });
   }

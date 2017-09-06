@@ -19,11 +19,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  displayLoginError(): void {
+  displayLoginError(error): void {
     const context = this;
     swal({
       title: 'Please try again.',
-      text: 'An error has occurred, please try your email and password again.',
+      text: error,
       confirmButtonText: 'Retry',
       confirmButtonColor: '#830083',
       confirmButtonClass: 'msg-btn',
@@ -72,14 +72,15 @@ export class LoginComponent implements OnInit {
       const email = result[0];
       const password = result[1];
       const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .then(function() {
+        .then(function(success) {
           context.afAuth.auth.onAuthStateChanged(firebaseUser => {
             if (firebaseUser) {
               context.authService.login(firebaseUser.email);
             }
           });
-        }).catch(function() {
-          context.displayLoginError();
+        }).catch(function(error) {
+          console.log('ERROR from login component ', error);
+          context.displayLoginError(error);
         });
     }, function (dismiss) {
       // 'cancel' in this case refers to the register button
