@@ -1,13 +1,9 @@
-<app-contract-preview></app-contract-preview>
+<app-contract-preview *ngFor="let contract of contracts"
+    [contract] = "contract">    
+
+</app-contract-preview>
 <a routerLink="/dashboard/create-contract" routerLinkActive="active">
   <div id="create-button" (click)="handleCreateFormClick()">
     Create contract
   </div>
 </a>
-
-
-<app-contract-preview *ngFor="let contract of contracts"
-    [contract] = "contract">    
->
-</app-contract-preview>
-<a routerLink="/dashboard/create-contract" routerLinkActive="active"><div id="create-button" (click)="handleCreateFormClick()">Create contract</div></a>
