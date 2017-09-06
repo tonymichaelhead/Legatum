@@ -10,8 +10,8 @@
       
       <!-- Load a conditional dashboard button -->
       <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard" ><span id="nav-button">Dashboard</span></a>
-      <li><a (click)="handleLogin()"><span id="nav-button">login</span></a>
-      <li><a (click)="handleRegister()"><span id="nav-button">Signup</span></a>  
+      <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
+      <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>  
       <li><a>Menu</a>
         <ul class="drop-menu"> 
           <li><a>Blockchain</a></li>
