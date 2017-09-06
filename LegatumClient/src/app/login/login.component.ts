@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../auth.service';
+import { RegisterComponent } from '../register/register.component';
 
 declare var swal: any;
 declare var $: any;
@@ -13,9 +14,28 @@ declare var firebase: any;
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth, private authService: AuthService) { }
+  constructor(private afAuth: AngularFireAuth, private authService: AuthService, private register: RegisterComponent) { }
 
   ngOnInit() {
+  }
+
+  displayLoginError(error): void {
+    const context = this;
+    swal({
+      title: 'Please try again.',
+      text: error,
+      confirmButtonText: 'Retry',
+      confirmButtonColor: '#830083',
+      confirmButtonClass: 'msg-btn',
+      background: '',
+      customClass: 'msg-reg-fail',
+    }).then(function() {
+      context.handleLogin();
+    });
+  }
+
+  handleRegister(): void {
+    this.register.registerUser();
   }
 
   handleLogin(): void {
@@ -48,97 +68,25 @@ export class LoginComponent implements OnInit {
         $('#email').focus();
       }
     }).then(function (result) {
-      // authenticate user with stored data passed to the result variable
+      console.log('RESULT from logging in user', result);
       const email = result[0];
-      const userPassword = result[1];
-      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, userPassword)
-        .catch(error => {
-          console.log('Error: user was not authenticated. Need to display a relevent error message.', error);
+      const password = result[1];
+      const resultObj = context.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .then(function(success) {
+          context.afAuth.auth.onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+              context.authService.login(firebaseUser.email);
+            }
+          });
+        }).catch(function(error) {
+          console.log('ERROR from login component ', error);
+          context.displayLoginError(error);
         });
-      // add a realtime listener
-      context.afAuth.auth.onAuthStateChanged(firebaseUser => {
-        if (firebaseUser) {
-          console.log(firebaseUser, 'user is logged in!!!!!!!! Now we need to redirect user to dashboard');
-          context.authService.login(firebaseUser.email);
-        } else {
-          console.log('user is not logged in. Now we need to display an error message');
-        }
-      });
     }, function (dismiss) {
       // 'cancel' in this case refers to the register button
-      // going into register function logic
       if (dismiss === 'cancel') {
-        swal({
-          title: 'REGISTER',
-          confirmButtonText: 'REGISTER',
-          confirmButtonColor: '#830083',
-          confirmButtonClass: 'register-btn',
-          reverseButtons: true,
-          showCancelButton: true,
-          cancelButtonColor: 'transparent',
-          cancelButtonText: 'CANCEL',
-          cancelButtonClass: 'cancel-btn',
-          customClass: 'register-popup',
-          background: '',
-          html:
-          '<input id="register-email" type="email" placeholder="email" class="swal2-input">' +
-          '<input id="register-password" type="password" placeholder="password" class="swal2-input">',
-          preConfirm: function () {
-            return new Promise(function (resolve) {
-              resolve([
-                $('#register-email').val(),
-                $('#register-password').val()
-              ]);
-            });
-          },
-          onOpen: function () {
-            $('#register-email').focus();
-          }
-        }).then(function (result2) {
-          const userEmail2 = result2[0];
-          const userPassword2 = result2[1];
-          const resultObj2 = context.afAuth.auth.createUserWithEmailAndPassword(userEmail2, userPassword2)
-            .then(success => {
-              console.log(success, 'Success registering user. Now we need to display success message and redirect to login');
-            })
-            .catch(error => {
-              console.log(error, 'error occurred. Now we need to display error message.');
-            });
-        });
+        context.handleRegister();
       }
-    });
-  }
-
-  handleRegister() {
-    const context = this;
-    swal({
-      title: 'Register',
-      confirmButtonText: 'Register',
-      showCancelButton: true,
-      html:
-      '<input id="register-email" type="email" placeholder="email" class="swal2-input">' +
-      '<input id="register-password" type="password" placeholder="password" class="swal2-input">',
-      preConfirm: function () {
-        return new Promise(function (resolve) {
-          resolve([
-            $('#register-email').val(),
-            $('#register-password').val()
-          ]);
-        });
-      },
-      onOpen: function () {
-        $('#register-email').focus();
-      }
-    }).then(function (result2) {
-      const userEmail2 = result2[0];
-      const userPassword2 = result2[1];
-      const resultObj2 = context.afAuth.auth.createUserWithEmailAndPassword(userEmail2, userPassword2)
-        .then(success => {
-          console.log(success, 'Success registering user. Now we need to display success message and redirect to login');
-        })
-        .catch(error => {
-          console.log(error, 'error occurred. Now we need to display error message.');
-        });
     });
   }
 }

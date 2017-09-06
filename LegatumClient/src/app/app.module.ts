@@ -80,7 +80,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     FormsModule
   ],
-  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent],
+  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
