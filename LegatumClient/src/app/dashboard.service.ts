@@ -7,11 +7,10 @@ export class DashboardService {
   //hold user profile info
   newContract: Contract = {
       contractNickname: 'default',
-      contractId: 781432098374,
-      createdAt: 'default',
       willText: 'default',
       fileName: 'No file was selected.',
-      beneficiaries: '1212dddddd3'
+      beneficiaries: '1212dddddd3',
+      hash: '012741923487'
     }
   //hold new contract info
 

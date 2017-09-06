@@ -1,7 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,7 +44,7 @@ export class DashboardComponent {
   
   ngOnInit() {
     this.name = this.authService.email;
-    
+    this.getUserInfo();
   }
 }
 

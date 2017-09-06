@@ -25,7 +25,7 @@ export class ReviewContractComponent implements OnInit {
     this.http.post('/newcontract', this.newContract)
       .subscribe(
         res => {
-          console.log(res);
+          console.log('POST response: ',res);
           //A success message should be displayed to user
           //User should be navigated back to dashboard
           this.router.navigateByUrl('/dashboard')

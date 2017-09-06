@@ -55,11 +55,10 @@ export class ContractFormComponent {
 
   newContract: Contract = {
     contractNickname: '',
-    contractId: 10000000,
-    createdAt: '01/01/0001',
     willText: 'No text',
     fileName: 'No file attached.',
-    beneficiaries: ''
+    beneficiaries: '',
+    hash: 'rstrastaarst'
   };
 
   constructor(

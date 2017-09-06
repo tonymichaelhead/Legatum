@@ -25,8 +25,11 @@ app.get('/', (req, res) => {
   // New Contract
 app.post('/newcontract', function (req, res){
   db.Contract.create({
+    contract_nickname: req.body.contractNickname,
     hash: req.body.hash,
-    block_id: req.body.block_id
+    will_text: req.body.willText,
+    file_name: req.body.fileName,
+    beneficiary: req.body.beneficiaries  
   }).then(function (data){
     res.status(201).send(data)
   }).catch(function (err){
@@ -93,6 +96,17 @@ app.get('/findpubkey', function (req, res){
 app.get('/findssn', function (req, res){
   db.User.findOne({
     where: {ssn: 2345433 }
+  }).then(function (data){
+    res.status(200).send(data)
+  }).catch(function (err){
+    return console.log(err)
+  })
+});
+// Find by email
+app.get('/findemail', function (req, res){
+  console.log('Im req james bitch', req);
+  db.User.findOne({
+    where: {email: req.query.email }
   }).then(function (data){
     res.status(200).send(data)
   }).catch(function (err){
