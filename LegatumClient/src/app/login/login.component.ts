@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       text: 'An error has occurred, please try your email and password again.',
       confirmButtonText: 'Retry',
       confirmButtonColor: '#830083',
+      confirmButtonClass: 'msg-btn',
       background: '',
       customClass: 'msg-reg-fail',
     }).then(function() {
