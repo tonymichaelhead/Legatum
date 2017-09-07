@@ -5,6 +5,8 @@ import { UserInfo } from './models/user-info/user-info.interface';
 @Injectable()
 export class DashboardService {
 
+  userInfo: UserInfo; 
+  
   //hold user profile info
   newContract: Contract = {
       contractNickname: 'default',
