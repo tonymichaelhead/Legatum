@@ -4,6 +4,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import { Observable } from 'rxjs/Observable';
+import { Contract } from '../models/contract/contract.interface';
+import { UserInfo } from '../models/user-info/user-info.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,19 +18,22 @@ export class DashboardComponent {
   name: string;
   sub: any;
 
-  user = {
-    user_id: 1,
-    username: 'Tony',
-    pubKey: '1231ars',
-    ssn: 12341321
+  userInfo: UserInfo = {
+    createdAt: '',
+    email: '',
+    pub_key: '',
+    ssn: 0,
+    updatedAt: '',
+    user_id: '',
+    username: ''
   };
 
   constructor(
     private authService: AuthService, 
     private dashboardService: DashboardService,
     private router: Router,
-    private route: ActivatedRoute) {
-
+    private route: ActivatedRoute,
+    private http: HttpClient) {
   }
 
   logout(): any {
@@ -41,10 +46,26 @@ export class DashboardComponent {
     });
   }
 
+  getUserInfo(email: string): void {
+    this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
+      .subscribe((data: UserInfo) => {
+        console.log('userInfo GET: ', data);
+        this.userInfo = {
+          createdAt: data.createdAt,
+          email: data.email,
+          pub_key: data.pub_key,
+          ssn: data.ssn,
+          updatedAt: data.updatedAt,
+          user_id: data.user_id,
+          username: data.username
+        }
+        console.log('updated user info: ', this.userInfo);
+      });
+  }
+
   
   ngOnInit() {
     this.name = this.authService.email;
-    this.getUserInfo();
+    this.getUserInfo(this.name);
   }
-}
-
+}  

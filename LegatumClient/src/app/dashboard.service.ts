@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Contract } from './models/contract/contract.interface';
+import { UserInfo } from './models/user-info/user-info.interface';
 
 @Injectable()
 export class DashboardService {
@@ -21,4 +22,7 @@ export class DashboardService {
     console.log('new contract set in DashboardService: ', this.newContract);
   }
 
+  // getUserInfo(email: string) {
+
+  // }
 }
