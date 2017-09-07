@@ -22,7 +22,6 @@ export class AuthGuardService implements CanActivate {
   checkLogin(url: string): Promise<any> {
     let isLoggedIn;
     return new Promise((resolve, reject) => {
-      console.log('hello, world from the promise area');
       isLoggedIn = this.afAuth.auth.onAuthStateChanged( firebaseUser => {
         if (firebaseUser) {
           resolve (true);
