@@ -11,7 +11,7 @@ console.log('authService runs!');
 
 @Injectable()
 export class AuthService {
-  isLoggedIn = false;
+  isLoggedIn = true;
   email = '';
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
@@ -23,7 +23,7 @@ export class AuthService {
   login(email: string): void {
   console.log('AuthService was called');
     // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-    
+
     this.isLoggedIn = true;
     this.email = email;
     this.router.navigateByUrl('dashboard/my-contracts');

@@ -94,7 +94,7 @@ export class DeployContractsComponent implements OnInit {
       );
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('https://ropsten.infura.io/mm9Q2HbEIQKJkV9Sy4xb ')
+        new Web3.providers.HttpProvider('https://ropsten.infura.io/mm9Q2HbEIQKJkV9Sy4xb')
       );
     }
   }

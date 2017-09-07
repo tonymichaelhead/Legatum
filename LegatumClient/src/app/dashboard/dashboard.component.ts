@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
