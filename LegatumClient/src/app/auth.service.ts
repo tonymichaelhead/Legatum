@@ -19,6 +19,16 @@ export class AuthService {
   //For storing URL for redirection after logging in
   redirectUrl: string;
 
+  checkIfLoggedIn() {
+    // this.afAuth.auth.onAuthStateChanged( firebaseUser => {
+    //   if (firebaseUser) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // });
+  }
+
   // login(): Observable<boolean> {
   login(email: string): void {
   console.log('AuthService was called');
