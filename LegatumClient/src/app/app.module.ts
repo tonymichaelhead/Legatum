@@ -22,51 +22,11 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ReviewContractComponent } from './review-contract/review-contract.component';
 import { RegisterComponent } from './register/register.component';
+
 import { AdminComponent } from './adminpage/admin/admin.component';
 import { PendingContractsComponent } from './adminpage/pending-contracts/pending-contracts.component';
 import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-contracts.component';
 import { PendingContractIndividualComponent } from './adminpage/pending-contract-individual/pending-contract-individual.component';
-const appRoutes: Routes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    data: { someShizz: 'some interesting data' }
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuardService],
-    children: [
-      {
-        path: '',
-        children: [
-          {
-            path: 'my-contracts',
-            component: MyContractsComponent
-          },
-          {
-            path: 'create-contract',
-            component: ContractFormComponent
-          },
-          {
-            path: '',
-            redirectTo: 'my-contracts', pathMatch: 'full'
-          },
-        ]
-      },
-    ]
-  },
-
-
-  {
-    path: '**',
-    redirectTo: 'home', pathMatch: 'full'
-  },
-  {
-    path: '',
-    redirectTo: 'home', pathMatch: 'full'
-  }
-];
 
 @NgModule({
   declarations: [
