@@ -22,11 +22,10 @@ export class DashboardComponent {
   };
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private dashboardService: DashboardService,
     private router: Router,
     private route: ActivatedRoute) {
-
   }
 
   logout(): any {
@@ -42,7 +41,6 @@ export class DashboardComponent {
   
   ngOnInit() {
     this.name = this.authService.email;
-    
   }
 }
 

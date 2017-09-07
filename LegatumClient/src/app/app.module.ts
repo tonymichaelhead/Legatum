@@ -19,6 +19,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ReviewContractComponent } from './review-contract/review-contract.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
 const appRoutes: Routes = [
   {
     path: 'home',
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     ContractPreviewComponent,
     LoginComponent,
     ReviewContractComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

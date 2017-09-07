@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
-  //For storing URL for redirection after logging in
+  // For storing URL for redirection after logging in
   redirectUrl: string;
 
   // login(): Observable<boolean> {

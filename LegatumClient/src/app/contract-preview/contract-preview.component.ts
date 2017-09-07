@@ -12,6 +12,8 @@ export class ContractPreviewComponent implements OnInit {
 
   ngOnInit() {
     console.log('contract preview: ', this.contract);
+    // etherscan sample address 
+    // https://ropsten.etherscan.io/address/0x24b6bbf15b798988a7f4eab170edebe6bbc3cc1d
   }
 
 }
