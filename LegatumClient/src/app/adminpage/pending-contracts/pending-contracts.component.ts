@@ -27,7 +27,7 @@ export class PendingContractsComponent implements OnInit {
 
   constructor(private router: Router ) { }
 
-  @Output() onCreateFormClick = new EventEmitter();
+
 
   ngOnInit() {
   }
