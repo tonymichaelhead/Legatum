@@ -16,7 +16,8 @@ import { FIREBASE_CONFIG } from './firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSidenavModule } from '@angular/material';
+import { MdSidenavModule, MdButtonModule } from '@angular/material';
+import { OverlayContainer } from '@angular/material';
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -51,9 +52,14 @@ import { PendingContractIndividualComponent } from './adminpage/pending-contract
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MdSidenavModule
+    MdSidenavModule,
+    MdButtonModule
   ],
   providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.themeClass = 'unicorn-dark-theme';
+  }
+}

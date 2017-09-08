@@ -1,3 +1,4 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @font-face {
     font-family: "Ancient Roman";
     src: url(geek.ttf) format("truetype");

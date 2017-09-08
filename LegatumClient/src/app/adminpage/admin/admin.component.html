@@ -1,13 +1,23 @@
-<md-sidenav-container>
+<md-sidenav-container class="example-container">
 
-    <md-sidenav mode="side" opened="true">
-      <button>contracts</button>
-      <button>pending</button>
+    <md-sidenav mode="open" opened="true" #sidenav class="example-sidenav">
+      <button md-raised-button color="primary">Contracts</button>
+      <br>
+      <button md-raised-button color="primary">Pending</button>
+      <br>
     </md-sidenav>
+    
 
     <div class="my-content">
-        Hello Administrator!
-        
         <router-outlet> </router-outlet>
+        <button type="button" md-button (click)="sidenav.open()" class="nav-fab">
+                Open sidenav
+        </button>
     </div>
+    
 </md-sidenav-container>
+
+
+      
+        
+       
