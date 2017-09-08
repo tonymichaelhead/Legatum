@@ -62,7 +62,10 @@ export class DashboardComponent {
         }
         console.log('updated user info: ', this.userInfo);
         //Update the dashboard service with user info so other components can access it
+        
         this.dashboardService.setUserInfo(this.userInfo);
+        //Call setContractsInfo
+        // this.dashboardService.getAndSetContracts();
       });
   }
 

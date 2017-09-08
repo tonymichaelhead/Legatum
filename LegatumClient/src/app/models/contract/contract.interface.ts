@@ -1,7 +1,8 @@
 export interface Contract {
-    contract_id: string,
-    createdAt: string,
-    updatedAt: string,
+    username: string;
+    contract_id: string;
+    createdAt: string;
+    updatedAt: string;
     contract_nickname: string;
     will_text: string;
     file_name: string;

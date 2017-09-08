@@ -24,17 +24,24 @@ app.get('/', (req, res) => {
 // Routes - API
   // New Contract
 app.post('/newcontract', function (req, res){
+  let uniqueHash = req.body.hash;
   db.Contract.create({
+    username: req.body.username,
     contract_nickname: req.body.contract_nickname,
     hash: req.body.hash,
     will_text: req.body.will_text,
     file_name: req.body.file_name,
     beneficiary: req.body.beneficiary  
-  }).then(function (data){
+  })
+  .then(function (data){
     res.status(201).send(data)
   }).catch(function (err){
     return console.log(err)
   })
+ 
+    // db.Transaction.create({
+    //   user_idFK: res.data.contract_id,
+    // })
 });
   
   // Find One Contract
@@ -52,7 +59,7 @@ app.get('/findonecontract', function (req, res){
 app.get('/findallcontract', function (req, res){
   let email = req.query.email
   
-  db.Contract.findAll({})
+  db.Contract.findAll({ where: { username: req.username}})
   .then(function (data){
     res.status(200).send(data)
   }).catch(function (err){

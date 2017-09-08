@@ -29,6 +29,7 @@ const User = db.define('user', {
 
 // Contracts Table
 const Contract = db.define('contract', {
+  username: { type: sequelize.STRING, unique: false, allowNull: false },
   contract_nickname: { type: sequelize.STRING, unique: true, allowNull: false },
   hash: { type: sequelize.STRING, unique: false, allowNull: false },
   contract_id: { type: sequelize.UUID,  allowNull: false, primaryKey: true, defaultValue: sequelize.UUIDV4 },
@@ -52,26 +53,36 @@ Contract.belongsToMany(User, { through: 'Transaction', foreignKey: 'contract_idF
 
 
 // TESTING DB
-User.sync({force: true}).then(() => {
-  // Table created
-  return User.create({
-    username: 'johndoe',
-    email: 'johndoe@johndoe.com',
-    pub_key: 'this is a test 1234342342342',
-    ssn: 2345433
-  });
-});
+// User.sync({force: true}).then(() => {
+//   // Table created
+//   return User.create({
+//     username: 'johndoe',
+//     email: 'johndoe@johndoe.com',
+//     pub_key: 'this is a test 1234342342342',
+//     ssn: 2345433
+//   }).then(function() {
+//     return User.create({
+//       username: 'T-mac',
+//       email: 'tony@tony.com',
+//       pub_key: 'thisrstdsrtd is a test 1234342342342',
+//       ssn: 23000045433
+//     })
+//   })
+// });
 
-Contract.sync({force: true}).then(() => {
-  // Table created
-  return Contract.create({
-    hash: 'this is a test for hash',
-    contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
-    will_text: 'AYYYYOOO WILL text yo',
-    file_name: 'file.js',
-    beneficiary: '12346789xxx'
-  });
-});
+
+
+// Contract.sync({force: true}).then(() => {
+//   // Table created
+//   return Contract.create({
+//     username: 'bullshit username',
+//     hash: 'this is a test for hash',
+//     contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
+//     will_text: 'AYYYYOOO WILL text yo',
+//     file_name: 'file.js',
+//     beneficiary: '12346789xxx'
+//   });
+// });
 
 Transaction.sync({force: true}).then(() => {
   // Table Created

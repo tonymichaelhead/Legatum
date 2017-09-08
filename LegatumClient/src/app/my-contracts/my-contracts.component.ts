@@ -47,18 +47,19 @@ export class MyContractsComponent implements OnInit {
     console.log('create form was clicked')
   }
 
-  getUserContracts() {
-    this.http.get ('findallcontract', {
-      params: new HttpParams().set('email', this.email)
-    })
-      .subscribe(data => {
-        console.log('The user wills returned are: ', data);
-        this.contracts = data;
-      })
-  }
+  // getUserContracts() {
+  //   console.log('The username sent for contracts is: ', this.dashboardService.userInfo.username);
+  //   this.http.get ('findallcontract', {
+  //     params: new HttpParams().set('username', this.dashboardService.userInfo.username)
+  //   })
+  //     .subscribe(data => {
+  //       console.log('The user wills returned are: ', data);
+  //       this.contracts = data;
+  //     })
+  // }
 
   ngOnInit() {
-    this.getUserContracts();
+    // this.getUserContracts();
   }
 
 }

@@ -40,7 +40,8 @@ export class ReviewContractComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newContract = this.dashboardService.newContract
+    this.newContract = this.dashboardService.newContract;
+    this.newContract.username = this.dashboardService.userInfo.username;
     console.log('review contents: ', this.newContract.will_text);
   }
 }
