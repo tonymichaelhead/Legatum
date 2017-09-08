@@ -1,0 +1,25 @@
+<md-sidenav-container class="example-container">
+
+    <md-sidenav mode="open" opened="true" #sidenav class="example-sidenav">
+      <button class="navlink" md-raised-button color="primary">Contracts</button>
+      <br>
+      <br>
+      <button class="navlink" md-raised-button color="primary">Pending</button>
+      <br>
+      <br>
+    </md-sidenav>
+    
+
+    <div class="my-content">
+        <router-outlet> </router-outlet>
+        <button md-mini-fab color="primary" (click)="sidenav.toggle()" class="nav-fab">
+            <md-icon>dehaze</md-icon>
+        </button>
+    </div>
+    
+</md-sidenav-container>
+
+
+      
+        
+       

@@ -2,13 +2,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
-import { Contract } from '../models/contract/contract.interface';
-import { DashboardService } from '../dashboard.service';
+import { Contract } from '../../models/contract/contract.interface';
+import { DashboardService } from '../../dashboard.service';
 
 import * as Web3 from 'web3';
 import * as contract from 'truffle-contract';
 import * as abiDecoder from 'abi-decoder';
-import * as will from '../../../build/contracts/will.json';
+import * as will from '../../../../build/contracts/will.json';
 
 // this is the compiled solidity code format that web3 reads
 console.log(will['abi']);
@@ -16,13 +16,11 @@ declare var window: any;
 
 
 @Component({
-  selector: 'app-contract-form',
-  templateUrl: './contract-form.component.html',
-  styleUrls: ['./contract-form.component.css']
+  selector: 'app-deploy-contracts',
+  templateUrl: './deploy-contracts.component.html',
+  styleUrls: ['./deploy-contracts.component.css']
 })
-
-
-export class ContractFormComponent implements OnInit {
+export class DeployContractsComponent implements OnInit {
 
   createFormWasClicked = false;
   showMyContracts = true;
@@ -96,7 +94,7 @@ export class ContractFormComponent implements OnInit {
       );
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
       this.web3 = new Web3(
-        new Web3.providers.HttpProvider('https://ropsten.infura.io/mm9Q2HbEIQKJkV9Sy4xb ')
+        new Web3.providers.HttpProvider('https://ropsten.infura.io/mm9Q2HbEIQKJkV9Sy4xb')
       );
     }
   }
@@ -188,4 +186,5 @@ export class ContractFormComponent implements OnInit {
         console.log(e);
       });
   }
+
 }

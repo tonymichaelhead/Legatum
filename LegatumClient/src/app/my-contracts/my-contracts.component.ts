@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-my-contracts',
@@ -28,19 +28,20 @@ export class MyContractsComponent implements OnInit {
       createdAt: '04/01/3001'
     }
   ];
-  @Output() onCreateFormClick = new EventEmitter();
+
 
   constructor(
     private route: ActivatedRoute,
     private router: Router) { }
 
+  @Output() onCreateFormClick = new EventEmitter();
   handleCreateFormClick() {
     this.onCreateFormClick.emit();
-    console.log('create form was clicked')
+    console.log('create form was clicked');
   }
 
   ngOnInit() {
-   
+
   }
 
 }

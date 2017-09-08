@@ -8,6 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { ContractFormComponent } from './contract-form/contract-form.component';
 import { ReviewContractComponent } from './review-contract/review-contract.component';
 
+import { AdminComponent } from './adminpage/admin/admin.component';
+import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-contracts.component';
+import { PendingContractsComponent } from './adminpage/pending-contracts/pending-contracts.component';
+
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 import { LoginComponent } from './login/login.component';
@@ -42,12 +46,32 @@ const appRoutes: Routes = [
               path: '',
               redirectTo: 'my-contracts', pathMatch: 'full'
             },
+            /* @@Admin SubPage@@ */
+            {
+              path: 'admin',
+              component: AdminComponent,
+              data: { someShizz: 'some interesting data' },
+              children: [
+                {
+                  path: '',
+                  children: [
+                    {
+                      path: 'deploy',
+                      component: DeployContractsComponent
+                    },
+                    {
+                      path: 'pending',
+                      component: PendingContractsComponent
+                    }
+                  ]
+                }
+              ]
+            },
           ]
         },
       ]
     },
-  
-  
+
     {
       path: '**',
       redirectTo: 'home', pathMatch: 'full'

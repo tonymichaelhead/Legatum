@@ -15,10 +15,19 @@ import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdSidenavModule, MdButtonModule, MdIconModule, OverlayContainer } from '@angular/material';
+
+
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { ReviewContractComponent } from './review-contract/review-contract.component';
 import { RegisterComponent } from './register/register.component';
+
+import { AdminComponent } from './adminpage/admin/admin.component';
+import { PendingContractsComponent } from './adminpage/pending-contracts/pending-contracts.component';
+import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-contracts.component';
+import { PendingContractIndividualComponent } from './adminpage/pending-contract-individual/pending-contract-individual.component';
 
 @NgModule({
   declarations: [
@@ -30,16 +39,28 @@ import { RegisterComponent } from './register/register.component';
     ContractPreviewComponent,
     LoginComponent,
     ReviewContractComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent,
+    PendingContractsComponent,
+    DeployContractsComponent,
+    PendingContractIndividualComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MdSidenavModule,
+    MdButtonModule,
+    MdIconModule
   ],
   providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(overlayContainer: OverlayContainer) {
+    overlayContainer.themeClass = 'unicorn-dark-theme';
+  }
+}
