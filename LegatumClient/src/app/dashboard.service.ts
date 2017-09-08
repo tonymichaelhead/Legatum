@@ -4,7 +4,7 @@ import { Contract } from './models/contract/contract.interface';
 @Injectable()
 export class DashboardService {
 
-  // hold user profile info
+  //hold user profile info
   newContract: Contract = {
       contractNickname: 'default',
       contractId: 781432098374,
@@ -12,8 +12,8 @@ export class DashboardService {
       willText: 'default',
       fileName: 'No file was selected.',
       beneficiaries: '1212dddddd3'
-    };
-  // hold new contract info
+    }
+  //hold new contract info
 
   constructor() { }
   

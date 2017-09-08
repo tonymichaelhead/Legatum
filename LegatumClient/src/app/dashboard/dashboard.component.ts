@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
@@ -22,10 +22,11 @@ export class DashboardComponent {
   };
 
   constructor(
-    private authService: AuthService,
+    private authService: AuthService, 
     private dashboardService: DashboardService,
     private router: Router,
     private route: ActivatedRoute) {
+
   }
 
   logout(): any {
@@ -41,6 +42,7 @@ export class DashboardComponent {
   
   ngOnInit() {
     this.name = this.authService.email;
+    
   }
 }
 

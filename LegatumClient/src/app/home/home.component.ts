@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       console.log('User is not logged in');
     }
   }
-
+  
   ngOnInit() {
     this.checkIfLoggedIn();
   }

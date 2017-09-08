@@ -9,7 +9,8 @@ module.exports = {
     QA: {
       host: "localhost",
       port: 8545,
-      network_id: '3', // Match any network id
+      network_id: "3", // Match any network id
+      from : "0x5b93296d1aa3af945f64757fffec739c4dd96a1f"
       //Options -gas, gasPrice, from
       // truffle migrate --network QA
     },

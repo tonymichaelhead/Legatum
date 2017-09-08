@@ -1,17 +1,12 @@
 pragma solidity ^0.4.4;
 
 contract will {
-  address contractor;
   address ownerAddress;
   bytes willData;
 
-  function will() {
-    contractor = msg.sender;
-  }
 
-  modifier ownerOnly {
-    require(contractor == msg.sender || ownerAddress == msg.sender);
-    _;
+  function will() {
+    // constructor
   }
 
   // event WillUpdate (
@@ -19,13 +14,13 @@ contract will {
   //   bytes indexed uploadedText
   // );
 
-  function setWillContents(address owner, bytes uploadedText) ownerOnly {
+  function setWillContents(address owner, bytes uploadedText) {
     ownerAddress = owner;
     willData = uploadedText;
     // WillUpdate(msg.sender, uploadedText);
   }
   
-  function getWillData() constant ownerOnly returns (bytes) {
+  function getWillData() constant returns (bytes) {
     return willData;
   }
 
