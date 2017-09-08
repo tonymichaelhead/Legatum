@@ -20,5 +20,10 @@ html, body, material-app, md-sidenav-container, .my-content {
 
 .example-sidenav {
   padding: 20px;
-  width: 200px;
+  width: 190px;
+}
+
+.navlink {
+  width: 150px;
+  text-align: center;
 }

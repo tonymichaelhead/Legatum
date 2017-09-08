@@ -16,8 +16,8 @@ import { FIREBASE_CONFIG } from './firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdSidenavModule, MdButtonModule } from '@angular/material';
-import { OverlayContainer } from '@angular/material';
+import { MdSidenavModule, MdButtonModule, MdIconModule, OverlayContainer } from '@angular/material';
+
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -53,7 +53,8 @@ import { PendingContractIndividualComponent } from './adminpage/pending-contract
     FormsModule,
     BrowserAnimationsModule,
     MdSidenavModule,
-    MdButtonModule
+    MdButtonModule,
+    MdIconModule
   ],
   providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
