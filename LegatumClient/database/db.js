@@ -53,36 +53,36 @@ Contract.belongsToMany(User, { through: 'Transaction', foreignKey: 'contract_idF
 
 
 // TESTING DB
-// User.sync({force: true}).then(() => {
-//   // Table created
-//   return User.create({
-//     username: 'johndoe',
-//     email: 'johndoe@johndoe.com',
-//     pub_key: 'this is a test 1234342342342',
-//     ssn: 2345433
-//   }).then(function() {
-//     return User.create({
-//       username: 'T-mac',
-//       email: 'tony@tony.com',
-//       pub_key: 'thisrstdsrtd is a test 1234342342342',
-//       ssn: 23000045433
-//     })
-//   })
-// });
+User.sync({force: true}).then(() => {
+  // Table created
+  return User.create({
+    username: 'johndoe',
+    email: 'johndoe@johndoe.com',
+    pub_key: 'this is a test 1234342342342',
+    ssn: 2345433
+  }).then(function() {
+    return User.create({
+      username: 'T-mac',
+      email: 'tony@tony.com',
+      pub_key: 'thisrstdsrtd is a test 1234342342342',
+      ssn: 23000045433
+    })
+  })
+});
 
 
 
-// Contract.sync({force: true}).then(() => {
-//   // Table created
-//   return Contract.create({
-//     username: 'bullshit username',
-//     hash: 'this is a test for hash',
-//     contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
-//     will_text: 'AYYYYOOO WILL text yo',
-//     file_name: 'file.js',
-//     beneficiary: '12346789xxx'
-//   });
-// });
+Contract.sync({force: true}).then(() => {
+  // Table created
+  return Contract.create({
+    username: 'bullshit username',
+    hash: 'this is a test for hash',
+    contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
+    will_text: 'AYYYYOOO WILL text yo',
+    file_name: 'file.js',
+    beneficiary: '12346789xxx'
+  });
+});
 
 Transaction.sync({force: true}).then(() => {
   // Table Created

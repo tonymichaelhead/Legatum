@@ -50,6 +50,7 @@ export class MyContractsComponent implements OnInit {
 
   ngOnInit() {
     //Get user contracts
+    this.dashboardService.getAndSetContracts();
     this.contracts = this.dashboardService.currentContracts();
     this.getUserContracts();
   }
