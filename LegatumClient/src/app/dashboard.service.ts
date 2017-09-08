@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Contract } from './models/contract/contract.interface';
 import { UserInfo } from './models/user-info/user-info.interface';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class DashboardService {
@@ -15,10 +18,14 @@ export class DashboardService {
     user_id: '',
     username: ''
   } 
-
+  
   //user contracts
-
   contracts: any[];
+ 
+  // Give components ability to subscribe for userInfo Changes
+  contractsChange$: Observable<any>;
+  private _observer: Observer<any>;
+
   
   //hold user profile info
   newContract: any = {
@@ -32,8 +39,12 @@ export class DashboardService {
   //hold new contract info
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) { 
+    this.contractsChange$ = new Observable(observer => {
+      this._observer = observer}).share();
+  }
   
+  //
   //Holds temporary new contract info for creation
   setContractInfo(contract: Contract) {
     this.newContract = contract;
@@ -45,8 +56,11 @@ export class DashboardService {
       this.http.get ('findallcontract', {
         params: new HttpParams().set('username', this.userInfo.username)
       })
-        .subscribe((data) => {
+        .subscribe((data: any) => {
           console.log('The user wills returned are: ', data);
+          this.contracts = data;
+          this._observer.next(data);
+          console.log('the new contracts: ', this.contracts)
         })
   }
 
@@ -56,6 +70,10 @@ export class DashboardService {
     this.getAndSetContracts();
   }
 
+  //Other components can call this and return the current contracts
+  currentContracts(): any {
+    return this.contracts;
+  }
 
   // getUserInfo(email: string) {
 

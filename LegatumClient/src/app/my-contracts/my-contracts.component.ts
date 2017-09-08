@@ -4,6 +4,10 @@ import { DashboardService } from '../dashboard.service';
 import { AuthService } from '../auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import {Observer} from 'rxjs/Observer';
+
 @Component({
   selector: 'app-my-contracts',
   templateUrl: './my-contracts.component.html',
@@ -13,23 +17,13 @@ export class MyContractsComponent implements OnInit {
 
   email: string = this.dashboardService.userInfo.email;
   name: string;
-  sub: any;
+  subscription: any;
 
-  contracts: any = [
+  contracts = [
     {
       contractNickname: 'Another will',
       contractId: '123489-0',
       createdAt: '01/01/0001'
-    }, 
-    {
-      contractNickname: 'cool will',
-      contractId: '000000',
-      createdAt: '12/25/2000'
-    },
-    {
-      contractNickname: 'Smart Contract',
-      contractId: '81818181818',
-      createdAt: '04/01/3001'
     }
   ];
   @Output() onCreateFormClick = new EventEmitter();
@@ -47,19 +41,21 @@ export class MyContractsComponent implements OnInit {
     console.log('create form was clicked')
   }
 
-  // getUserContracts() {
-  //   console.log('The username sent for contracts is: ', this.dashboardService.userInfo.username);
-  //   this.http.get ('findallcontract', {
-  //     params: new HttpParams().set('username', this.dashboardService.userInfo.username)
-  //   })
-  //     .subscribe(data => {
-  //       console.log('The user wills returned are: ', data);
-  //       this.contracts = data;
-  //     })
-  // }
+  getUserContracts() {
+    this.subscription = this.dashboardService.contractsChange$.subscribe( item => {
+      this.contracts = item;
+    })
+    console.log('The reset contracts in my-contracts: ', this.contracts);
+  }
 
   ngOnInit() {
-    // this.getUserContracts();
+    //Get user contracts
+    this.contracts = this.dashboardService.currentContracts();
+    this.getUserContracts();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

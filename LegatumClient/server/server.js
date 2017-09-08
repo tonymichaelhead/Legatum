@@ -57,9 +57,9 @@ app.get('/findonecontract', function (req, res){
 
   //Find All Contracts
 app.get('/findallcontract', function (req, res){
-  let email = req.query.email
+  //let email = req.query.email
   
-  db.Contract.findAll({ where: { username: req.username}})
+  db.Contract.findAll({ where: { username: req.query.username}})
   .then(function (data){
     res.status(200).send(data)
   }).catch(function (err){
