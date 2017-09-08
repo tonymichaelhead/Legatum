@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
 import { DashboardService } from '../dashboard.service';
+import { AuthService } from '../auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
@@ -14,7 +15,7 @@ export class MyContractsComponent implements OnInit {
   name: string;
   sub: any;
 
-  contracts = [
+  contracts: any = [
     {
       contractNickname: 'Another will',
       contractId: '123489-0',
@@ -37,7 +38,8 @@ export class MyContractsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dashboardService: DashboardService,
-    private http: HttpClient,  
+    private http: HttpClient,
+    private authService: AuthService  
   ) { }
 
   handleCreateFormClick() {
@@ -46,11 +48,12 @@ export class MyContractsComponent implements OnInit {
   }
 
   getUserContracts() {
-    this.http.get ('SOMETHING', {
+    this.http.get ('findallcontract', {
       params: new HttpParams().set('email', this.email)
     })
       .subscribe(data => {
         console.log('The user wills returned are: ', data);
+        this.contracts = data;
       })
   }
 

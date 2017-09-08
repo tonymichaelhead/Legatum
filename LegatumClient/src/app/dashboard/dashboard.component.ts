@@ -15,7 +15,7 @@ import { UserInfo } from '../models/user-info/user-info.interface';
 })
 
 export class DashboardComponent {
-  name: string;
+  name: string = this.authService.email;
   sub: any;
 
   userInfo: UserInfo = {
@@ -47,7 +47,8 @@ export class DashboardComponent {
   }
 
   getUserInfo(email: string): void {
-    this.http.get('/findallcontract', { params: new HttpParams().set('email', this.name)})
+    console.log('getUserInfo was fired');
+    this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
       .subscribe((data: UserInfo) => {
         console.log('userInfo GET: ', data);
         this.userInfo = {
@@ -61,14 +62,16 @@ export class DashboardComponent {
         }
         console.log('updated user info: ', this.userInfo);
         //Update the dashboard service with user info so other components can access it
-        this.dashboardService.userInfo = this.userInfo;
+        this.dashboardService.setUserInfo(this.userInfo);
       });
   }
 
   
   ngOnInit() {
-    this.name = this.authService.email;
+    console.log('Dashboard is loaded!')
+    console.log('Name is: :', this.name);
     this.getUserInfo(this.name);
+    this.name = this.dashboardService.userInfo.email;
     //TODO: Make getUserInfo into a method on DashboardService
     // to make the userInfo data available accross all dashboard child components
   }

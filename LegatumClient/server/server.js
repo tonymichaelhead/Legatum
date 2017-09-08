@@ -25,11 +25,11 @@ app.get('/', (req, res) => {
   // New Contract
 app.post('/newcontract', function (req, res){
   db.Contract.create({
-    contract_nickname: req.body.contractNickname,
+    contract_nickname: req.body.contract_nickname,
     hash: req.body.hash,
-    will_text: req.body.willText,
-    file_name: req.body.fileName,
-    beneficiary: req.body.beneficiaries  
+    will_text: req.body.will_text,
+    file_name: req.body.file_name,
+    beneficiary: req.body.beneficiary  
   }).then(function (data){
     res.status(201).send(data)
   }).catch(function (err){
@@ -50,6 +50,8 @@ app.get('/findonecontract', function (req, res){
 
   //Find All Contracts
 app.get('/findallcontract', function (req, res){
+  let email = req.query.email
+  
   db.Contract.findAll({})
   .then(function (data){
     res.status(200).send(data)

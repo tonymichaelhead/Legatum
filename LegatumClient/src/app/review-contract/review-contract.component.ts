@@ -12,7 +12,7 @@ import { DashboardService } from '../dashboard.service';
 export class ReviewContractComponent implements OnInit {
 
   sub: any;
-  newContract: Contract;
+  newContract: any;
 
   constructor(
     private http: HttpClient,
@@ -22,6 +22,7 @@ export class ReviewContractComponent implements OnInit {
   ) { }
 
   handleClickOnFinalize() {
+    console.log('Right before GET, contract is: ', this.newContract);
     this.http.post('/newcontract', this.newContract)
       .subscribe(
         res => {
@@ -40,6 +41,6 @@ export class ReviewContractComponent implements OnInit {
 
   ngOnInit() {
     this.newContract = this.dashboardService.newContract
-    console.log('review contents: ', this.newContract.willText);
+    console.log('review contents: ', this.newContract.will_text);
   }
 }
