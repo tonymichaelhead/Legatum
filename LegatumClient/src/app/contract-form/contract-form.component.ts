@@ -53,13 +53,12 @@ export class ContractFormComponent {
   decodedLogs: any;
   dataSetEvent: any;
 
-  newContract: Contract = {
-    contractNickname: '',
-    contractId: 10000000,
-    createdAt: '01/01/0001',
-    willText: 'No text',
-    fileName: 'No file attached.',
-    beneficiaries: ''
+  newContract: any = {
+    contract_nickname: '',
+    will_text: 'No text',
+    file_name: 'No file attached.',
+    beneficiary: '',
+    hash: 'rstrastaarst'
   };
 
   constructor(

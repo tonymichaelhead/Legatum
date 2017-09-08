@@ -1,8 +1,11 @@
 export interface Contract {
-    contractNickname: string;
-    contractId: number;
+    username: string;
+    contract_id: string;
     createdAt: string;
-    willText: string;
-    fileName: string;
-    beneficiaries: string;
+    updatedAt: string;
+    contract_nickname: string;
+    will_text: string;
+    file_name: string;
+    beneficiary: string;
+    hash: string;
 }

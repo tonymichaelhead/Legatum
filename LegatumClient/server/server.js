@@ -24,14 +24,24 @@ app.get('/', (req, res) => {
 // Routes - API
   // New Contract
 app.post('/newcontract', function (req, res){
+  let uniqueHash = req.body.hash;
   db.Contract.create({
+    username: req.body.username,
+    contract_nickname: req.body.contract_nickname,
     hash: req.body.hash,
-    block_id: req.body.block_id
-  }).then(function (data){
+    will_text: req.body.will_text,
+    file_name: req.body.file_name,
+    beneficiary: req.body.beneficiary  
+  })
+  .then(function (data){
     res.status(201).send(data)
   }).catch(function (err){
     return console.log(err)
   })
+ 
+    // db.Transaction.create({
+    //   user_idFK: res.data.contract_id,
+    // })
 });
   
   // Find One Contract
@@ -47,7 +57,9 @@ app.get('/findonecontract', function (req, res){
 
   //Find All Contracts
 app.get('/findallcontract', function (req, res){
-  db.Contract.findAll({})
+  //let email = req.query.email
+  
+  db.Contract.findAll({ where: { username: req.query.username}})
   .then(function (data){
     res.status(200).send(data)
   }).catch(function (err){
@@ -93,6 +105,17 @@ app.get('/findpubkey', function (req, res){
 app.get('/findssn', function (req, res){
   db.User.findOne({
     where: {ssn: 2345433 }
+  }).then(function (data){
+    res.status(200).send(data)
+  }).catch(function (err){
+    return console.log(err)
+  })
+});
+// Find by email
+app.get('/findemail', function (req, res){
+  console.log('Im req james bitch', req);
+  db.User.findOne({
+    where: {email: req.query.email }
   }).then(function (data){
     res.status(200).send(data)
   }).catch(function (err){

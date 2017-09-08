@@ -12,7 +12,7 @@ import { DashboardService } from '../dashboard.service';
 export class ReviewContractComponent implements OnInit {
 
   sub: any;
-  newContract: Contract;
+  newContract: any;
 
   constructor(
     private http: HttpClient,
@@ -22,10 +22,11 @@ export class ReviewContractComponent implements OnInit {
   ) { }
 
   handleClickOnFinalize() {
+    console.log('Right before GET, contract is: ', this.newContract);
     this.http.post('/newcontract', this.newContract)
       .subscribe(
         res => {
-          console.log(res);
+          console.log('POST response: ',res);
           //A success message should be displayed to user
           //User should be navigated back to dashboard
           this.router.navigateByUrl('/dashboard')
@@ -39,7 +40,8 @@ export class ReviewContractComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newContract = this.dashboardService.newContract
-    console.log('review contents: ', this.newContract.willText);
+    this.newContract = this.dashboardService.newContract;
+    this.newContract.username = this.dashboardService.userInfo.username;
+    console.log('review contents: ', this.newContract.will_text);
   }
 }

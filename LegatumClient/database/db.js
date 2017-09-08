@@ -29,9 +29,13 @@ const User = db.define('user', {
 
 // Contracts Table
 const Contract = db.define('contract', {
-  hash: { type: sequelize.STRING, unique: true, allowNull: false },
+  username: { type: sequelize.STRING, unique: false, allowNull: false },
+  contract_nickname: { type: sequelize.STRING, unique: true, allowNull: false },
+  hash: { type: sequelize.STRING, unique: false, allowNull: false },
   contract_id: { type: sequelize.UUID,  allowNull: false, primaryKey: true, defaultValue: sequelize.UUIDV4 },
-  block_id: { type: sequelize.STRING, unique: true, allowNull: false }
+  will_text: { type: sequelize.STRING, allowNull: false },
+  file_name: { type: sequelize.STRING, allowNull: false },
+  beneficiary: { type: sequelize.STRING, allowNull: false },
 });
 
 
@@ -56,14 +60,27 @@ User.sync({force: true}).then(() => {
     email: 'johndoe@johndoe.com',
     pub_key: 'this is a test 1234342342342',
     ssn: 2345433
-  });
+  }).then(function() {
+    return User.create({
+      username: 'T-mac',
+      email: 'tony@tony.com',
+      pub_key: 'thisrstdsrtd is a test 1234342342342',
+      ssn: 23000045433
+    })
+  })
 });
+
+
 
 Contract.sync({force: true}).then(() => {
   // Table created
   return Contract.create({
+    username: 'bullshit username',
     hash: 'this is a test for hash',
-    block_id: 'akjkjsdkfjsdkfjssdfsd'
+    contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
+    will_text: 'AYYYYOOO WILL text yo',
+    file_name: 'file.js',
+    beneficiary: '12346789xxx'
   });
 });
 

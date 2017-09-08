@@ -1,7 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
+import { Observable } from 'rxjs/Observable';
+import { Contract } from '../models/contract/contract.interface';
+import { UserInfo } from '../models/user-info/user-info.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,22 +15,25 @@ import { DashboardService } from '../dashboard.service';
 })
 
 export class DashboardComponent {
-  name: string;
+  name: string = this.authService.email;
   sub: any;
 
-  user = {
-    user_id: 1,
-    username: 'Tony',
-    pubKey: '1231ars',
-    ssn: 12341321
+  userInfo: UserInfo = {
+    createdAt: '',
+    email: '',
+    pub_key: '',
+    ssn: 0,
+    updatedAt: '',
+    user_id: '',
+    username: ''
   };
 
   constructor(
     private authService: AuthService, 
     private dashboardService: DashboardService,
     private router: Router,
-    private route: ActivatedRoute) {
-
+    private route: ActivatedRoute,
+    private http: HttpClient) {
   }
 
   logout(): any {
@@ -39,10 +46,36 @@ export class DashboardComponent {
     });
   }
 
+  getUserInfo(email: string): void {
+    console.log('getUserInfo was fired');
+    this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
+      .subscribe((data: UserInfo) => {
+        console.log('userInfo GET: ', data);
+        this.userInfo = {
+          createdAt: data.createdAt,
+          email: data.email,
+          pub_key: data.pub_key,
+          ssn: data.ssn,
+          updatedAt: data.updatedAt,
+          user_id: data.user_id,
+          username: data.username
+        }
+        console.log('updated user info: ', this.userInfo);
+        //Update the dashboard service with user info so other components can access it
+        
+        this.dashboardService.setUserInfo(this.userInfo);
+        //Call setContractsInfo
+        // this.dashboardService.getAndSetContracts();
+      });
+  }
+
   
   ngOnInit() {
-    this.name = this.authService.email;
-    
+    console.log('Dashboard is loaded!')
+    console.log('Name is: :', this.name);
+    this.getUserInfo(this.name);
+    this.name = this.dashboardService.userInfo.email;
+    //TODO: Make getUserInfo into a method on DashboardService
+    // to make the userInfo data available accross all dashboard child components
   }
-}
-
+}  
