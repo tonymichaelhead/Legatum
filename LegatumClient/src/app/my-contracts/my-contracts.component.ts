@@ -13,6 +13,7 @@ import {Observer} from 'rxjs/Observer';
   templateUrl: './my-contracts.component.html',
   styleUrls: ['./my-contracts.component.css']
 })
+
 export class MyContractsComponent implements OnInit {
 
   email: string = this.dashboardService.userInfo.email;
@@ -26,6 +27,7 @@ export class MyContractsComponent implements OnInit {
       createdAt: '01/01/0001'
     }
   ];
+
   @Output() onCreateFormClick = new EventEmitter();
 
   constructor(
@@ -33,8 +35,7 @@ export class MyContractsComponent implements OnInit {
     private router: Router,
     private dashboardService: DashboardService,
     private http: HttpClient,
-    private authService: AuthService  
-  ) { }
+    private authService: AuthService) { }
 
   handleCreateFormClick() {
     this.onCreateFormClick.emit();
@@ -58,5 +59,4 @@ export class MyContractsComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

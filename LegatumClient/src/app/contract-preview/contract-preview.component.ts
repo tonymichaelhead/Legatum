@@ -13,5 +13,4 @@ export class ContractPreviewComponent implements OnInit {
   ngOnInit() {
     console.log('contract preview: ', this.contract);
   }
-
 }

@@ -69,13 +69,10 @@ export class DashboardComponent {
       });
   }
 
-  
   ngOnInit() {
     console.log('Dashboard is loaded!')
     console.log('Name is: :', this.name);
     this.getUserInfo(this.name);
     this.name = this.dashboardService.userInfo.email;
-    //TODO: Make getUserInfo into a method on DashboardService
-    // to make the userInfo data available accross all dashboard child components
   }
 }  

@@ -38,5 +38,4 @@ export class HomeComponent implements OnInit {
   handleRegister(): any {
     this.register.registerUser();
   }
-
 }
