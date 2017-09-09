@@ -13,7 +13,8 @@
       <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
       <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>  
       <li><a>Menu</a>
-        <ul class="drop-menu"> 
+        <ul class="drop-menu">
+            <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>    
           <li><a>Blockchain</a></li>
           <li><a>Our Team</a></li>
           <li><a>Contact</a></li>

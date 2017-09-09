@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
       'height': '100%',
       'z-index': -1,
       'top': 0,
-      'left': 0,
+      'left': 50,
       'right': 0,
       'bottom': 0,
     };
@@ -107,8 +107,8 @@ export class HomeComponent implements OnInit {
         },
         move: {
           'enable': true,
-          'speed': 3,
-          'direction': 'none',
+          'speed': 2,
+          'direction': 'bottom-left',
           'random': false,
           'straight': false,
           'out_mode': 'out',
