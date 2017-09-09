@@ -29,6 +29,7 @@ import { AdminComponent } from './adminpage/admin/admin.component';
 import { PendingContractsComponent } from './adminpage/pending-contracts/pending-contracts.component';
 import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-contracts.component';
 import { PendingContractIndividualComponent } from './adminpage/pending-contract-individual/pending-contract-individual.component';
+import { ContractDetailsComponent } from './contract-details/contract-details.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PendingContractIndividualComponent } from './adminpage/pending-contract
     PendingContractsComponent,
     DeployContractsComponent,
     PendingContractIndividualComponent,
+    ContractDetailsComponent,
   ],
   imports: [
     BrowserModule,
