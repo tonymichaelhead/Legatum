@@ -1,0 +1,35 @@
+<div id="create-form">
+  <h3>Create Will</h3>
+  <form action="">
+    Please choose a nickname for your contract<br>
+    <input type="text" [(ngModel)]="newContract.contract_nickname" name="nickName"/><br>
+    Last Will and Testament Text<br> 
+    <textarea [(ngModel)]="newContract.will_text" name="willText"></textarea><br>
+    <br>
+    Upload Text Document (optional)<br>
+    <input type="file" accept="text/*"><br>
+    <br>
+    Additional Beneficiary Address (optional)<br>
+  
+    <input type="text" [(ngModel)]="newContract.beneficiary" name="benificiary"/><br>
+    <button>Add another beneficiary</button>
+  </form>
+  </div>
+  <a><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
+  <a routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Cancel</div></a>
+  
+   <br>
+   <br> 
+    <div>
+      <button (click)=this.deployWill()>Test Contract </button>
+    </div>
+    
+    <div>
+      <button (click)=this.setWillData()>Set Will Data</button>
+    </div>
+    
+    <div>
+      <button (click)=this.getWillText()> Get Will Text </button>
+    </div>
+    
+    
