@@ -72,10 +72,32 @@ app.get('/findallcontract', function (req, res){
   })
 });
 
-//   // Nullify Contract
-// app.delete('/nullcontract', function (req, res){
+  //Find All Pending Contracts
+app.get('/findpendingcontract', function (req, res){
+  db.Contract.findAll({ where: { pending: true }})
+  .then( function (data){
+    res.status(200).send(data)
+  }).catch(function (err){
+    return console.log
+  })
+});
 
-// });
+  // Update Contract
+app.post('/updatecontract', function (req, res){
+  db.Contract.find({ where: { contract_id: req.query.contract_id }})
+  .on('success', function (contract) {
+      contract.updateAttributes({
+        pending: false,
+        contract_addr: req.query.contract_addr,
+        will_hash: req.query.will_hash
+      })
+      .success(function () {
+        console.log('successfully updated contract')
+      })
+    }
+  )
+});
+
 
   // New User
 app.post('/newuser', function (req, res){

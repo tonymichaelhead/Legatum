@@ -20,6 +20,7 @@ db
 
 // Users Table
 const User = db.define('user', {
+  admin: { type: sequelize.BOOLEAN },
   user_id: { type: sequelize.UUID, allowNull: false, primaryKey: true, defaultValue: sequelize.UUIDV4},
   username: { type: sequelize.STRING, unique: true, allowNull: false },
   email: { type: sequelize.STRING, unique: true, allowNull: false },
@@ -29,13 +30,16 @@ const User = db.define('user', {
 
 // Contracts Table
 const Contract = db.define('contract', {
+  pending: { type: sequelize.BOOLEAN },
   username: { type: sequelize.STRING, unique: false, allowNull: false },
   contract_nickname: { type: sequelize.STRING, unique: true, allowNull: false },
-  hash: { type: sequelize.STRING, unique: false, allowNull: false },
+  hash: { type: sequelize.STRING, unique: false, allowNull: true },
   contract_id: { type: sequelize.UUID,  allowNull: false, primaryKey: true, defaultValue: sequelize.UUIDV4 },
+  contract_addr: { type: sequelize.STRING, allowNull: true },
   will_text: { type: sequelize.STRING, allowNull: false },
   file_name: { type: sequelize.STRING, allowNull: false },
   beneficiary: { type: sequelize.STRING, allowNull: false },
+  will_hash: { type: sequelize.STRING, allowNull: true }
 });
 
 
