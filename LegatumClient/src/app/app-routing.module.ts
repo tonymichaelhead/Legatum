@@ -13,6 +13,8 @@ import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-co
 import { PendingContractsComponent } from './adminpage/pending-contracts/pending-contracts.component';
 
 import { MyContractsComponent } from './my-contracts/my-contracts.component';
+import { ContractDetailsComponent } from './contract-details/contract-details.component';
+
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 import { LoginComponent } from './login/login.component';
 
@@ -33,6 +35,10 @@ const appRoutes: Routes = [
             {
               path: 'my-contracts',
               component: MyContractsComponent
+            },
+            {
+              path: 'contract-details/:contract-nickname',
+              component: ContractDetailsComponent
             },
             {
               path: 'create-contract',
