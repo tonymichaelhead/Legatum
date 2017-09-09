@@ -62,6 +62,8 @@ app.get('/findonecontract', function (req, res){
 
   //Find All Contracts
 app.get('/findallcontract', function (req, res){
+  //let email = req.query.email
+  
   db.Contract.findAll({ where: { username: req.query.username}})
   .then(function (data){
     res.status(200).send(data)
@@ -71,12 +73,12 @@ app.get('/findallcontract', function (req, res){
 });
 
   //Find All Pending Contracts
-app.get('findpendingcontract', function (req, res){
+app.get('/findpendingcontract', function (req, res){
   db.Contract.findAll({ where: { pending: true }})
   .then( function (data){
     res.status(200).send(data)
   }).catch(function (err){
-    return console.log(err)
+    return console.log
   })
 });
 
@@ -84,9 +86,7 @@ app.get('findpendingcontract', function (req, res){
 app.post('/updatecontract', function (req, res){
   db.Contract.find({ where: { contract_id: req.query.contract_id }})
   .on('success', function (contract) {
-    // Check if record exists in db
-    if (contract) {
-      project.updateAttributes({
+      contract.updateAttributes({
         pending: false,
         contract_addr: req.query.contract_addr,
         will_hash: req.query.will_hash
@@ -95,7 +95,9 @@ app.post('/updatecontract', function (req, res){
         console.log('successfully updated contract')
       })
     }
+  )
 });
+
 
   // New User
 app.post('/newuser', function (req, res){
@@ -138,6 +140,7 @@ app.get('/findssn', function (req, res){
 });
 // Find by email
 app.get('/findemail', function (req, res){
+  console.log('Im req james bitch', req);
   db.User.findOne({
     where: {email: req.query.email }
   }).then(function (data){
