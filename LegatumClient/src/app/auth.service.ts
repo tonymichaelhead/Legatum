@@ -11,7 +11,7 @@ console.log('authService runs!');
 
 @Injectable()
 export class AuthService {
-  isLoggedIn = true;
+  isLoggedIn = false;
   email = '';
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
