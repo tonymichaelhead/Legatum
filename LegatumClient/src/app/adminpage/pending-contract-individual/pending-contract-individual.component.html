@@ -1,0 +1,20 @@
+<div id="contract-preview">
+    <table>
+      <tr>
+        <th>Contract Nickname</th>
+        <th>Contract ID</th> 
+        <th>Date Created</th>
+      </tr>
+      <tr>
+        <td>{{contract.contractNickname}}</td>
+        <td>{{contract.contractId}}</td>
+        <td>{{contract.createdAt}}</td>
+      </tr>
+    </table>
+    <a routerLink="/dashboard/admin/deploy" routerLinkActive="active">
+      <div id="create-button" (click)="handleCreateFormClick()">
+    Create contract
+      </div>
+    </a>
+    <a class="link" id="etherscan-link" href="#">View on Etherscan</a>
+</div>
