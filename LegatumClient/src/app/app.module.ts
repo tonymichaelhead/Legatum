@@ -18,6 +18,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { CoreModule } from './component-modules/core/core.module';
 import { SharedModule } from './component-modules/shared/shared.module';
+import { ParticlesModule } from 'angular-particle';
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -54,7 +55,8 @@ import { PendingContractIndividualComponent } from './adminpage/pending-contract
     BrowserModule,
     CoreModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    ParticlesModule
   ],
   providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]
