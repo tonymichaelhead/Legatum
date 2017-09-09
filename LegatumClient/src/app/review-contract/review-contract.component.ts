@@ -41,6 +41,8 @@ export class ReviewContractComponent implements OnInit {
 
   ngOnInit() {
     this.newContract = this.dashboardService.newContract;
+    //For testing, setting hash
+    this.newContract.hash = '0xb4671e257cf96218550f8b5b944314ac4214125c421886e638baa3aa4c69559e';    
     this.newContract.username = this.dashboardService.userInfo.username;
     console.log('review contents: ', this.newContract.will_text);
   }
