@@ -15,15 +15,18 @@ export class ContractDetailsComponent implements OnInit, OnDestroy {
   uniqueContract: Contract;
 
   contract: Contract = {
-    username: 'Default',
-    contract_id: 'Default',
-    createdAt: 'Default',
-    updatedAt: 'Default',
-    contract_nickname: 'Default',
-    will_text: 'Default',
-    file_name: 'Default',
-    beneficiary: 'Default',
-    hash: 'Default'
+    username: 'DEFAULT',
+    contract_id: 'DEFAULT',
+    createdAt: 'DEFAULT',
+    updatedAt: 'DEFAULT',
+    contract_nickname: 'DEFAULT',
+    will_text: 'DEFAULT',
+    file_name: 'DEFAULT',
+    beneficiary: 'DEFAULT',
+    hash: 'DEFAULT',
+    pending: false,
+    will_hash:'DEFAULT',
+    contract_addr: 'DEFAULT'
   }
   
   constructor(
