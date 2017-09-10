@@ -11,7 +11,7 @@
         <td>{{pendingContract.createdAt}}</td>
       </tr>
     </table>
-    <a routerLink="/dashboard/admin/deploy" routerLinkActive="active">
+    <a [routerLink]="['/dashboard/admin/deploy', pendingContract.contract_id]" routerLinkActive="active">
       <div id="create-button" (click)="handleCreateFormClick()">
     Create contract
       </div>
