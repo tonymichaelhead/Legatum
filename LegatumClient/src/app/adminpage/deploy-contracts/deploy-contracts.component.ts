@@ -4,6 +4,7 @@ import { NgModel } from '@angular/forms';
 import { Router, NavigationStart, ActivatedRoute } from '@angular/router';
 import { Contract } from '../../models/contract/contract.interface';
 import { DashboardService } from '../../dashboard.service';
+import { HttpClient } from '@angular/common/http';
 
 
 import * as Web3 from 'web3';
@@ -51,6 +52,7 @@ export class DeployContractsComponent implements OnInit, OnDestroy {
   // variables to handle the will data and its decoding
   userData: string;
   inputText: string;
+  setDataHash: string;
   receivedHash: string;
   decodedHash: any;
   decodedLogs: any;
@@ -68,7 +70,8 @@ export class DeployContractsComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private dashboardService: DashboardService) {
+    private dashboardService: DashboardService,
+    private http: HttpClient ) {
     abiDecoder.addABI(will['abi']);
 
     // tslint:disable-next-line:max-line-length
@@ -115,7 +118,7 @@ export class DeployContractsComponent implements OnInit, OnDestroy {
 
   checkAndInstantiateWeb3 = () => {
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-    if (typeof typeof window.web3 !== 'undefined') {
+    if (typeof window.web3 !== 'undefined') {
       // Use Mist/MetaMask's provider
       console.log('attaching to metamask');
       this.web3 = new Web3(window.web3.currentProvider);
@@ -193,8 +196,8 @@ export class DeployContractsComponent implements OnInit, OnDestroy {
     this.contractInstance.setWillContents(this.userAddress, this.userData, { from: this.defaultAddress.toString() })
       .then((result) => {
         console.log('this is the stored contract data', result);
-        // post to db
-        // set pending to false
+        this.setDataHash = result.tx;
+        this.updateAndComplete();
       })
       .catch(e => {
         console.log(e);
@@ -218,7 +221,23 @@ export class DeployContractsComponent implements OnInit, OnDestroy {
   handleClickOnReview() {
     console.log('Details: ', this.newContract);
     this.dashboardService.setContractInfo(this.newContract);
-    this.router.navigate(['/dashboard/review-contract'], { queryParams: { newContract: this.newContract } })
+    this.router.navigate(['/dashboard/review-contract'], { queryParams: { newContract: this.newContract } });
+  }
+
+  updateAndComplete() {
+    this.http.post('/updatecontract', {
+      will_hash: this.receivedHash,
+      contract_addr: this.contractAddress,
+      pending: false,
+      hash: this.setDataHash,
+      contract_id: this.contractID
+    })
+      .subscribe(res => {
+        console.log(res);
+      },
+     err => {
+       console.log('error occured');
+     });
   }
 
 }

@@ -87,19 +87,33 @@ app.get('/findpendingcontract', function (req, res){
 
   // Update Contract
 app.post('/updatecontract', function (req, res){
-  db.Contract.find({ where: { contract_id: req.query.contract_id }})
-  .on('success', function (contract) {
-      contract.updateAttributes({
+  db.Contract.findOne({ where: { contract_id: req.body.contract_id }})
+    .then((contract) => {
+      contract.update({
         pending: false,
-        contract_addr: req.query.contract_addr,
-        will_hash: req.query.will_hash
+        will_hash: req.body.will_hash,
+        contract_addr: req.body.contract_addr
       })
-      .success(function () {
-        console.log('successfully updated contract')
-      })
-    }
-  )
+    })
+    .then(result => {
+      res.status(201).send(result);
+    })
 });
+
+// app.post('/updatecontract', function (req, res){
+//   db.Contract.find({ where: { contract_id: req.body.contract_id }})
+//   .on('success', function (contract) {
+//       contract.updateAttributes({
+//         pending: false,
+//         contract_addr: req.query.contract_addr,
+//         will_hash: req.query.will_hash
+//       })
+//       .success(function () {
+//         console.log('successfully updated contract')
+//       })
+//     }
+//   )
+// });
 
 
   // New User
