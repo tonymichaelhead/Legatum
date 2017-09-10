@@ -1,5 +1,11 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { DashboardService } from '../../dashboard.service';
+import { HttpClient } from '@angular/common/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/share';
+import { Observer } from 'rxjs/Observer';
 
 @Component({
   selector: 'app-pending-contracts',
@@ -7,7 +13,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./pending-contracts.component.css']
 })
 export class PendingContractsComponent implements OnInit {
-  contracts = [
+
+  subscription: any;
+
+  pendingContracts = [
     {
       contractNickname: 'Another will',
       contractId: '123489-0',
@@ -25,11 +34,22 @@ export class PendingContractsComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router ) { }
+  constructor(
+    private router: Router,
+    private dashboardService: DashboardService,
+    private http: HttpClient ) { }
 
-
+    getPendingContracts() {
+      this.subscription = this.dashboardService.pendingContractsChange$.subscribe( item => {
+        this.pendingContracts = item;
+      });
+      console.log('The updated pending contracts in pending-contracts: ', this.pendingContracts);
+    }
 
   ngOnInit() {
+    this.dashboardService.getAndSetPending();
+    this.pendingContracts = this.dashboardService.currentPending();
+    this.getPendingContracts();
   }
 
 }

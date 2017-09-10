@@ -6,12 +6,12 @@
         <th>Date Created</th>
       </tr>
       <tr>
-        <td>{{contract.contract_nickname}}</td>
-        <td>{{contract.contract_id}}</td>
-        <td>{{contract.createdAt}}</td>
+        <td>{{pendingContract.contract_nickname}}</td>
+        <td>{{pendingContract.contract_id}}</td>
+        <td>{{pendingContract.createdAt}}</td>
       </tr>
     </table>
-    <a routerLink="/dashboard/admin/deploy" routerLinkActive="active">
+    <a [routerLink]="['/dashboard/admin/deploy', pendingContract.contract_id]" routerLinkActive="active">
       <div id="create-button" (click)="handleCreateFormClick()">
     Create contract
       </div>

@@ -62,7 +62,7 @@ const appRoutes: Routes = [
                   path: '',
                   children: [
                     {
-                      path: 'deploy',
+                      path: 'deploy/:contract-id',
                       component: DeployContractsComponent
                     },
                     {

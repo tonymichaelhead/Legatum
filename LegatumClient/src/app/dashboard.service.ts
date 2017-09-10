@@ -17,17 +17,18 @@ export class DashboardService {
     updatedAt: '',
     user_id: '',
     username: ''
-  } 
-  
-  //user contracts
+  };
+
+  // user contracts
   contracts: any[];
- 
+  pendingContracts: any[];
+
   // Give components ability to subscribe for userInfo Changes
   contractsChange$: Observable<any>;
+  pendingContractsChange$: Observable<any>;
   private _observer: Observer<any>;
 
-  
-  //hold user profile info
+  // hold user profile info
   newContract: any = {
       username: this.userInfo.username,
       contract_nickname: 'default',
@@ -35,22 +36,23 @@ export class DashboardService {
       file_name: 'No file was selected.',
       beneficiary: '1212dddddd3',
       hash: '012741923487'
-    }
-  //hold new contract info
+    };
 
+  // hold new contract info
   constructor(
     private http: HttpClient) { 
     this.contractsChange$ = new Observable(observer => {
-      this._observer = observer}).share();
+      this._observer = observer; }).share();
+    this.pendingContractsChange$ = new Observable(observer => {
+      this._observer = observer; }).share();
   }
-  
-  //
-  //Holds temporary new contract info for creation
+
+  // Holds temporary new contract info for creation
   setContractInfo(contract: Contract) {
     this.newContract = contract;
     console.log('new contract set in DashboardService: ', this.newContract);
   }
-  //Get contracts for render on the Dashboard
+  // Get contracts for render on the Dashboard
   getAndSetContracts() {
       console.log('The username sent for contracts is: ', this.userInfo.username);
       this.http.get ('findallcontract', {
@@ -60,8 +62,8 @@ export class DashboardService {
           console.log('The user wills returned are: ', data);
           this.contracts = data;
           this._observer.next(data);
-          console.log('the new contracts: ', this.contracts)
-        })
+          console.log('the new contracts: ', this.contracts);
+        });
   }
 
   setUserInfo(userInfo: UserInfo) {
@@ -70,12 +72,22 @@ export class DashboardService {
     this.getAndSetContracts();
   }
 
-  //Other components can call this and return the current contracts
+  // Other components can call this and return the current contracts
   currentContracts(): any {
     return this.contracts;
   }
+    /**admin**/
+  getAndSetPending() {
+    this.http.get ('findpendingcontract')
+      .subscribe((data: any) => {
+        console.log('The pending user wills returned are: ', data);
+        this.pendingContracts = data;
+        this._observer.next(data);
+        console.log('the pending contracts: ', this.pendingContracts);
+      });
+  }
 
-  // getUserInfo(email: string) {
-
-  // }
+  currentPending(): any {
+    return this.pendingContracts;
+  }
 }

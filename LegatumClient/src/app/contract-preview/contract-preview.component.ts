@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Contract } from '../models/contract/contract.interface'
+import { Contract } from '../models/contract/contract.interface';
 
 @Component({
   selector: 'app-contract-preview',
@@ -7,7 +7,9 @@ import { Contract } from '../models/contract/contract.interface'
   styleUrls: ['./contract-preview.component.css']
 })
 export class ContractPreviewComponent implements OnInit {
+
   @Input() contract: Contract;
+
   constructor() { }
 
   ngOnInit() {
