@@ -49,14 +49,26 @@ export class MyContractsComponent implements OnInit {
     console.log('The reset contracts in my-contracts: ', this.contracts);
   }
 
+  getUserInfo(): void {
+    // Tell the dashboardService to load itself with userInfo
+    this.dashboardService.getAndSetUserInfo();
+    // Then subscribe to it      
+  }
+
   ngOnInit() {
     // Get user contracts
-    this.dashboardService.getAndSetContracts();
-    this.contracts = this.dashboardService.currentContracts();
-    this.getUserContracts();
+    // this.dashboardService.getAndSetContracts();
+    // this.contracts = this.dashboardService.currentContracts();
+    // this.getUserContracts();
+    
+    //Testing new login persistence flow
+    // this.getUserInfo();
+
+    // Tell the dashboardService to load itself with userInfo
+    // Then subscribe to it
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 }

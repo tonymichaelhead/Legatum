@@ -69,7 +69,8 @@ User.sync({force: true}).then(() => {
       username: 'T-mac',
       email: 'tony@tony.com',
       pub_key: 'thisrstdsrtd is a test 1234342342342',
-      ssn: 23000045433
+      ssn: 23000045433,
+      admin: true
     })
   })
 });
