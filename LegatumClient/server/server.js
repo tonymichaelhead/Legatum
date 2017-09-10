@@ -36,7 +36,10 @@ app.post('/newcontract', function (req, res){
     hash: req.body.hash,
     will_text: req.body.will_text,
     file_name: req.body.file_name,
-    beneficiary: req.body.beneficiary  
+    beneficiary: req.body.beneficiary,
+    pending: true,
+    will_hash: 'DEFAULT',
+    contract_addr: 'DEFAULT'  
   })
   .then(function (data){
     res.status(201).send(data)

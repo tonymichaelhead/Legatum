@@ -8,4 +8,7 @@ export interface Contract {
     file_name: string;
     beneficiary: string;
     hash: string;
+    pending: boolean;
+    will_hash: string;
+    contract_addr: string;
 }
