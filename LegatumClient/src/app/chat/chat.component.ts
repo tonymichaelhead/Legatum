@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ng-socket-io';
+import { SocketIoModule, SocketIoConfig, Socket } from 'ng-socket-io';
 
 declare var $: any;
 
@@ -13,6 +13,7 @@ export class ChatComponent implements OnInit {
   haveUsername: boolean;
   roomAvailable: boolean;
   username: string;
+  // socket: any;
   socket = io();
   userQueue: Array<any>;
   userWaiting: boolean;
@@ -22,6 +23,7 @@ export class ChatComponent implements OnInit {
   userWantsToChat: boolean;
 
   constructor() {
+    // this.socket = io();
     this.roomAvailable = false;
     this.haveUsername = false;
     this.username = '';
@@ -131,6 +133,9 @@ export class ChatComponent implements OnInit {
         console.log('#6.5 - CHAT CLIENT: userID & this.userID = ', userID, this.userID);
       }
     });
+
+
+
 
     // Listen for disconnected
     // this.socket.on('ended', () => {
