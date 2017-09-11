@@ -17,6 +17,7 @@ import { UserInfo } from '../models/user-info/user-info.interface';
 export class DashboardComponent {
   name: string = this.authService.email;
   sub: any;
+  subscription: any;
 
   userInfo: UserInfo = {
     admin: false,
@@ -71,10 +72,18 @@ export class DashboardComponent {
   //     });
   //}
 
-  //New getUserInfo() being tested
+  // New getUserInfo() being tested
   getUserInfo(): void {
     this.dashboardService.getAndSetUserInfo();
     //this.name = this.dashboardService.userInfo.email;
+  }
+
+  // Subscribe to userInfo which is originally fetched from the dashboardService
+  subscribeToUserInfo() {
+    this.subscription = this.dashboardService.userInfoChange$.subscribe( item => {
+      this.userInfo = item;
+    });
+    console.log('The new userInfo in DashboardComponent is: ', this.userInfo);
   }
 
   ngOnInit() {
@@ -83,7 +92,13 @@ export class DashboardComponent {
     // Previous login flow
     // this.getUserInfo(this.name);
 
-    //Testing Login flow
+    // Testing Login flow
     this.getUserInfo();
+    // Tell DashboardService to fetch contracts
+  
+    // Subscribe to userInfoObservable in DashboardService
+    this.subscribeToUserInfo();
   }
+
+  
 }  
