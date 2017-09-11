@@ -56,7 +56,7 @@ export class ContractDetailsComponent implements OnInit, OnDestroy {
   getUniqueContract(): Promise<any> {
     let promise = new Promise((resolve, reject) => {
        // Call on dashboardService.currentContracts() to fetch contracts and filter out needed contract by name
-      this.dashboardService.currentContracts().map(contract => {
+      this.dashboardService.currentContracts().filter(contract => {
         if (contract.contract_nickname === this.contract_nickname) {
           resolve(contract);
         }

@@ -17,8 +17,10 @@ import { UserInfo } from '../models/user-info/user-info.interface';
 export class DashboardComponent {
   name: string = this.authService.email;
   sub: any;
+  subscription: any;
 
   userInfo: UserInfo = {
+    admin: false,
     createdAt: '',
     email: '',
     pub_key: '',
@@ -46,33 +48,57 @@ export class DashboardComponent {
     });
   }
 
-  getUserInfo(email: string): void {
-    console.log('getUserInfo was fired');
-    this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
-      .subscribe((data: UserInfo) => {
-        console.log('userInfo GET: ', data);
-        this.userInfo = {
-          createdAt: data.createdAt,
-          email: data.email,
-          pub_key: data.pub_key,
-          ssn: data.ssn,
-          updatedAt: data.updatedAt,
-          user_id: data.user_id,
-          username: data.username
-        }
-        console.log('updated user info: ', this.userInfo);
-        //Update the dashboard service with user info so other components can access it
+  // Previous getUserInfo that worked
+  // getUserInfo(email: string): void {
+  //   console.log('getUserInfo was fired');
+  //   this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
+  //     .subscribe((data: UserInfo) => {
+  //       console.log('userInfo GET: ', data);
+  //       this.userInfo = {
+  //         createdAt: data.createdAt,
+  //         email: data.email,
+  //         pub_key: data.pub_key,
+  //         ssn: data.ssn,
+  //         updatedAt: data.updatedAt,
+  //         user_id: data.user_id,
+  //         username: data.username
+  //       }
+  //       console.log('updated user info: ', this.userInfo);
+  //       //Update the dashboard service with user info so other components can access it
         
-        this.dashboardService.setUserInfo(this.userInfo);
-        //Call setContractsInfo
-        // this.dashboardService.getAndSetContracts();
-      });
+  //       this.dashboardService.setUserInfo(this.userInfo);
+  //       //Call setContractsInfo
+  //       // this.dashboardService.getAndSetContracts();
+  //     });
+  //}
+
+  // New getUserInfo() being tested
+  getUserInfo(): void {
+    this.dashboardService.getAndSetUserInfo();
+    //this.name = this.dashboardService.userInfo.email;
+  }
+
+  // Subscribe to userInfo which is originally fetched from the dashboardService
+  subscribeToUserInfo() {
+    this.subscription = this.dashboardService.userInfoChange$.subscribe( item => {
+      this.userInfo = item;
+    });
+    console.log('The new userInfo in DashboardComponent is: ', this.userInfo);
   }
 
   ngOnInit() {
     console.log('Dashboard is loaded!')
     console.log('Name is: :', this.name);
-    this.getUserInfo(this.name);
-    this.name = this.dashboardService.userInfo.email;
+    // Previous login flow
+    // this.getUserInfo(this.name);
+
+    // Testing Login flow
+    this.getUserInfo();
+    // Tell DashboardService to fetch contracts
+  
+    // Subscribe to userInfoObservable in DashboardService
+    this.subscribeToUserInfo();
   }
+
+  
 }  

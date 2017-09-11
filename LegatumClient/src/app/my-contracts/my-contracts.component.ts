@@ -20,11 +20,12 @@ export class MyContractsComponent implements OnInit {
   name: string;
   subscription: any;
 
+  // Initialize contracts to a default value
   contracts = [
     {
-      contractNickname: 'Another will',
-      contractId: '123489-0',
-      createdAt: '01/01/0001'
+      contractNickname: 'DEFAULT',
+      contractId: 'DEFAULT',
+      createdAt: 'DEFAULT'
     }
   ];
 
@@ -42,18 +43,28 @@ export class MyContractsComponent implements OnInit {
     console.log('create form was clicked')
   }
 
-  getUserContracts() {
+  /* Tell the dashboardService to load itself with userInfo
+  so that we can subscribe to it*/
+  getUserInfo(): void {
+    this.dashboardService.getAndSetUserInfo();   
+  }
+
+    /* Tell the dashboardService to load itself with user's contracts
+  so that we can subscribe to it*/
+  getUserContracts(): void {
+    this.dashboardService.getAndSetContracts();
+  }
+
+  subscribeContracts() {
     this.subscription = this.dashboardService.contractsChange$.subscribe( item => {
       this.contracts = item;
     });
-    console.log('The reset contracts in my-contracts: ', this.contracts);
+    console.log('The contracts loaded in MyContracts are: ', this.contracts);
   }
 
   ngOnInit() {
-    // Get user contracts
-    this.dashboardService.getAndSetContracts();
-    this.contracts = this.dashboardService.currentContracts();
     this.getUserContracts();
+    this.subscribeContracts();
   }
 
   ngOnDestroy() {
