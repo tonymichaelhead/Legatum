@@ -1,0 +1,7 @@
+#chat-messages {
+  list-style-type: none;
+}
+
+#chat-messages li {
+  padding: 5px 10px;
+}
