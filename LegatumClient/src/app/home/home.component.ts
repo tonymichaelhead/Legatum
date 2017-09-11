@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     this.myParams = {
       particles: {
         number: {
-          'value': 100,
+          'value': 50,
           'density': {
             'enable': true,
             'value_area': 1000
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
             'color': '#ffb3ff'
           },
           'polygon': {
-            'nb_sides': 5
+            'nb_sides': 8
           },
           'image': {
             'src': 'img/github.svg',
@@ -108,12 +108,13 @@ export class HomeComponent implements OnInit {
         move: {
           'enable': true,
           'speed': 2,
-          'direction': 'bottom-left',
+          'direction': 'bottom-right',
           'random': false,
           'straight': false,
           'out_mode': 'out',
+          'bounce': true,
           'attract': {
-            'enable': false,
+            'enable': true,
             'rotateX': 600,
             'rotateY': 1200
           }
@@ -158,14 +159,6 @@ export class HomeComponent implements OnInit {
         }
       },
       retina_detect: true,
-      config_demo: {
-        'hide_card': false,
-        'background_color': '#b61924',
-        'background_image': '',
-        'background_position': '50% 50%',
-        'background_repeat': 'no-repeat',
-        'background_size': 'cover'
-      }
     };
   }
 
