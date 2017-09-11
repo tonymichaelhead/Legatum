@@ -7,13 +7,15 @@ const bodyParser = require('body-parser');
 const db = require('../database/db');
 const fallback = require('express-history-api-fallback');
 const socketIO = require('socket.io');
-const server = http.createServer(app);
-const io = socketIO(server);
+// const server = http.createServer(app);
 
 // Server Set-Up
 const port = process.env.PORT || '3000';
 app.set('port', port);
 const server = http.createServer(app);
+
+// Socket.io for chat
+const io = socketIO(server);
 
 // MiddleWare 
 app.use(bodyParser.json());
