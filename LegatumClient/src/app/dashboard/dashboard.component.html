@@ -4,6 +4,7 @@
         <h1>Legatum</h1>
       </a>
   </div>
+  <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending">Admin</a>
   <a routerLink="/home" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
   <h2 id="dash-greeting">Good evening, {{userInfo.username}}</h2>
 </div>

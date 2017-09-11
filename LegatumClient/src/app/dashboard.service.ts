@@ -15,6 +15,7 @@ import {
 @Injectable()
 export class DashboardService {
 
+  // Load userInfo with default data
   userInfo: UserInfo = {
     admin: false,
     createdAt: '',
@@ -25,10 +26,6 @@ export class DashboardService {
     user_id: '',
     username: '',
   };
-
-  // userInfoObservable = new Observable(observer => {
-  //   observer.next(this.userInfo);
-  // });
 
   // Store logged in user's email
   userEmail: string;
@@ -63,6 +60,7 @@ export class DashboardService {
     private authService: AuthService,
     private router: Router) {
 
+    // Declare observables so that other components can subscribe to data changes
     this.contractsChange$ = new Observable(observer => {
       this._observerContracts = observer; }).share();
     this.pendingContractsChange$ = new Observable(observer => {
@@ -76,10 +74,9 @@ export class DashboardService {
     this.newContract = contract;
     console.log('new contract set in DashboardService: ', this.newContract);
   }
-  
+
   // Get contracts for render on the Dashboard
   getAndSetContracts() {
-
     // Subscribe to changes on userInfo and fetch contracts once userInfo comes in
     console.log('The username sent for contracts is: ', this.userInfo.username);
       this.http.get ('findallcontract', {
@@ -88,32 +85,13 @@ export class DashboardService {
         .subscribe((data: any) => {
           console.log('The user wills returned are: ', data);
           this.contracts = data;
-          //this._observerContracts.next(this.contracts);
+          this._observerContracts.next(this.contracts);
           console.log('the new contracts: ', this.contracts);
         }, error => console.log('Could not load userInfo'));
         console.log('The reset contracts in my-contracts: ', this.contracts);
-        
-        // this.subscription = this.userInfoChange$.subscribe( item => {
-          
-          //   console.log('The username sent for contracts is: ', item.username);
-          //     this.http.get ('findallcontract', {
-            //       params: new HttpParams().set('username', item.username)
-            //     })
-            //       .subscribe((data: any) => {
-              //         console.log('The user wills returned are: ', data);
-              //         this.contracts = data;
-              //         this._observer.next(data);
-              //         console.log('the new contracts: ', this.contracts);
-              //       }, error => console.log('Could not load userInfo'));
-              // });
-              // console.log('The reset contracts in my-contracts: ', this.contracts);
-              
-              // this.subscription = this.userInfoChange$.subscribe( item => {
-                
-              //              });
-
   }
 
+  // Other components can call this and set the DashboardService userInfo manually
   setUserInfo(userInfo: UserInfo) {
     this.userInfo = userInfo;
     console.log('New userInfo set in DashboardService: ', this.userInfo);
@@ -137,17 +115,12 @@ export class DashboardService {
 
   /** Can be called from any page within the dashboard and will load user 
   data in order to persist logged in user information*/
-
   getAndSetUserInfo() {
-    // checkLogin(url: string): Promise<any> {
-    //   let isLoggedIn;
       return new Promise((resolve, reject) => {
-        //this.userEmail = 
         this.afAuth.auth.onAuthStateChanged( firebaseUser => {
           if (firebaseUser) {
             resolve (firebaseUser);
           } else {
-            alert('Please log in and try again');
             // Store attempted URL for redirecting
             // this.authService.redirectUrl = url;
             // Navigate to the home page with extras
@@ -161,7 +134,6 @@ export class DashboardService {
           console.log('The logged in user email is: ', res.email);
           // Send an http request with user email to get user info and mount then return as promise
           this.retrieveUserInfoWithEmail(res.email);
- 
         } else {
           return false;
         }
@@ -169,7 +141,6 @@ export class DashboardService {
       .catch((err) => {
         console.log('Error: inside is logged in', err);
       });
-    
   }
 
   retrieveUserInfoWithEmail(email:string): void {
@@ -181,11 +152,11 @@ export class DashboardService {
         this.userInfo = data;
         this.getAndSetContracts();
         console.log('the updated userInfo is ', this.userInfo);
-        //Maybe throwing me an error because no subs yet??
-        this._observerUserInfoChange.next(data);
+        this._observerUserInfoChange.next(this.userInfo);
       }, err => console.log(err));
   }
 
+  // Admin components can return current pending contracts with this
   currentPending(): any {
     return this.pendingContracts;
   }
