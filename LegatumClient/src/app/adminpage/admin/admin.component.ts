@@ -20,6 +20,8 @@ export class AdminComponent implements OnInit {
   socket = io();
   username: string;
   userID: string;
+  adminName: string;
+  queueSize: number;
 
   constructor(
     private router: Router,
@@ -31,10 +33,20 @@ export class AdminComponent implements OnInit {
       this.chatEnded = false;
       this.username = '';
       this.userID = '';
+      this.adminName = '';
+      this.queueSize = 0;
 
     }
 
   ngOnInit() {
+    // Chat listeners
+
+    // listen for queue being updated
+    this.socket.on('updateQueue', (length) => {
+      this.queueSize = length;
+      console.log('## ADMIN CHAT - heard that queue was updated to size = ', length);
+      console.log('## ADMIN CHAT - queueSize = ', this.queueSize);
+    });
   }
 
   handleAdminAccept(): void {
@@ -45,7 +57,9 @@ export class AdminComponent implements OnInit {
   handleChatRequest(): void {
     console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
     this.haveUsername = true;
-    this.socket.emit('adminAcceptChat', 'admin');
+    // collect admin username
+    this.adminName = $('#chat-username').val() || 'admin';
+    this.socket.emit('adminAcceptChat', this.adminName);
     console.log('#3 ADMIN CHAT: firing off adminAcceptChat');
     this.roomAvailable = true;
   }
@@ -59,7 +73,9 @@ export class AdminComponent implements OnInit {
   handleEndChat(): void {
     this.chatInitiated = false;
     console.log('##CHAT CLIENT: request to end chat button was clicked.');
-    // TODO: what should happen here??
+    // TODO: restore chat button functionality
+    // show how many people are waiting in the queue
+
 
     // replace the initiate chat button, but remove everything else
     // reset vars

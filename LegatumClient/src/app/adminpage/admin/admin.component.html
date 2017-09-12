@@ -16,6 +16,7 @@
         </button>
         <router-outlet> </router-outlet>
     <div id="admin-chat">
+        <p>There are {{this.queueSize || 0}} people waiting to chat.</p>
         <button *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleAdminAccept()">Chat</button>
 
         <div *ngIf="chatInitiated && !haveUsername">
@@ -29,7 +30,7 @@
               </div>
               
               <div *ngIf="roomAvailable">
-                <ul id="chat-messages">Hello {{this.username | titlecase}}, please ask me a question.</ul>
+                <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul>
                 <form method="">
                   <input type="text" id="chat-input" autocomplete="off" /><button (click)="handleSendMessage()">Send</button>
                 </form>
