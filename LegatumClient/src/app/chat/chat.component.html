@@ -9,11 +9,11 @@
 </div>
 
 <div *ngIf="!roomAvailable && haveUsername">
-  <p id="chat-wait-msg">Thank you for your patience. We will be with you shortly.</p>
+  <p id="chat-wait-msg">Thank you {{this.username | titlecase}} for your patience. We will be with you shortly.</p>
 </div>
 
-<div *ngIf="roomAvailable">
-  <ul id="chat-messages">Hello {{this.username | titlecase}}, please ask me a question.</ul>
+<div *ngIf="roomAvailable && haveAdminName">
+  <ul id="chat-messages">Hi {{this.username | titlecase}}, my name is {{this.adminName | titlecase}}. How may I help you? </ul>
   <form method="">
     <input type="text" id="chat-input" autocomplete="off" /><button (click)="handleSendMessage()">Send</button>
   </form>

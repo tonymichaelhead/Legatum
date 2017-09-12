@@ -12,6 +12,7 @@ export class ChatComponent implements OnInit {
 
   haveUsername: boolean;
   roomAvailable: boolean;
+  haveAdminName: boolean;
   username: string;
   // socket: any;
   socket = io();
@@ -21,6 +22,7 @@ export class ChatComponent implements OnInit {
   chatEnded: boolean;
   chatInitiated: boolean;
   userWantsToChat: boolean;
+  adminName: string;
 
   constructor() {
     // this.socket = io();
@@ -32,6 +34,8 @@ export class ChatComponent implements OnInit {
     this.chatEnded = false;
     this.chatInitiated = false;
     this.userWantsToChat = false;
+    this.adminName = '';
+    this.haveAdminName = false;
   }
 
   handleChat(): void {
@@ -106,7 +110,6 @@ export class ChatComponent implements OnInit {
     this.socket.on('waitingForAdmin', (username) => {
       console.log('#4.0 - CHAT CLIENT: this inside ngOnInit listeners = ', this);
       console.log('#4.1 - CHAT CLIENT: heard waitingForAdmin from server and username = ', username);
-      console.log('#4.1 - CHAT CLIENT: left off here ***************************************');
       
       // toggle indicator on admin panel to show user is waiting
       // TODO: use this to display waiting message if needed
@@ -115,10 +118,12 @@ export class ChatComponent implements OnInit {
     });
 
     // listen for start chat with user and admin
-    this.socket.on('startChatWithUserAndAdmin', (username, userID) => {
+    this.socket.on('startChatWithUserAndAdmin', (username, userID, adminUsername) => {
       console.log('#6 - CHAT CLIENT: heard startChatWithUserAndAdmin from server');
       console.log('#6.1 - CHAT CLIENT: usernamed recvd = ', username);
-      // console.log('#6.2 - CHAT CLIENT: adminUsername recvd = ', adminUsername);
+      console.log('#6.2 - CHAT CLIENT: adminUsername recvd = ', adminUsername);
+      this.adminName = adminUsername;
+      this.haveAdminName = true;
       
       // start the chat with user and admin
       if (username === this.username && userID === this.userID) {
