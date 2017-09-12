@@ -218,7 +218,7 @@ io.on('connection', function(socket){
     console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
     console.log('########### Left off here ############');
     console.log('#5.2 - CHAT SERVER: username and userid = ', username, userid);
-    // console.log('#5.3 - CHAT SERVER: adminUsernaem = ', adminUsername);
+    console.log('#5.3 - CHAT SERVER: adminUsernaem = ', adminUsername);
     // io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
     io.emit('startChatWithUserAndAdmin', username, userid);
   });
