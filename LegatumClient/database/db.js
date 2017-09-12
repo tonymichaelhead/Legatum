@@ -57,44 +57,43 @@ Contract.belongsToMany(User, { through: 'Transaction', foreignKey: 'contract_idF
 
 
 // TESTING DB
-User.sync({force: true}).then(() => {
-  // Table created
-  return User.create({
-    username: 'johndoe',
-    email: 'johndoe@johndoe.com',
-    pub_key: 'this is a test 1234342342342',
-    ssn: 2345433
-  }).then(function() {
-    return User.create({
-      username: 'T-mac',
-      email: 'tony@tony.com',
-      pub_key: 'thisrstdsrtd is a test 1234342342342',
-      ssn: 23000045433,
-      admin: true
-    })
-  })
-});
+// User.sync({force: true}).then(() => {
+//   // Table created
+//   return User.create({
+//     username: 'johndoe',
+//     email: 'johndoe@johndoe.com',
+//     pub_key: 'this is a test 1234342342342',
+//     ssn: 2345433
+//   }).then(function() {
+//     return User.create({
+//       username: 'T-mac',
+//       email: 'tony@tony.com',
+//       pub_key: 'thisrstdsrtd is a test 1234342342342',
+//       ssn: 23000045433
+//     })
+//   })
+// });
 
 
 
-Contract.sync({force: true}).then(() => {
-  // Table created
-  return Contract.create({
-    username: 'bullshit username',
-    hash: 'this is a test for hash',
-    contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
-    will_text: 'AYYYYOOO WILL text yo',
-    file_name: 'file.js',
-    beneficiary: '12346789xxx'
-  });
-});
+// Contract.sync({force: true}).then(() => {
+//   // Table created
+//   return Contract.create({
+//     username: 'bullshit username',
+//     hash: 'this is a test for hash',
+//     contract_nickname: 'akjkjsdkfjsdkfjssdfsd',
+//     will_text: 'AYYYYOOO WILL text yo',
+//     file_name: 'file.js',
+//     beneficiary: '12346789xxx'
+//   });
+// });
 
-Transaction.sync({force: true}).then(() => {
-  // Table Created
-  return Transaction.create({
-    user_idFK: 'e86de438-2edb-47df-8c64-8fef0db3996b',
-    contract_idFK: '35396b34-f176-46ff-8dc8-680431645753'
-  })
-})
+// Transaction.sync({force: true}).then(() => {
+//   // Table Created
+//   return Transaction.create({
+//     user_idFK: 'e86de438-2edb-47df-8c64-8fef0db3996b',
+//     contract_idFK: '35396b34-f176-46ff-8dc8-680431645753'
+//   })
+// })
 
 module.exports = { User, Contract, Transaction, db };
