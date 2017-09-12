@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     if (this.authService.isLoggedIn) {
       console.log('Is logged in: true');
       this.isLoggedIn = true;
-      this.urlParam = this.authService.email;
+      // this.urlParam = this.authService.email;
     } else {
       console.log('User is not logged in');
     }

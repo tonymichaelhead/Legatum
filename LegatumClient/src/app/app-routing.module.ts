@@ -25,7 +25,7 @@ const appRoutes: Routes = [
       data: { someShizz: 'some interesting data' }
     },
     {
-      path: 'dashboard/:user',
+      path: 'dashboard', // potentially add user url param
       component: DashboardComponent,
       canActivate: [ AuthGuardService ],
       children: [
