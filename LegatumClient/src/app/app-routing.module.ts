@@ -25,9 +25,9 @@ const appRoutes: Routes = [
       data: { someShizz: 'some interesting data' }
     },
     {
-      path: 'dashboard',
+      path: 'dashboard/:user',
       component: DashboardComponent,
-      canActivate: [AuthGuardService],
+      canActivate: [ AuthGuardService ],
       children: [
         {
           path: '',

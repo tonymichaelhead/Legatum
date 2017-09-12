@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../auth.service';
-import { RegisterComponent } from '../register/register.component';
+import { RegisterComponent } from '../register/register.component'
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,7 @@ import { RegisterComponent } from '../register/register.component';
 export class HomeComponent implements OnInit {
 
   isLoggedIn: boolean = false;
+  urlParam: string;
   myStyle: object = {};
   myParams: object = {};
   width: number = 100;
@@ -26,6 +29,7 @@ export class HomeComponent implements OnInit {
     if (this.authService.isLoggedIn) {
       console.log('Is logged in: true');
       this.isLoggedIn = true;
+      this.urlParam = this.authService.email;
     } else {
       console.log('User is not logged in');
     }
@@ -54,26 +58,26 @@ export class HomeComponent implements OnInit {
     this.myParams = {
       particles: {
         number: {
-          'value': 50,
+          'value': 75,
           'density': {
             'enable': true,
-            'value_area': 1000
+            'value_area': 500
           }
         },
         color: {
-          'value': '#ffb3ff'
+          'value': '#743ade'
         },
         shape: {
-          'type': 'circle',
+          'type': 'triangle',
           'stroke': {
-            'width': 0,
+            'width': 2,
             'color': '#ffb3ff'
           },
           'polygon': {
-            'nb_sides': 8
+            'nb_sides': 4
           },
           'image': {
-            'src': 'img/github.svg',
+            'src': './eth.svg',
             'width': 100,
             'height': 100
           }
@@ -84,15 +88,15 @@ export class HomeComponent implements OnInit {
           'anim': {
             'enable': false,
             'speed': 1,
-            'opacity_min': 0.1,
+            'opacity_min': 0.2,
             'sync': false
           }
         },
         size: {
-          'value': 3,
+          'value': 4,
           'random': true,
           'anim': {
-            'enable': false,
+            'enable': true,
             'speed': 40,
             'size_min': 0.1,
             'sync': false
@@ -100,9 +104,9 @@ export class HomeComponent implements OnInit {
         },
         line_linked: {
           'enable': true,
-          'distance': 200,
-          'color': '#ffb3ff',
-          'opacity': 0.4,
+          'distance': 150,
+          'color': '#932ab3',
+          'opacity': 0.9,
           'width': 1
         },
         move: {
@@ -110,9 +114,9 @@ export class HomeComponent implements OnInit {
           'speed': 2,
           'direction': 'bottom-right',
           'random': false,
-          'straight': false,
+          'straight': true,
           'out_mode': 'out',
-          'bounce': true,
+          'bounce': false,
           'attract': {
             'enable': true,
             'rotateX': 600,
@@ -125,11 +129,11 @@ export class HomeComponent implements OnInit {
         'events': {
           'onhover': {
             'enable': true,
-            'mode': 'push'
+            'mode': 'repulse'
           },
           onclick: {
             'enable': true,
-            'mode': 'push'
+            'mode': 'repulse'
           },
           'resize': true
         },
@@ -144,7 +148,7 @@ export class HomeComponent implements OnInit {
             'distance': 400,
             'size': 40,
             'duration': 2,
-            'opacity': 8,
+            'opacity': 1,
             'speed': 3
           },
           repulse: {

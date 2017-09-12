@@ -1,22 +1,19 @@
-<div *ngIf="dashboardService.userInfo.admin">
-    <md-sidenav-container class="example-container">
-    
-        <md-sidenav mode="open" opened="true" #sidenav class="example-sidenav">
-            <button class="navlink" md-raised-button color="primary">Contracts</button>
-            <br>
-            <br>
-            <button class="navlink" md-raised-button color="primary">Pending</button>
-            <br>
-            <br>
-        </md-sidenav>
-    
-    
-        <div class="my-content">
-            <button md-mini-fab color="primary" (click)="sidenav.open()" class="nav-fab">
+<md-sidenav-container class="example-container" *ngIf="dashboardService.userInfo.admin">
+
+    <md-sidenav mode="open" opened="true" #sidenav class="example-sidenav">
+        <button class="navlink" md-raised-button color="primary">Contracts</button>
+        <br>
+        <br>
+        <button class="navlink" md-raised-button color="primary">Pending</button>
+        <br>
+        <br>
+    </md-sidenav>
+
+
+    <div class="my-content">
+        <button md-mini-fab color="primary" (click)="sidenav.open()" class="nav-fab">
                 <md-icon class="nav-icon">dehaze</md-icon>
             </button>
-            <router-outlet> </router-outlet>
-        </div>
-    
-    </md-sidenav-container>
-</div>
+        <router-outlet> </router-outlet>
+    </div>
+</md-sidenav-container>

@@ -1,3 +1,4 @@
+@import "~fullpage.js/dist/jquery.fullpage.css";
 @font-face {
     font-family: "Ancient Roman";
     src: url(geek.ttf) format("truetype");
@@ -11,9 +12,9 @@ body {
     /* display: flex;
     flex-direction, */
     height: 100%;
-    background-color: black;
+    background-color: #10041C;
     /* background-image: url("background.jpg"); */
-    background: url("background.jpg") no-repeat fixed;
+    /* background: url("background.jpg") no-repeat fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -29,9 +30,9 @@ h1 {
     margin-left: 3px;
     font-family: "Ancient Roman", "Times New Roman";
     /* color: #830083; */
-    color: #FE28A8;
+    /* color: #FE28A8;
     font-size: 30px;
-    float: left;
+    float: left; */
     /* border: solid 1px red; */
 }
 
