@@ -212,7 +212,7 @@ io.on('connection', function(socket){
     console.log('### CHAT SERVER: users = ', users);
     let user = users.pop();
     console.log('### CHAT SERVER: user after pop() = ', user);
-    // let username = user[0];
+    let username = user[1];
     let userid = user[0];
     console.log('#5 - CHAT SERVER: admin has accepted invite to chat');
     console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
