@@ -184,8 +184,6 @@ app.get('/findalluser', function (req, res){
 });
 
   // Chat functionality
-// TODO: consider making this an array to preserve order more like a queue
-// var users = {};
 const users = [];
 
   // listen for connection
@@ -197,8 +195,10 @@ io.on('connection', function(socket){
     console.log('#3 - CHAT SERVER: heard userInitiatedChat from client');
     
     // store username in users object
-    // users[socket.id] = username;
     users.push([socket.id, username]);
+    
+    io.emit('updateQueue', users.length);
+    console.log('#3.1.1 - CHAT SERVER: users.length = ', users.length);
     console.log('#3.1 - CHAT SERVER: current users = ', users);
 
     // fire off userWaiting event with username
@@ -210,17 +210,15 @@ io.on('connection', function(socket){
   // listen for admin to accept chat
   socket.on('adminAcceptChat', function(adminUsername) {
     console.log('### CHAT SERVER: users = ', users);
-    let user = users.pop();
-    console.log('### CHAT SERVER: user after pop() = ', user);
+    let user = users.shift();
+    console.log('### CHAT SERVER: user after shift() = ', user);
     let username = user[1];
     let userid = user[0];
     console.log('#5 - CHAT SERVER: admin has accepted invite to chat');
     console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
-    console.log('########### Left off here ############');
     console.log('#5.2 - CHAT SERVER: username and userid = ', username, userid);
     console.log('#5.3 - CHAT SERVER: adminUsernaem = ', adminUsername);
-    // io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
-    io.emit('startChatWithUserAndAdmin', username, userid);
+    io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
   });
   
   // listen for new chat messages
@@ -244,60 +242,3 @@ io.on('connection', function(socket){
 });
 
 server.listen(port, () => console.log(`We have lift off! Cruising at an altitude of: ${port} feet`));
-
-/*
-listen for 'userInitiateChat', username
-  add username to user array
-  emit ('userWaiting')
-
-listen for 'disconnect'
-  close chat room
-    display thank you message to user
-    display message to admin user
-
-listen for 'adminAcceptChat', username
-  emit ('startChatwithUserAndAdmin', username, adminUsername)
-
-
-*/
-
-// old ---------------
-
-// socket.on('start chat', function() {
-  //   console.log('SERVER: starting chat');
-  //   io.emit('chat started');
-  // });
-
-  // socket.on('end chat', function() {
-  //   console.log('SERVER: ending chat');
-  //   io.emit('chat ended');
-  // });
-
- // socket.on('getNumberOfUsers', function() {
-  //   let length = Object.keys(users).length;
-  //   console.log('SERVER: sending length of users = ', length);
-  //   io.emit('numOfUsers', length);
-  // });
-
-  // socket.on('addUser', function(name) {
-  //   console.log('SERVER: add user heard by server');
-  //   users[socket.id] = name;
-  //   console.log('SERVER: current users = ', users);
-  //   console.log('SERVER: current users length = ', Object.keys(users).length);
-  // });
-
-  // socket.on('removeUser', function(name) {
-  //   socket.disconnect();
-  //   console.log('users = ', users);
-  // });
-
-   //   // TODO: retrieve username and send back with adminUsername 
-  //   // TODO: remove username from waiting queue
-  //   let user = this.users.pop();
-  //   let username = user[0];
-  //   let userid = user[1];
-  //   console.log('#5 - CHAT SERVER: admin has accepted invite to chat');
-  //   console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
-  //   console.log('#5.2 - CHAT SERVER: username = ', username);
-  //   console.log('#5.3 - CHAT SERVER: adminUsernaem = ', adminUsername);
-  //   io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
