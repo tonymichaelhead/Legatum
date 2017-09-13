@@ -23,6 +23,7 @@ body {
 
 .about-header {
     color: #501E83;
+    text-align: center;
 }
 
 h2 {
@@ -51,6 +52,15 @@ h3 {
     text-align: center;
     color: #501E83;
     
+}
+
+.ethlogo{
+    height: 200px;
+    align-items: center;
+}
+.ethlogodiv{
+    text-align: center;
+    top: 0;
 }
 
 .main-pitch {

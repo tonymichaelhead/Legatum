@@ -1,4 +1,9 @@
-
+<div id="pic-box">
+  <div id="account-icon">
+      <a routerLink="/home">
+        <h1>Legatum</h1>
+      </a>
+  </div>
   <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
   <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
   <h2 id="dash-greeting">Good evening, {{userInfo.username}}</h2>
@@ -8,7 +13,7 @@
   <a href="#"><span class="mid-nav-button" id="nav-create-contracts-button">Create Contract</span></a>
 </div>
 <div id="main-content">
-    <router-outlet></router-outlet>
+<router-outlet></router-outlet>
   <!-- <app-my-contracts *ngIf="showMyContracts"(onCreateFormClick)="onCreateFormClick($event)"></app-my-contracts>
   <app-contract-form *ngIf="createFormWasClicked"></app-contract-form> -->
 </div>

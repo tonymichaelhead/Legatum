@@ -2,6 +2,7 @@
 <div mnFullpage>
   <div class="button-table fp-section fp-table">
     <div class="menu">
+        <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
       <h1>
         LEGATUM
       </h1>
@@ -20,7 +21,6 @@
               </li>
       </ul>
     </div>
-    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
     <div class="button-container fp-tableCell">
       <div class="get-started" (click)="handleLogin()">
         <div class="front">
@@ -33,13 +33,14 @@
     </div>
     <h2>Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
   </div>
-
-
   <div class="main-content fp-section fp-table">
-    <div class="about-section fp-tableCell">
+    <div class="fp-tableCell">
+      <div class="ethlogodiv">
+        <img class="ethlogo" src="../../assets/ETHEREUM-ICON_Black.png">
+      </div>
       <h1 class="about-header">About</h1>
       <h3>What is Legatum.io?</h3>
-      <div class="main-pitch">
+      <div class="main-pitch" class="about-section">
         <p>
           Uploading, securing and stamping your most precious legal-documents to the Ethereum Network.
         </p>
@@ -56,5 +57,4 @@
       </p>
     </div>
   </div>
-  <router-outlet></router-outlet>
 </div>
