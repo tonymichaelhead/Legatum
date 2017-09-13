@@ -71,7 +71,7 @@ export class AdminComponent implements OnInit {
 
   handleSendMessage(): void {
     const message = $('#chat-input').val();
-    this.socket.emit('chatMessage', message);
+    this.socket.emit('chatMessage', message, this.adminName);
     $('#chat-input').val('');
   }
 

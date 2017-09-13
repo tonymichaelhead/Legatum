@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit {
 
   handleSendMessage(): void {
     const message = $('#chat-input').val();
-    this.socket.emit('chatMessage', message);
+    this.socket.emit('chatMessage', message, this.username);
     $('#chat-input').val('');
   }
 
@@ -125,8 +125,8 @@ export class ChatComponent implements OnInit {
 
     // handle chat
 
-    this.socket.on('chatMessages', (msg) => {
-      $('#chat-messages').append($('<li>').text(msg));
+    this.socket.on('chatMessages', (msg, sender) => {
+      $('#chat-messages').append($('<li>').text(msg + ' ~ ' + sender));
     });
 
     this.socket.on('connectedWith', (user, id) => {

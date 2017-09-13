@@ -228,8 +228,8 @@ io.on('connection', function(socket){
   });
   
   // listen for new chat messages
-  socket.on('chatMessage', (msg) => {
-    io.emit('chatMessages', msg);
+  socket.on('chatMessage', (msg, sender) => {
+    io.emit('chatMessages', msg, sender);
     console.log('server sent message', msg);
   });
 
