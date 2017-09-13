@@ -190,17 +190,19 @@ const users = [];
 io.on('connection', function(socket){
   console.log('a user connected', socket.id);
 
+  // listen for queue to update
+  socket.on('getQueueSize', () => {
+    io.emit('updateQueue', users.length);
+  });
+
   // listen for user to initiate chat
   socket.on('userInitiateChat', function(username) {
     console.log('#3 - CHAT SERVER: heard userInitiatedChat from client');
-    
     // store username in users object
     users.push([socket.id, username]);
-    
     io.emit('updateQueue', users.length);
     console.log('#3.1.1 - CHAT SERVER: users.length = ', users.length);
     console.log('#3.1 - CHAT SERVER: current users = ', users);
-
     // fire off userWaiting event with username
     console.log('#3.2 - CHAT SERVER: firing off waitingForAdmin event to client, username = ', username);
     io.emit('waitingForAdmin', username);
@@ -226,10 +228,6 @@ io.on('connection', function(socket){
   socket.on('chatMessage', (msg) => {
     io.emit('chatMessages', msg);
     console.log('server sent message', msg);
-  });
-
-  socket.on('getQueueSize', () => {
-    io.emit('updateQueue', users.length);
   });
 
   // listen for disconnect
