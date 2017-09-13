@@ -48,6 +48,7 @@ export class AdminComponent implements OnInit {
 
   getUserCredentials(): void {
     this.socket.emit('getUserSocketid');
+    this.socket.emit('getUsername');
   }
 
   handleChatRequest(): void {
@@ -62,6 +63,7 @@ export class AdminComponent implements OnInit {
   }
 
   handleAdminAccept(): void {
+    console.log('^^^^^^^^^^^^^^ ADMIN SIDE: this.username = ', this.username);
     console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
     this.haveUsername = true;
     this.adminName = $('#chat-username').val() || 'admin';
@@ -99,6 +101,10 @@ export class AdminComponent implements OnInit {
     this.getQueueSize();
 
     // Event Listeners
+    this.socket.on('username', (username) => {
+      this.username = username;
+    });
+
     this.socket.on('userSocketid', (socketid) => {
       // this.userID = socketid;
       this.socket.emit('ended', socketid);

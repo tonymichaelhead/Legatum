@@ -205,6 +205,10 @@ io.on('connection', function(socket){
     console.log('******** TRACE ********* userSocketid sent to admin = ', userid);
   });
   
+  socket.on('getUsername', () => {
+    io.emit('username', this.username);
+  });
+
   // listen for request for admin socket id
   socket.on('getAdminSocketid', () => {
     io.emit('adminSocketid', adminUserid);
