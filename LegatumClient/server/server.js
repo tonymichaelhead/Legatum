@@ -203,7 +203,6 @@ io.on('connection', function(socket){
 
     // fire off userWaiting event with username
     console.log('#3.2 - CHAT SERVER: firing off waitingForAdmin event to client, username = ', username);
-    // TODO: toggle button on admin dashboard to indicate user is waiting...
     io.emit('waitingForAdmin', username);
   });
 
@@ -217,8 +216,10 @@ io.on('connection', function(socket){
     console.log('#5 - CHAT SERVER: admin has accepted invite to chat');
     console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
     console.log('#5.2 - CHAT SERVER: username and userid = ', username, userid);
-    console.log('#5.3 - CHAT SERVER: adminUsernaem = ', adminUsername);
+    console.log('#5.3 - CHAT SERVER: adminUsername = ', adminUsername);
     io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
+    // dequeue user and reflect on admin page
+    io.emit('updateQueue', users.length);
   });
   
   // listen for new chat messages
@@ -227,16 +228,15 @@ io.on('connection', function(socket){
     console.log('server sent message', msg);
   });
 
+  socket.on('getQueueSize', () => {
+    io.emit('updateQueue', users.length);
+  });
+
   // listen for disconnect
   socket.on('disconnect', () => {
-    console.log('## CHAT SERVER: heard user disconnect from client');
-    console.log('## CHAT SERVER: heard user disconnect from client.............');
-    // close chat room
-    // io.emit('ended', () => {
-    //   console.log('##CHAT SERVER: emitting ended signal to client**************');
-    // });
-    // return state back to original
-    // socket.disconnect();
+    console.log('## CHAT SERVER: heard user disconnect');
+    io.emit('ended');;
+    console.log();
   });
 
 });

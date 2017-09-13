@@ -17,16 +17,12 @@
         <router-outlet> </router-outlet>
     <div id="admin-chat">
         <p>There are {{this.queueSize || 0}} people waiting to chat.</p>
-        <button *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleAdminAccept()">Chat</button>
+        <button *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleChatRequest()">Chat</button>
 
         <div *ngIf="chatInitiated && !haveUsername">
                 <form method="">
-                  <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" /><button (click)="handleChatRequest()">Send</button>
+                  <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" /><button (click)="handleAdminAccept()">Send</button>
                 </form>
-              </div>
-              
-              <div *ngIf="!roomAvailable && haveUsername">
-                <p id="chat-wait-msg">Thank you for your patience. We will be with you shortly.</p>
               </div>
               
               <div *ngIf="roomAvailable">

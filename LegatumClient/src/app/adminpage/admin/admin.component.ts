@@ -38,31 +38,32 @@ export class AdminComponent implements OnInit {
 
     }
 
-  ngOnInit() {
-    // Chat listeners
+  // init chat
 
-    // listen for queue being updated
-    this.socket.on('updateQueue', (length) => {
-      this.queueSize = length;
-      console.log('## ADMIN CHAT - heard that queue was updated to size = ', length);
-      console.log('## ADMIN CHAT - queueSize = ', this.queueSize);
-    });
-  }
-
-  handleAdminAccept(): void {
-    console.log('#1 ADMIN CHAT: admin chat button clicked');
-    this.chatInitiated = true;
+  getQueueSize(): void {
+    this.socket.emit('getQueueSize');
   }
 
   handleChatRequest(): void {
+    console.log('#1 ADMIN CHAT: admin chat button clicked');
+    this.chatInitiated = true;
+    this.haveUsername = false;
+    if (!this.socket.connected) {
+      this.socket.connect();
+    }
+    console.log('#1.1 ADMIN CHAT: Admin has clicked the chat button');
+  }
+
+  handleAdminAccept(): void {
     console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
     this.haveUsername = true;
-    // collect admin username
     this.adminName = $('#chat-username').val() || 'admin';
     this.socket.emit('adminAcceptChat', this.adminName);
     console.log('#3 ADMIN CHAT: firing off adminAcceptChat');
     this.roomAvailable = true;
   }
+
+  // handle chat
 
   handleSendMessage(): void {
     const message = $('#chat-input').val();
@@ -70,30 +71,37 @@ export class AdminComponent implements OnInit {
     $('#chat-input').val('');
   }
 
+  // end chat
+
   handleEndChat(): void {
     this.chatInitiated = false;
     console.log('##CHAT CLIENT: request to end chat button was clicked.');
-    // TODO: restore chat button functionality
-    // show how many people are waiting in the queue
-
-
-    // replace the initiate chat button, but remove everything else
-    // reset vars
     this.roomAvailable = false;
-
-    // terminate socket.io connection
-    // remove user from userQueue
     console.log('##CHAT CLIENT: sending disconnect event to server');
-    // TODO: may need to build endChat if needed
-    // this.socket.emit('endChat');
     this.username = '';
     this.userID = '';
     this.chatEnded = true;
-    
-    // TODO: restore chat button
-
+    this.haveUsername = false;
     this.socket.emit('ended');
     this.socket.disconnect();
+  }
+
+  ngOnInit() {
+    this.getQueueSize();
+
+    // Event Listeners
+
+    this.socket.on('updateQueue', (length) => {
+      this.queueSize = length;
+      console.log('## ADMIN CHAT - heard that queue was updated to size = ', length);
+      console.log('## ADMIN CHAT - queueSize = ', this.queueSize);
+    });
+
+    // end chat
+
+    this.socket.on('ended', () => {
+      this.socket.disconnect();
+    });
   }
 
 }
