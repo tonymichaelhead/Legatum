@@ -6,6 +6,7 @@ import { DashboardService } from '../dashboard.service';
 import { Observable } from 'rxjs/Observable';
 import { Contract } from '../models/contract/contract.interface';
 import { UserInfo } from '../models/user-info/user-info.interface';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-dashboard',

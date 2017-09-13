@@ -1,9 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../auth.service';
-import { RegisterComponent } from '../register/register.component'
+import { RegisterComponent } from '../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-home',
@@ -113,12 +112,12 @@ export class HomeComponent implements OnInit {
           'enable': true,
           'speed': 2,
           'direction': 'bottom-right',
-          'random': false,
+          'random': true,
           'straight': true,
           'out_mode': 'out',
-          'bounce': false,
+          'bounce': true,
           'attract': {
-            'enable': true,
+            'enable': false,
             'rotateX': 600,
             'rotateY': 1200
           }
