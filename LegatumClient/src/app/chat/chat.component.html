@@ -8,9 +8,9 @@
   </form>
 </div>
 
-<!-- <div *ngIf="!roomAvailable && haveUsername">
+<div *ngIf="!roomAvailable && haveUsername">
   <p id="chat-wait-msg">Thank you for your patience. We will be with you shortly.</p>
-</div> -->
+</div>
 
 <div *ngIf="roomAvailable">
   <ul id="chat-messages">Hello {{this.username | titlecase}}, please ask me a question.</ul>

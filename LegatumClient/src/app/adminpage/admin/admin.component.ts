@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdSidenavModule } from '@angular/material';
 import { DashboardService } from '../../dashboard.service';
+import { SocketIoModule, SocketIoConfig, Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-admin',
@@ -15,6 +16,10 @@ export class AdminComponent implements OnInit {
     private dashboardService: DashboardService ) { }
 
   ngOnInit() {
+  }
+
+  handleAdminAccept(): void {
+    console.log('#1 ADMIN CHAT: admin chat button clicked');
   }
 
 }

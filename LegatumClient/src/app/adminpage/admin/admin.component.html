@@ -12,8 +12,14 @@
 
     <div class="my-content">
         <button md-mini-fab color="primary" (click)="sidenav.open()" class="nav-fab">
-                <md-icon class="nav-icon">dehaze</md-icon>
-            </button>
+            <md-icon class="nav-icon">dehaze</md-icon>
+        </button>
         <router-outlet> </router-outlet>
     </div>
+    
 </md-sidenav-container>
+
+<div id="admin-chat">
+    <button id="admin-chat-btn" (click)="handleAdminAccept()">Chat</button>
+</div>
+
