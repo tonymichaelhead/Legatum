@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): any {
-    // this.authService.logout();
     return new Promise(() => {
       this.authService.logout();
     }).then(() => {
@@ -50,6 +49,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   // Previous getUserInfo that worked
   // getUserInfo(email: string): void {
   //   console.log('getUserInfo was fired');
@@ -78,6 +78,11 @@ export class DashboardComponent implements OnInit {
   getUserInfo(): void {
     this.dashboardService.getAndSetUserInfo();
     // this.name = this.dashboardService.userInfo.email;
+=======
+  // Instruct DashboardService to grab userInfo
+  getUserInfo(): void {
+    this.dashboardService.getAndSetUserInfo();
+>>>>>>> Refactored and cleaned up code in dashboard.service.t
   }
 
   // Subscribe to userInfo which is originally fetched from the dashboardService
@@ -91,8 +96,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     console.log('Dashboard is loaded!')
     console.log('Name is: :', this.name);
-    // Previous login flow
-    // this.getUserInfo(this.name);
 
     // Testing Login flow
     this.getUserInfo();
