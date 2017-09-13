@@ -1,10 +1,10 @@
 <md-sidenav-container class="example-container" *ngIf="dashboardService.userInfo.admin">
 
-    <md-sidenav mode="open" opened="true" #sidenav class="example-sidenav">
-        <button class="navlink" md-raised-button color="primary">Contracts</button>
+    <md-sidenav mode="open" opened="false" #sidenav class="example-sidenav">
+        <button class="navlink" md-raised-button color="primary" routerLink="/dashboard/admin/pending">Pending</button>
         <br>
         <br>
-        <button class="navlink" md-raised-button color="primary">Pending</button>
+        <button class="navlink" md-raised-button color="primary">Chat</button>
         <br>
         <br>
     </md-sidenav>
