@@ -51,6 +51,7 @@ export class AdminComponent implements OnInit {
     this.chatInitiated = true;
     this.haveUsername = false;
     if (!this.socket.connected) {
+      console.log('reconnecting socket!!!!!!!!!!');
       this.socket.connect();
     }
     console.log('#1.1 ADMIN CHAT: Admin has clicked the chat button');
@@ -96,6 +97,13 @@ export class AdminComponent implements OnInit {
 
     // Event Listeners
 
+    this.socket.on('firstInLine', (username, socketid) => {
+      this.username = username;
+      this.userID = socketid;
+      this.haveUsername = true;
+      console.log('ADMIN HEARD USERNAME AND SOCKET ID FROM SERVER ', this.username, this.userID);
+    });
+
     this.socket.on('updateQueue', (length) => {
       this.queueSize = length;
       console.log('## ADMIN CHAT - heard that queue was updated to size = ', length);
@@ -121,3 +129,14 @@ export class AdminComponent implements OnInit {
   }
 
 }
+
+// TODO: 
+//
+// write:
+//
+// getUserCredentials(username, socketid)
+// recordCredentials(username, socketid)
+// endChat(user) emitter
+// endChat(user) listener
+// getQueueSize()
+// updateQueueSize()

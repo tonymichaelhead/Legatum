@@ -42,6 +42,7 @@ export class ChatComponent implements OnInit {
 
   handleChat(): void {
     if (!this.socket.connected) {
+      console.log('reconnecting socket!!!!!!!!!!');
       this.socket.connect();
     }
     console.log('#1 Home Comp: User has clicked the chat button');
@@ -63,7 +64,7 @@ export class ChatComponent implements OnInit {
     this.username = $('#chat-username').val() || 'user';
     this.haveUsername = true;
     console.log('#2.1.3 - CHAT CLIENT: firing off message to server userInitiatedChat. username =  ', this.username);
-    this.socket.emit('userInitiateChat', this.username);
+    this.socket.emit('userInitiateChat', this.username, this.userID);
   }
 
   // handle message
@@ -149,3 +150,13 @@ export class ChatComponent implements OnInit {
   }
 }
 
+// TODO: 
+//
+// write:
+//
+// getAdminCredentials(username, socketid)
+// recordCredentials(username, socketid)
+// endChat(admin) emitter
+// endChat(admin) listener
+// getQueueSize()
+// updateQueueSize() ?

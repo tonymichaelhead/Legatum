@@ -25,7 +25,7 @@
                 </form>
               </div>
               
-              <div *ngIf="roomAvailable">
+              <div *ngIf="roomAvailable && haveUsername">
                 <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul>
                 <form method="">
                   <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>

@@ -196,11 +196,13 @@ io.on('connection', function(socket){
   });
 
   // listen for user to initiate chat
-  socket.on('userInitiateChat', function(username) {
+  socket.on('userInitiateChat', function(username, socketid) {
     console.log('#3 - CHAT SERVER: heard userInitiatedChat from client');
     // store username in users object
-    users.push([socket.id, username]);
+    // users.push([socket.id, username]);
+    users.push([socketid, username]);
     io.emit('updateQueue', users.length);
+    io.emit('firstInLine', username, socketid);
     console.log('#3.1.1 - CHAT SERVER: users.length = ', users.length);
     console.log('#3.1 - CHAT SERVER: current users = ', users);
     // fire off userWaiting event with username
