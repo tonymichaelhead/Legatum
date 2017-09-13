@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.config';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 
 import { CoreModule } from './component-modules/core/core.module';
 import { SharedModule } from './component-modules/shared/shared.module';
@@ -33,6 +34,8 @@ import { PendingContractIndividualComponent } from './adminpage/pending-contract
 import { ContractDetailsComponent } from './contract-details/contract-details.component';
 import { ChatComponent } from './chat/chat.component';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,7 @@ import { ChatComponent } from './chat/chat.component';
     DeployContractsComponent,
     PendingContractIndividualComponent,
     ContractDetailsComponent,
-    ChatComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -62,9 +65,10 @@ import { ChatComponent } from './chat/chat.component';
     SharedModule,
     CommonModule,
     ParticlesModule,
-    MnFullpageModule.forRoot()
+    MnFullpageModule.forRoot(),
+    SocketIoModule.forRoot(config)
   ],
-  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
+  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent, ChatComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
