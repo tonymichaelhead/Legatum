@@ -11,14 +11,22 @@ body {
     /* border: solid 1px red; */  
 }
 
-.main-content {
-    background-color: rgb(234, 233, 233);
-    opacity: .6;
-    z-index: 2;
+
+.landingpage {
+    background-color: rgb(249, 249, 249);
+    opacity: .2;
 }
 
-.about-section {
+.main-content {
+    opacity: .6;
+    z-index: 2;
+     background-color: rgb(71, 36, 79);
+}
+
+.legatum-intro {
     
+    opacity: .6;
+    z-index: 2;
 }
 
 .about-header {
@@ -26,9 +34,8 @@ body {
     text-align: center;
 }
 
-h2 {
+.homeintro {
     position: absolute;
-    top: 60%;
     /* left: 50%; */
     left: 0;
     right: 0;
@@ -42,16 +49,26 @@ h2 {
 }
 
 p {
-    color: #4B177F;
-    font-family: "Julius Sans One", sans-serif;
+    color: #FDFCFF;
+    
 }
 
 h3 {
     text-transform: uppercase;
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: "Julius Sans One", sans-serif;
     text-align: center;
-    color: #501E83;
+    color: #FCFCFC;
     
+}
+
+.homelogodiv{
+    text-align: center;
+    margin: 50px;
+}
+.homelogo{
+    height: 600px;
+    align-items: center;
+    opacity: 1;
 }
 
 .ethlogo{
@@ -60,13 +77,19 @@ h3 {
 }
 .ethlogodiv{
     text-align: center;
-    top: 0;
+    margin: 50px;
 }
 
-.main-pitch {
-    margin: auto;
-    width: 230px;
+.main-pitch  {
+    margin: 50px;
+    text-align: center;
 }
+
+.about-section p {
+    margin: 50px;
+    text-align: center;
+}
+
 .menu {
     width: 100%;
     display: inline-block;
@@ -163,7 +186,7 @@ ul li:hover ul li {
     border-radius: 10%;
     padding: 5;
     text-transform: uppercase;
-    font-family: 'Ubuntu Condensed', sans-serif; 
+    font-family: "Julius Sans One", sans-serif; 
     transition: all .6s ease-in-out;
     transform-style: preserve-3d;
 }
@@ -185,7 +208,7 @@ ul li:hover ul li {
     border-radius: 10%;
     padding: 5px;
     text-transform: uppercase;
-    font-family: 'Ubuntu Condensed', sans-serif; 
+    font-family: "Julius Sans One", sans-serif;
     backface-visibility: hidden;
 }
 

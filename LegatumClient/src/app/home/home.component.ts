@@ -75,14 +75,14 @@ export class HomeComponent implements OnInit, OnDestroy {
             'value': 50,
             'density': {
               'enable': true,
-              'value_area': 500
+              'value_area': 1000
             }
           },
           color: {
             'value': '#743ade'
           },
           shape: {
-            'type': 'triangle',
+            'type': 'circle',
             'stroke': {
               'width': 2,
               'color': '#ffb3ff'
@@ -107,10 +107,10 @@ export class HomeComponent implements OnInit, OnDestroy {
             }
           },
           size: {
-            'value': 4,
+            'value': 2,
             'random': true,
             'anim': {
-              'enable': true,
+              'enable': false,
               'speed': 40,
               'size_min': 0.1,
               'sync': false

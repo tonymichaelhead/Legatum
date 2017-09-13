@@ -1,15 +1,14 @@
-
+<particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
 <div mnFullpage>
   <div class="button-table fp-section fp-table">
     <div class="menu">
-        <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
       <h1>
         LEGATUM
       </h1>
       <ul class="nav">
         <!-- Load a conditional dashboard button -->
         <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
-<!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
+          <!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
           <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
             <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
               <li><a>Menu</a>
@@ -21,31 +20,27 @@
               </li>
       </ul>
     </div>
-    <div class="button-container fp-tableCell">
-      <div class="get-started" (click)="handleLogin()">
-        <div class="front">
-          Get Started
-        </div>
-        <div class="back">
-          Get Started
-        </div>
+    <div class="fp-tableCell landingpage">
+      <div class="homelogodiv">
+        <img class="homelogo" src="../../assets/legatumfinal.png">
       </div>
+      <h2 class="homeintro">Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
+      What is Legatum?
     </div>
-    <h2>Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
   </div>
+
   <div class="main-content fp-section fp-table">
     <div class="fp-tableCell">
       <div class="ethlogodiv">
         <img class="ethlogo" src="../../assets/ETHEREUM-ICON_Black.png">
       </div>
-      <h1 class="about-header">About</h1>
-      <h3>What is Legatum.io?</h3>
-      <div class="main-pitch" class="about-section">
+      <h3>What is Ethereum?</h3>
+      <div class="about-section">
         <p>
           Uploading, securing and stamping your most precious legal-documents to the Ethereum Network.
         </p>
       </div>
-      <p>
+      <p class="main-pitch">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend tempor tortor et ornare. Sed in facilisis purus,
         quis convallis lacus. Aenean eget purus eget est tincidunt dapibus. Duis pretium gravida blandit. Sed tincidunt sit
         amet libero in molestie. Cras vel ipsum elementum, vehicula elit et, vestibulum ante. Nam laoreet scelerisque ullamcorper.
@@ -57,4 +52,20 @@
       </p>
     </div>
   </div>
+
+  <div class="fp-section fp-table legatum-intro">
+    <div class="button-container fp-tableCell">
+      <div class="get-started" (click)="handleLogin()">
+        <div class="front">
+          Get Started
+        </div>
+        <div class="back">
+          Get Started
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>
