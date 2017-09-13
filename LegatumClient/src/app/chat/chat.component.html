@@ -4,7 +4,7 @@
 
 <div *ngIf="chatInitiated && !haveUsername">
   <form method="">
-    <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" /><button (click)="handleChatRequest()">Send</button>
+    <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button (click)="handleChatRequest()">Send</button>
   </form>
 </div>
 
@@ -15,7 +15,7 @@
 <div *ngIf="roomAvailable && haveAdminName">
   <ul id="chat-messages">Hi {{this.username | titlecase}}, my name is {{this.adminName | titlecase}}. How may I help you? </ul>
   <form method="">
-    <input type="text" id="chat-input" autocomplete="off" /><button (click)="handleSendMessage()">Send</button>
+    <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>
   </form>
   <button (click)="handleEndChat()">End Chat</button>
 </div>

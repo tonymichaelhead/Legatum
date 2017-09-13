@@ -20,6 +20,7 @@ export class ChatComponent implements OnInit {
   socket = io();
   userQueue: Array<any>;
   adminName: string;
+  adminID: string;
   username: string;
   userID: string;
 
@@ -32,6 +33,7 @@ export class ChatComponent implements OnInit {
     this.userWaiting = false;
     this.chatEnded = false;
     this.adminName = '';
+    this.adminID = '';
     this.username = '';
     this.userID = '';
   }
@@ -82,8 +84,9 @@ export class ChatComponent implements OnInit {
     this.username = '';
     this.userID = '';
     this.chatEnded = true;
-    this.socket.emit('ended');
-    this.socket.disconnect();
+    this.socket.emit('ended', this.adminName, this.adminID);
+    console.log('CLIENT SENT ENDED TO SOCKET ID = ', this.adminName, this.adminID);
+    // this.socket.disconnect();
   }
 
   ngOnInit() {
@@ -104,17 +107,19 @@ export class ChatComponent implements OnInit {
       console.log('#6.2 - CHAT CLIENT: adminUsername recvd = ', adminUsername);
       this.adminName = adminUsername;
       this.haveAdminName = true;
+
+      this.roomAvailable = true;
       
-      if (username === this.username && userID === this.userID) {
-        console.log('#6.2 - CHAT CLIENT: SUCCESS username matches this.username');
-        console.log('#6.2.1 - CHAT CLIENT: this.roomAvailable = ', this.roomAvailable);
-        console.log('#6.2.2 - CHAT CLIENT: this = ', this);
-        this.roomAvailable = true;
-      } else {
-        console.log('#6.3 - CHAT CLIENT: ERROR username does not match this.username');
-        console.log('#6.4 - CHAT CLIENT: username & this.username = ', username, this.username);
-        console.log('#6.5 - CHAT CLIENT: userID & this.userID = ', userID, this.userID);
-      }
+      // if (username === this.username && userID === this.userID) {
+      //   console.log('#6.2 - CHAT CLIENT: SUCCESS username matches this.username');
+      //   console.log('#6.2.1 - CHAT CLIENT: this.roomAvailable = ', this.roomAvailable);
+      //   console.log('#6.2.2 - CHAT CLIENT: this = ', this);
+      //   this.roomAvailable = true;
+      // } else {
+      //   console.log('#6.3 - CHAT CLIENT: ERROR username does not match this.username');
+      //   console.log('#6.4 - CHAT CLIENT: username & this.username = ', username, this.username);
+      //   console.log('#6.5 - CHAT CLIENT: userID & this.userID = ', userID, this.userID);
+      // }
     });
 
     // handle chat
@@ -123,12 +128,19 @@ export class ChatComponent implements OnInit {
       $('#chat-messages').append($('<li>').text(msg));
     });
 
+    this.socket.on('connectedWith', (user, id) => {
+      this.adminName = user;
+      this.adminID = id;
+      console.log('Heard USER connected with ADMIN  and id = ', this.adminName, this.adminID);
+    });
+
     // end chat
 
-    this.socket.on('ended', () => {
-      this.username = '';
-      this.userID = '';
-      this.chatEnded = true;
+    this.socket.on('ended', (socketid) => {
+      console.log('heard ended called on chat.component.ts');
+      // this.username = '';
+      // this.userID = '';
+      // this.chatEnded = true;
       console.log('##CHAT CLIENT: disconnected heard from server');
       console.log('*********************** username and socketid to be disconnected are ', this.username, this.userID);
       this.socket.disconnect();

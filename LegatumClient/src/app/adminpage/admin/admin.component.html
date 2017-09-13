@@ -21,14 +21,14 @@
 
         <div *ngIf="chatInitiated && !haveUsername">
                 <form method="">
-                  <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" /><button (click)="handleAdminAccept()">Send</button>
+                  <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button (click)="handleAdminAccept()">Send</button>
                 </form>
               </div>
               
               <div *ngIf="roomAvailable">
                 <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul>
                 <form method="">
-                  <input type="text" id="chat-input" autocomplete="off" /><button (click)="handleSendMessage()">Send</button>
+                  <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>
                 </form>
                 <button (click)="handleEndChat()">End Chat</button>
               </div>

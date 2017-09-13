@@ -209,7 +209,7 @@ io.on('connection', function(socket){
   });
 
   // listen for admin to accept chat
-  socket.on('adminAcceptChat', function(adminUsername) {
+  socket.on('adminAcceptChat', function(adminUsername, adminID) {
     console.log('### CHAT SERVER: users = ', users);
     let user = users.shift();
     console.log('### CHAT SERVER: user after shift() = ', user);
@@ -222,6 +222,7 @@ io.on('connection', function(socket){
     io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
     // dequeue user and reflect on admin page
     io.emit('updateQueue', users.length);
+    io.emit('connectedWith', adminUsername, adminID);
   });
   
   // listen for new chat messages
@@ -231,10 +232,16 @@ io.on('connection', function(socket){
   });
 
   // listen for disconnect
+  socket.on('ended', (username, socketid) => {
+    console.log('SERVER SENDING RESPONSE TO END TO EVERYONE');
+    io.to(socketid).emit('ended');
+    console.log('SERVER HEARD ENDED AND SENT TO SOCKET ID ', username, socketid);
+  });
+
   socket.on('disconnect', () => {
     console.log('## CHAT SERVER: heard user disconnect');
-    io.emit('ended');;
-    console.log();
+    // io.emit('ended');;
+    // console.log();
   });
 
 });

@@ -21,6 +21,7 @@ export class AdminComponent implements OnInit {
   username: string;
   userID: string;
   adminName: string;
+  adminID: string;
   queueSize: number;
 
   constructor(
@@ -34,6 +35,7 @@ export class AdminComponent implements OnInit {
       this.username = '';
       this.userID = '';
       this.adminName = '';
+      this.adminID = '';
       this.queueSize = 0;
 
     }
@@ -58,7 +60,8 @@ export class AdminComponent implements OnInit {
     console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
     this.haveUsername = true;
     this.adminName = $('#chat-username').val() || 'admin';
-    this.socket.emit('adminAcceptChat', this.adminName);
+    this.adminID = this.socket.id;
+    this.socket.emit('adminAcceptChat', this.adminName, this.adminID);
     console.log('#3 ADMIN CHAT: firing off adminAcceptChat');
     this.roomAvailable = true;
   }
@@ -82,8 +85,10 @@ export class AdminComponent implements OnInit {
     this.userID = '';
     this.chatEnded = true;
     this.haveUsername = false;
-    this.socket.emit('ended');
-    this.socket.disconnect();
+    this.socket.emit('ended', this.username, this.userID);
+    console.log('ADMIN SENT ENDED TO SOCKET ID = ', this.username);
+    // this.socket.to(this.userID).emit('ended');
+    // this.socket.disconnect();
   }
 
   ngOnInit() {
@@ -97,10 +102,21 @@ export class AdminComponent implements OnInit {
       console.log('## ADMIN CHAT - queueSize = ', this.queueSize);
     });
 
+    // TODO: listen for connected with and store in local variable
+    // when chat is ended, send reponse back to that user
+    this.socket.on('connectedWith', (user, id) => {
+      this.username = user;
+      this.userID = id;
+      console.log('Heard ADMIN connected with USER and id = ', this.username, this.userID);
+    });
+
     // end chat
 
     this.socket.on('ended', () => {
+      console.log('ADMIN COMPONENT DISCONNECTED');
+      this.chatEnded = true;
       this.socket.disconnect();
+      this.handleEndChat();
     });
   }
 
