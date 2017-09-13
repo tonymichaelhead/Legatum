@@ -4,6 +4,7 @@ import { AuthService } from '../auth.service';
 import { RegisterComponent } from '../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MnFullpageModule, MnFullpageService } from 'ngx-fullpage';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private login: LoginComponent,
     private register: RegisterComponent,
-    private fullPageService: MnFullpageService) {
-     }
+    private fullPageService: MnFullpageService,
+    private chat: ChatComponent) {}
 
   // Check to see if user is logged in and if so display logged in features
   checkIfLoggedIn() {
