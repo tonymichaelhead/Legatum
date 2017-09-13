@@ -46,6 +46,10 @@ export class AdminComponent implements OnInit {
     this.socket.emit('getQueueSize');
   }
 
+  getUserCredentials(): void {
+    this.socket.emit('getUserSocketid');
+  }
+
   handleChatRequest(): void {
     console.log('#1 ADMIN CHAT: admin chat button clicked');
     this.chatInitiated = true;
@@ -78,6 +82,7 @@ export class AdminComponent implements OnInit {
   // end chat
 
   handleEndChat(): void {
+    this.getUserCredentials();
     this.chatInitiated = false;
     console.log('##CHAT CLIENT: request to end chat button was clicked.');
     this.roomAvailable = false;
@@ -86,21 +91,25 @@ export class AdminComponent implements OnInit {
     this.userID = '';
     this.chatEnded = true;
     this.haveUsername = false;
-    this.socket.emit('ended', this.username, this.userID);
-    console.log('ADMIN SENT ENDED TO SOCKET ID = ', this.username);
-    // this.socket.to(this.userID).emit('ended');
-    // this.socket.disconnect();
+    this.socket.emit('ended', this.userID);
+    console.log('ADMIN SENT ENDED TO SOCKET ID = ', this.userID);
   }
 
   ngOnInit() {
     this.getQueueSize();
 
     // Event Listeners
+    this.socket.on('userSocketid', (socketid) => {
+      // this.userID = socketid;
+      this.socket.emit('ended', socketid);
+      this.getQueueSize();
+    });
 
     this.socket.on('firstInLine', (username, socketid) => {
       this.username = username;
       this.userID = socketid;
       this.haveUsername = true;
+      console.log('-------TRACE------- #3 user info on admin side', username, socketid);
       console.log('ADMIN HEARD USERNAME AND SOCKET ID FROM SERVER ', this.username, this.userID);
     });
 
@@ -121,7 +130,7 @@ export class AdminComponent implements OnInit {
     // end chat
 
     this.socket.on('ended', () => {
-      console.log('ADMIN COMPONENT DISCONNECTED');
+      console.log('ADMIN COMPONENT DISCONNECTED !!!!!!!!!!!!!!!!!!!!!!!!!');
       this.chatEnded = true;
       this.socket.disconnect();
       this.handleEndChat();
@@ -129,14 +138,3 @@ export class AdminComponent implements OnInit {
   }
 
 }
-
-// TODO: 
-//
-// write:
-//
-// getUserCredentials(username, socketid)
-// recordCredentials(username, socketid)
-// endChat(user) emitter
-// endChat(user) listener
-// getQueueSize()
-// updateQueueSize()

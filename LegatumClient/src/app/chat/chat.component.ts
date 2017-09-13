@@ -40,6 +40,10 @@ export class ChatComponent implements OnInit {
 
   // initiate chat
 
+  getAdminCredentials(): void {
+    this.socket.emit('getAdminSocketid');
+  }
+
   handleChat(): void {
     if (!this.socket.connected) {
       console.log('reconnecting socket!!!!!!!!!!');
@@ -65,6 +69,7 @@ export class ChatComponent implements OnInit {
     this.haveUsername = true;
     console.log('#2.1.3 - CHAT CLIENT: firing off message to server userInitiatedChat. username =  ', this.username);
     this.socket.emit('userInitiateChat', this.username, this.userID);
+    console.log('-------TRACE------- #1 user info on client side', this.username, this.userID);
   }
 
   // handle message
@@ -77,7 +82,13 @@ export class ChatComponent implements OnInit {
 
   // handle end chat
 
+  endChatWith(user): void {
+    this.socket.emit('endChatWithUser', user);
+  }
+
   handleEndChat(): void {
+    // this.getAdminCredentials();
+    this.endChatWith('admin');
     this.chatInitiated = false;
     console.log('##CHAT CLIENT: request to end chat button was clicked.');
     this.roomAvailable = false;
@@ -85,13 +96,17 @@ export class ChatComponent implements OnInit {
     this.username = '';
     this.userID = '';
     this.chatEnded = true;
-    this.socket.emit('ended', this.adminName, this.adminID);
+    this.socket.emit('ended', this.adminID);
     console.log('CLIENT SENT ENDED TO SOCKET ID = ', this.adminName, this.adminID);
     // this.socket.disconnect();
   }
 
   ngOnInit() {
     // Event listeners
+
+    this.socket.on('adminSocketid', (socketid) => {
+      this.socket.emit('ended', socketid);
+    });
 
     // initiate chat
 
@@ -109,18 +124,18 @@ export class ChatComponent implements OnInit {
       this.adminName = adminUsername;
       this.haveAdminName = true;
 
-      this.roomAvailable = true;
+      // this.roomAvailable = true;
       
-      // if (username === this.username && userID === this.userID) {
-      //   console.log('#6.2 - CHAT CLIENT: SUCCESS username matches this.username');
-      //   console.log('#6.2.1 - CHAT CLIENT: this.roomAvailable = ', this.roomAvailable);
-      //   console.log('#6.2.2 - CHAT CLIENT: this = ', this);
-      //   this.roomAvailable = true;
-      // } else {
-      //   console.log('#6.3 - CHAT CLIENT: ERROR username does not match this.username');
-      //   console.log('#6.4 - CHAT CLIENT: username & this.username = ', username, this.username);
-      //   console.log('#6.5 - CHAT CLIENT: userID & this.userID = ', userID, this.userID);
-      // }
+      if (username === this.username && userID === this.userID) {
+        console.log('#6.2 - CHAT CLIENT: SUCCESS username matches this.username');
+        console.log('#6.2.1 - CHAT CLIENT: this.roomAvailable = ', this.roomAvailable);
+        console.log('#6.2.2 - CHAT CLIENT: this = ', this);
+        this.roomAvailable = true;
+      } else {
+        console.log('#6.3 - CHAT CLIENT: ERROR username does not match this.username');
+        console.log('#6.4 - CHAT CLIENT: username & this.username = ', username, this.username);
+        console.log('#6.5 - CHAT CLIENT: userID & this.userID = ', userID, this.userID);
+      }
     });
 
     // handle chat
@@ -137,11 +152,8 @@ export class ChatComponent implements OnInit {
 
     // end chat
 
-    this.socket.on('ended', (socketid) => {
+    this.socket.on('ended', () => {
       console.log('heard ended called on chat.component.ts');
-      // this.username = '';
-      // this.userID = '';
-      // this.chatEnded = true;
       console.log('##CHAT CLIENT: disconnected heard from server');
       console.log('*********************** username and socketid to be disconnected are ', this.username, this.userID);
       this.socket.disconnect();
@@ -149,14 +161,3 @@ export class ChatComponent implements OnInit {
     });
   }
 }
-
-// TODO: 
-//
-// write:
-//
-// getAdminCredentials(username, socketid)
-// recordCredentials(username, socketid)
-// endChat(admin) emitter
-// endChat(admin) listener
-// getQueueSize()
-// updateQueueSize() ?
