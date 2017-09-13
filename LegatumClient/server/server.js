@@ -92,6 +92,7 @@ app.post('/updatecontract', function (req, res){
       contract.update({
         pending: false,
         will_hash: req.body.will_hash,
+        hash: req.body.hash,
         contract_addr: req.body.contract_addr
       })
     })

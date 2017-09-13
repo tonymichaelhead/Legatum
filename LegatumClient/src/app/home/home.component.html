@@ -1,62 +1,60 @@
-<div id="container">
-  <div id="glass">
-    <h1>
-      LEGATUM
-    </h1>
 
-    <ul class="nav">
-    <!-- <a href="#"><span id="nav-button">Home</span></a> -->
-    <!-- <li><a href="/home#about-section"><span id="nav-button">About</span></a> -->
-      
-      <!-- Load a conditional dashboard button -->
-      <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard" ><span id="nav-button">Dashboard</span></a>
-      <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
-      <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>  
-      <li><a>Menu</a>
-        <ul class="drop-menu">
-          <li><a>Blockchain</a></li>
-          <li><a>Our Team</a></li>
-          <li><a>Contact</a></li>
-        </ul>
-      </li>
-    </ul>
- 
-  
-    <div id="button-table">
-      <div id="button-container">
-      <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>   
-        <div id="get-started" (click)="handleLogin()">
-          <div id="front">
-            Get Started
-          </div>
-          <div id="back">
-            Get Started
-          </div>
+<div mnFullpage>
+  <div class="button-table fp-section fp-table">
+    <div class="menu">
+      <h1>
+        LEGATUM
+      </h1>
+      <ul class="nav">
+        <!-- Load a conditional dashboard button -->
+        <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
+<!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
+          <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
+            <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
+              <li><a>Menu</a>
+                <ul class="drop-menu">
+                  <li><a>Blockchain</a></li>
+                  <li><a>Our Team</a></li>
+                  <li><a>Contact</a></li>
+                </ul>
+              </li>
+      </ul>
+    </div>
+    <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+    <div class="button-container fp-tableCell">
+      <div class="get-started" (click)="handleLogin()">
+        <div class="front">
+          Get Started
+        </div>
+        <div class="back">
+          Get Started
         </div>
       </div>
-    </div> 
-    
-    <h2>Decentralized legal documents of the future</h2>
-
+    </div>
+    <h2>Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
   </div>
 
-  <div id="main-content">
-    <div id="about-section">
-      <div id="main-pitch">
-        <p> 
-          Use cutting-edge blockchain technology to
-          upload decentralized legal documents and 
-          intellectual property.
+
+  <div class="main-content fp-section fp-table">
+    <div class="about-section fp-tableCell">
+      <h1 class="about-header">About</h1>
+      <h3>What is Legatum.io?</h3>
+      <div class="main-pitch">
+        <p>
+          Uploading, securing and stamping your most precious legal-documents to the Ethereum Network.
         </p>
       </div>
-      <h3>About</h3>
-      <h3>What is Legatum.io?</h3>
       <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend tempor tortor et ornare. Sed in facilisis purus, quis convallis lacus. Aenean eget purus eget est tincidunt dapibus. Duis pretium gravida blandit. Sed tincidunt sit amet libero in molestie. Cras vel ipsum elementum, vehicula elit et, vestibulum ante. Nam laoreet scelerisque ullamcorper. Fusce vel dolor ut leo posuere luctus. Curabitur posuere odio id est malesuada aliquet.
-          <br>
-          <br>
-          Integer finibus est id lacus fermentum, at lobortis diam malesuada. Nam ac nisi nec felis tempus pharetra. Aliquam quis ante rhoncus, dignissim arcu at, tempus elit. Ut id convallis nibh. Vestibulum in magna ipsum. Phasellus eu turpis sed mi eleifend rhoncus. Nullam sagittis bibendum fringilla. Aenean vehicula nisl ac congue volutpat.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend tempor tortor et ornare. Sed in facilisis purus,
+        quis convallis lacus. Aenean eget purus eget est tincidunt dapibus. Duis pretium gravida blandit. Sed tincidunt sit
+        amet libero in molestie. Cras vel ipsum elementum, vehicula elit et, vestibulum ante. Nam laoreet scelerisque ullamcorper.
+        Fusce vel dolor ut leo posuere luctus. Curabitur posuere odio id est malesuada aliquet.
+        <br>
+        <br> Integer finibus est id lacus fermentum, at lobortis diam malesuada. Nam ac nisi nec felis tempus pharetra. Aliquam
+        quis ante rhoncus, dignissim arcu at, tempus elit. Ut id convallis nibh. Vestibulum in magna ipsum. Phasellus eu
+        turpis sed mi eleifend rhoncus. Nullam sagittis bibendum fringilla. Aenean vehicula nisl ac congue volutpat.
       </p>
-    </div> 
-  <div>
-</div>    
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

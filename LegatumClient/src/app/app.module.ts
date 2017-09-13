@@ -19,6 +19,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { CoreModule } from './component-modules/core/core.module';
 import { SharedModule } from './component-modules/shared/shared.module';
 import { ParticlesModule } from 'angular-particle';
+import { MnFullpageModule } from 'ngx-fullpage';
 
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
@@ -58,7 +59,8 @@ import { ContractDetailsComponent } from './contract-details/contract-details.co
     CoreModule,
     SharedModule,
     CommonModule,
-    ParticlesModule
+    ParticlesModule,
+    MnFullpageModule.forRoot()
   ],
   providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent],
   bootstrap: [AppComponent]

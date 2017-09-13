@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
 
-  //For storing URL for redirection after logging in
+  // For storing URL for redirection after logging in
   redirectUrl: string;
 
   checkIfLoggedIn() {
@@ -33,10 +33,10 @@ export class AuthService {
   login(email: string): void {
   console.log('AuthService was called');
     // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
-    
     this.isLoggedIn = true;
     this.email = email;
     this.router.navigateByUrl('dashboard/my-contracts');
+    // this.router.navigateByUrl('dashboard/' + this.email + '/my-contracts');
   }
 
   logout(): void {

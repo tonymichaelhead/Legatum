@@ -1,20 +1,28 @@
-#container {
-    display: flex;
-    flex-direction: column;
-}
-#glass {
+@import 'https://fonts.googleapis.com/css?family=Lato:700,400|Julius+Sans+One:400';
+
+body {
     width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.70);
-    /* border: solid 1px red; */
 }
 
-#main-content {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.70);
-    /* border: solid 1px green; */
+.glass {
+    /* width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.70); */
+    /* border: solid 1px red; */  
+}
+
+.main-content {
+    background-color: rgb(234, 233, 233);
+    opacity: .6;
+    z-index: 2;
+}
+
+.about-section {
     
+}
+
+.about-header {
+    color: #501E83;
 }
 
 h2 {
@@ -32,37 +40,37 @@ h2 {
     font-size: 30px;
 }
 
+p {
+    color: #4B177F;
+    font-family: "Julius Sans One", sans-serif;
+}
+
 h3 {
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif;
+    text-align: center;
+    color: #501E83;
+    
 }
 
-#main-pitch {
+.main-pitch {
     margin: auto;
     width: 230px;
 }
-
-/* .nav-container {
-    border: solid 1px red;
-    min-width: 500px;
-} */
-
+.menu {
+    width: 100%;
+    display: inline-block;
+    z-index: 10;
+}
 .nav {
-    position: relative;
-    float: right;
     /* border: solid 1px blue; */
     text-transform: uppercase;
     font-family: 'Ubuntu Condensed', sans-serif;
-}
-
-#menu-container {
-    
-    
+    right: 0
 }
 
 
-
-ul {
+ul[class="nav"] {
     position: absolute;
     z-index: 1;
     margin: 0px;
@@ -70,7 +78,7 @@ ul {
     list-style: none;
 }
 
-ul li {
+ul[class="nav"] li {
     float: left;
     width: 100px;
     height: 30px;
@@ -80,7 +88,7 @@ ul li {
     text-align: center;
 }
 
-ul li a {
+ul[class="nav"] li a {
     display: block;
     /* background-color: rgba(0, 0, 0, 0.41); */
 }
@@ -114,29 +122,28 @@ ul li:hover ul li {
 }
 
 
-
 #nav-button {
     color: white;
     margin: 10px;
+    margin-bottom: 30px;
 }
 
 #nav-button:hover {
     /* color: #FE28A8; */
     cursor: pointer; cursor: hand;
 }
-#button-table {
+.button-table {
     display: table;
-    position: absolute;
-    height: 100%; 
+    height: 50%; 
     width: 100%;
 }
-#button-container {
+.button-container {
     perspective: 700;
     display: table-cell;
     vertical-align: middle;
 }
 
-#get-started {
+.get-started {
     
     color: white;
     font-size: 20px;
@@ -151,12 +158,12 @@ ul li:hover ul li {
     transform-style: preserve-3d;
 }
 
-#get-started:hover {
+.get-started:hover {
     cursor: pointer; cursor: hand;
     transform: rotateX(180deg);
 }
 
-#front, #back {
+.front, .back {
     position: absolute;
     top: 0;
     left: 0;
@@ -172,13 +179,13 @@ ul li:hover ul li {
     backface-visibility: hidden;
 }
 
-#front:hover {
+.front:hover {
     color: #FE28A8;
     border-color: #FE28A8;
     background: rgba(0, 0, 0, 0.20);
 }
 
-#back {
+.back {
     color: #FE28A8;
     border-color: #FE28A8;
     background: rgba(0, 0, 0, 0.20);

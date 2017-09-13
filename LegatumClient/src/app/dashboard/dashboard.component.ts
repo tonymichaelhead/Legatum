@@ -6,6 +6,7 @@ import { DashboardService } from '../dashboard.service';
 import { Observable } from 'rxjs/Observable';
 import { Contract } from '../models/contract/contract.interface';
 import { UserInfo } from '../models/user-info/user-info.interface';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,7 @@ import { UserInfo } from '../models/user-info/user-info.interface';
   providers: [DashboardService]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   name: string = this.authService.email;
   sub: any;
   subscription: any;
@@ -31,7 +32,7 @@ export class DashboardComponent {
   };
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private dashboardService: DashboardService,
     private router: Router,
     private route: ActivatedRoute,
@@ -65,7 +66,7 @@ export class DashboardComponent {
   //       }
   //       console.log('updated user info: ', this.userInfo);
   //       //Update the dashboard service with user info so other components can access it
-        
+
   //       this.dashboardService.setUserInfo(this.userInfo);
   //       //Call setContractsInfo
   //       // this.dashboardService.getAndSetContracts();
@@ -75,12 +76,12 @@ export class DashboardComponent {
   // New getUserInfo() being tested
   getUserInfo(): void {
     this.dashboardService.getAndSetUserInfo();
-    //this.name = this.dashboardService.userInfo.email;
+    // this.name = this.dashboardService.userInfo.email;
   }
 
   // Subscribe to userInfo which is originally fetched from the dashboardService
   subscribeToUserInfo() {
-    this.subscription = this.dashboardService.userInfoChange$.subscribe( item => {
+    this.subscription = this.dashboardService.userInfoChange$.subscribe(item => {
       this.userInfo = item;
     });
     console.log('The new userInfo in DashboardComponent is: ', this.userInfo);
@@ -95,10 +96,8 @@ export class DashboardComponent {
     // Testing Login flow
     this.getUserInfo();
     // Tell DashboardService to fetch contracts
-  
+
     // Subscribe to userInfoObservable in DashboardService
     this.subscribeToUserInfo();
   }
-
-  
-}  
+}

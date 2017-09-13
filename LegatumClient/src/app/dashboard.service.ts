@@ -7,9 +7,7 @@ import 'rxjs/add/operator/share';
 import { Observer } from 'rxjs/Observer';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from './auth.service';
-import { 
-  Router,
-  ActivatedRouteSnapshot,
+import { Router, ActivatedRouteSnapshot,
   RouterStateSnapshot} from '@angular/router';
 
 @Injectable()

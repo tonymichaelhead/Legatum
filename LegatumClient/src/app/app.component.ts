@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { MnFullpageOptions } from 'ngx-fullpage';
+
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  @Output() public options: MnFullpageOptions = new MnFullpageOptions({
+    navigation: true,
+    keyboardScrolling: true
+  });
   loggedIn = false;
   title = 'Legatum';
 }
