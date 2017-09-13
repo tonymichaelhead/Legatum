@@ -15,6 +15,30 @@
             <md-icon class="nav-icon">dehaze</md-icon>
         </button>
         <router-outlet> </router-outlet>
+    <div id="admin-chat">
+        <button *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleAdminAccept()">Chat</button>
+
+        <div *ngIf="chatInitiated && !haveUsername">
+                <form method="">
+                  <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" /><button (click)="handleChatRequest()">Send</button>
+                </form>
+              </div>
+              
+              <div *ngIf="!roomAvailable && haveUsername">
+                <p id="chat-wait-msg">Thank you for your patience. We will be with you shortly.</p>
+              </div>
+              
+              <div *ngIf="roomAvailable">
+                <ul id="chat-messages">Hello {{this.username | titlecase}}, please ask me a question.</ul>
+                <form method="">
+                  <input type="text" id="chat-input" autocomplete="off" /><button (click)="handleSendMessage()">Send</button>
+                </form>
+                <button (click)="handleEndChat()">End Chat</button>
+              </div>
+              
+              <div *ngIf="chatEnded && !chatInitiated">
+                <p id="chatEnded">Thank you!</p>
+              </div>
     </div>
     
 </md-sidenav-container>

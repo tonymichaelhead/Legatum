@@ -11,15 +11,34 @@ import { SocketIoModule, SocketIoConfig, Socket } from 'ng-socket-io';
 })
 export class AdminComponent implements OnInit {
 
+  chatInitiated: boolean;
+  haveUsername: boolean;
+  roomAvailable: boolean;
+  socket = io();
+
   constructor(
     private router: Router,
-    private dashboardService: DashboardService ) { }
+    private dashboardService: DashboardService ) {
+      
+      this.chatInitiated = false;
+      this.haveUsername = false;
+      this.roomAvailable = false;
+
+    }
 
   ngOnInit() {
   }
 
   handleAdminAccept(): void {
     console.log('#1 ADMIN CHAT: admin chat button clicked');
+    this.chatInitiated = true;
+  }
+
+  handleChatRequest(): void {
+    console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
+    this.haveUsername = true;
+    this.socket.emit('adminAcceptChat', 'admin');
+    console.log('#3 ADMIN CHAT: firing off adminAcceptChat');
   }
 
 }
