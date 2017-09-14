@@ -1,0 +1,23 @@
+<div id="admin-chat">
+    <p>There are {{this.queueSize || 0}} people waiting to chat.</p>
+    <button *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleChatRequest()">Chat</button>
+
+    <div *ngIf="chatInitiated && !haveUsername">
+        <form method="">
+            <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button (click)="handleAdminAccept()">Send</button>
+        </form>
+    </div>
+    
+    <div *ngIf="roomAvailable && haveUsername">
+    <!-- <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul> -->
+        <ul id="chat-messages-admin">You are connected. Start chat.</ul>
+        <form method="">
+            <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>
+        </form>
+        <button (click)="handleEndChat()">End Chat</button>
+    </div>
+    
+    <div *ngIf="chatEnded && !chatInitiated">
+    <p id="chatEnded">Thank you!</p>
+    </div>
+</div>
