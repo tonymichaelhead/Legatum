@@ -225,3 +225,20 @@ ul li:hover ul li {
     transform: rotateX(180deg);
     left: 0;
 }
+
+/*
+  ====================================
+  Chat Feature
+  ====================================
+*/
+
+/* #chat-btn-user { */
+#menu {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+div.tap-target-wave::before {
+    display: none;
+}
