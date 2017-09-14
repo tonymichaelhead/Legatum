@@ -5,3 +5,9 @@
 #chat-messages li {
   padding: 5px 10px;
 }
+
+#chat-btn-user {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}

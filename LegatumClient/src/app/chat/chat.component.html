@@ -1,6 +1,7 @@
-<h3>Chat</h3>
+<!-- <h3>Chat</h3> -->
 
-<button *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button>
+<!-- <button *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button> -->
+<a class="waves-effect waves-light btn red" id="chat-btn-user" *ngIf="!chatInitiated" (click)="handleChat()" >Chat</a>
 
 <div *ngIf="chatInitiated && !haveUsername">
   <form method="">
