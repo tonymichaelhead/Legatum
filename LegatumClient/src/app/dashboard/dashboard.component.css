@@ -23,6 +23,7 @@
     background: linear-gradient(to right, #381159, #000000);
 }
 
+
 #main-content {
     position: absolute;
     top: 130px;
@@ -67,15 +68,36 @@
     color: #830083;
 }
 
+/* .nav-list {
+    top: 10;
+} */
+
+.nav-list,li {
+    margin-right: 33px;
+    margin-left: 33px;
+}
+
 .mid-nav-button {
     position: absolute;
+    top: 0px;
+    margin-right: 33px;
     color: white;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
 }
 
 .mid-nav-button:hover {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.active {
+    position: absolute;
+    top: -2px;
+    margin-right: 33px;
+    color: white;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    text-shadow: 2px 2px #450647;
 }
 
 #my-contracts-button {
@@ -84,6 +106,6 @@
 }
 
 #nav-create-contracts-button {
-    margin-left: 100px;
+    margin-left: 150px;
     margin-top: 7px;
 }

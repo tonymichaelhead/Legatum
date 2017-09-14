@@ -7,12 +7,22 @@
       </a>
   </div>
   <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
-  <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">SIGN OUT</div></a>
-  <h3 id="dash-greeting" class="center-align">Good evening, {{userInfo.username}}</h3>
+  <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
+  <h3 id="dash-greeting" class="center-align">Hello, {{userInfo.username}}</h3>
 </div>
 <div id="mid-nav">
-  <a href="#"><span class="mid-nav-button" id="my-contracts-button">My Contracts</span></a>
-  <a href="#"><span class="mid-nav-button" id="nav-create-contracts-button">Create Contract</span></a>
+  
+  <ul class="nav-list">
+    <li>
+      <a class="mid-nav-button" id="my-contracts-button" routerLink="/dashboard/my-contracts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+        true}">My Contracts</a>
+    </li>
+    <li>
+      <a class="mid-nav-button" id="nav-create-contracts-button" routerLink="/dashboard/create-contract" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+        true}">Create Contract</a>
+    </li>
+  </ul>
+  
 </div>
 <div id="main-content">
 <router-outlet></router-outlet>

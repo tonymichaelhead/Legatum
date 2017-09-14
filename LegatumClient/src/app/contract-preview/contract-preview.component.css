@@ -1,5 +1,7 @@
 #contract-preview {
-    margin: 10px;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
     padding: 5px;
     background-color: #fdfcff;
     box-shadow: 2px 2px 5px #888888;
@@ -9,7 +11,13 @@
 
 table { 
     margin: 10px;
-    width: 300px;
+    width: 100%;
+    margin: auto;
+}
+
+th {
+    text-align: center;
+    font-size: 10px;
 }
 
 td {
