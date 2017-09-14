@@ -22,7 +22,7 @@
             <div class="input-field col s12">
               <i class="mdi-action-account-circle prefix"></i>
               <i class="material-icons prefix">insert_drive_file</i>
-              <input id="nickname" type="text" [(ngModel)]="newContract.contract_nickname">
+              <input name="nickname" type="text" [(ngModel)]="newContract.contract_nickname">
               <label for="nickname">Please choose a nickname for your contract</label>
             </div>
           </div>
@@ -30,7 +30,7 @@
             <div class="input-field col s12">
               <i class="mdi-communication-email prefix"></i>
               <i class="material-icons prefix">face</i>
-              <input id="beneficiary" type="text" [(ngModel)]="newContract.beneficiary">
+              <input name="beneficiary" type="text" [(ngModel)]="newContract.beneficiary">
               <label for="beneficiary">Beneficiary</label>
             </div>
           </div>
@@ -38,7 +38,7 @@
             <div class="input-field col s12">
               <i class="mdi-action-question-answer prefix"></i>
               <i class="medium material-icons prefix">assignment</i>
-              <textarea id="willText" class="materialize-textarea" [(ngModel)]="newContract.will_text"></textarea>
+              <textarea name="willText" class="materialize-textarea" type="text" [(ngModel)]="newContract.will_text"></textarea>
               <label for="willText">Last Will and Testament Text</label>
             </div>
             <div class="row">
