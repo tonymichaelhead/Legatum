@@ -49,40 +49,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
-  // Previous getUserInfo that worked
-  // getUserInfo(email: string): void {
-  //   console.log('getUserInfo was fired');
-  //   this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
-  //     .subscribe((data: UserInfo) => {
-  //       console.log('userInfo GET: ', data);
-  //       this.userInfo = {
-  //         createdAt: data.createdAt,
-  //         email: data.email,
-  //         pub_key: data.pub_key,
-  //         ssn: data.ssn,
-  //         updatedAt: data.updatedAt,
-  //         user_id: data.user_id,
-  //         username: data.username
-  //       }
-  //       console.log('updated user info: ', this.userInfo);
-  //       //Update the dashboard service with user info so other components can access it
-
-  //       this.dashboardService.setUserInfo(this.userInfo);
-  //       //Call setContractsInfo
-  //       // this.dashboardService.getAndSetContracts();
-  //     });
-  //}
-
-  // New getUserInfo() being tested
-  getUserInfo(): void {
-    this.dashboardService.getAndSetUserInfo();
-    // this.name = this.dashboardService.userInfo.email;
-=======
   // Instruct DashboardService to grab userInfo
   getUserInfo(): void {
     this.dashboardService.getAndSetUserInfo();
->>>>>>> Refactored and cleaned up code in dashboard.service.t
   }
 
   // Subscribe to userInfo which is originally fetched from the dashboardService
