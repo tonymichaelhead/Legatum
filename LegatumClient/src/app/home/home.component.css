@@ -92,9 +92,7 @@ h3 {
     text-transform: uppercase;
 }
 
-#fp-nav ul li a span, .fp-slidesNav ul li a span {
-    background: #f177ed !important;
-}
+
 
 
 ul[class="nav"] {
@@ -151,7 +149,7 @@ ul li:hover ul li {
 
 #nav-button {
     color: white;
-    margin: 10px;
+    margin: 0px;
     margin-bottom: 30px;
 }
 
