@@ -1,12 +1,12 @@
 <div id="pic-box">
   <div id="account-icon">
       <a routerLink="/home">
-        <h1>Legatum</h1>
+        <h1 class="left-align">Legatum</h1>
       </a>
   </div>
   <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
   <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
-  <h2 id="dash-greeting">Good evening, {{userInfo.username}}</h2>
+  <h3 id="dash-greeting" class="center-align">Good evening, {{userInfo.username}}</h3>
 </div>
 <div id="mid-nav">
   <a href="#"><span class="mid-nav-button" id="my-contracts-button">My Contracts</span></a>

@@ -36,16 +36,18 @@
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <i class="mdi-action-question-answer prefix"></i>
               <i class="medium material-icons prefix">assignment</i>
-              <textarea name="willText" class="materialize-textarea" type="text" [(ngModel)]="newContract.will_text"></textarea>
+              <textarea id="textarea1" name="willText" class="materialize-textarea" type="text" [(ngModel)]="newContract.will_text"></textarea>
               <label for="willText">Last Will and Testament Text</label>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <button class="btn cyan waves-effect waves-light right" type="submit" name="action" (click)="handleClickOnReview()">Submit
+                <!-- <button routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Cancel</div></button> -->
+                <button class="btn red lighten-1 waves-effect waves-light right" name="action" routerLink="/dashboard" routerLinkActive="active">Cancel
+                    <i class="mdi-content-send left"></i><i class="medium material-icons left">block</i>
+                </button>
+                <button class="btn grey darken-3 waves-effect waves-light right" type="submit" name="action" (click)="handleClickOnReview()">Submit
                   <i class="mdi-content-send right"></i><i class="medium material-icons left">cloud</i>
-                  <a routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Cancel</div></a>
                 </button>
               </div>
             </div>

@@ -23,7 +23,7 @@ export class ContractFormComponent {
 
   newContract: any = {
     contract_nickname: '',
-    will_text: 'No text',
+    will_text: '',
     file_name: 'No file attached.',
     beneficiary: '',
     hash: 'rstrastaarst'
