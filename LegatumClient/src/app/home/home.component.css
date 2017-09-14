@@ -11,6 +11,12 @@ body {
     /* border: solid 1px red; */  
 }
 
+.page-footer {
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
 
 .landingpage {
     background-color: rgb(249, 249, 249);
@@ -19,14 +25,8 @@ body {
 
 .main-content {
     opacity: .6;
-    z-index: 2;
-     background-color: rgb(71, 36, 79);
-}
-
-.legatum-intro {
-    
-    opacity: .6;
-    z-index: 2;
+    z-index: auto;
+    background-color: rgb(71, 36, 79);
 }
 
 .about-header {
@@ -170,14 +170,9 @@ ul li:hover ul li {
     height: 50%; 
     width: 100%;
 }
-.button-container {
-    perspective: 700;
-    display: table-cell;
-    vertical-align: middle;
-}
+
 
 .get-started {
-    
     color: white;
     font-size: 20px;
     margin: auto;
@@ -197,7 +192,6 @@ ul li:hover ul li {
 }
 
 .front, .back {
-    position: absolute;
     top: 0;
     left: 0;
     color: white;
