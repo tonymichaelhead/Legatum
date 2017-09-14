@@ -1,20 +1,19 @@
 <div id="contract-preview">
-    <table>
-      <tr>
-        <th>Contract Nickname</th>
-        <th>Contract ID</th> 
-        <th>Date Submitted</th>
-      </tr>
-      <tr>
-        <td>{{pendingContract.contract_nickname}}</td>
-        <td>{{pendingContract.contract_id}}</td>
-        <td>{{pendingContract.createdAt}}</td>
-      </tr>
-    </table>
-    <a [routerLink]="['/dashboard/admin/deploy', pendingContract.contract_id]" routerLinkActive="active">
-      <div id="create-button" (click)="handleCreateFormClick()">
-    Create contract
-      </div>
-    </a>
-    <a class="link" id="etherscan-link" href="#">View on Etherscan</a>
+  <table class="responsive-table">
+    <tr>
+      <th>Contract Nickname</th>
+      <th>Contract ID</th>
+      <th>Date Submitted</th>
+    </tr>
+    <tr>
+      <td>{{pendingContract.contract_nickname}}</td>
+      <td>{{pendingContract.contract_id}}</td>
+      <td>{{pendingContract.createdAt}}</td>
+    </tr>
+  </table>
+  <a [routerLink]="['/dashboard/admin/deploy', pendingContract.contract_id]" routerLinkActive="active">
+    <div id="create-button" (click)="handleCreateFormClick()">
+      Deploy Contract
+    </div>
+  </a>
 </div>
