@@ -2506,3 +2506,66 @@ footer.page-footer {
     font-size: 0.8rem;
   }
 }
+
+.btn {
+  margin: 10px;
+}
+
+  /* label color */
+  .input-field label {
+    color: #000000;
+  }
+  /* label focus color */
+  .input-field input[type=text]:focus + label {
+    color: #000;
+  }
+  /* label underline focus color */
+  .input-field input[type=text]:focus {
+    border-bottom: 1px solid #8000FF;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* valid color */
+  .input-field input[type=text].valid {
+    border-bottom: 1px solid #8000FF;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* invalid color */
+  .input-field input[type=text].invalid {
+    border-bottom: 1px solid #8000FF;
+    box-shadow: 0 1px 0 0 #000;
+  }
+  /* icon prefix focus color */
+  .input-field .prefix.active {
+    color: #8000FF;
+  }
+  #textarea1 input[type=text]:focus + label {
+    color: #8000FF;
+    border-bottom: 1px solid #8000FF;
+    box-shadow: 0 1px 0 0 #000;
+  }
+
+  #contract1[_ngcontent-c2] {
+    width: 1500px;
+    margin: auto;
+    /* margin-right: auto; */
+    /* border-radius: 30px; */
+}
+  .btn[_ngcontent-c2] {
+    margin: 10px;
+    border-radius: 10px;
+}
+.card-panel {
+  transition: box-shadow .25s;
+  padding: 24px;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.row .col.l6 {
+  width: 100%;
+  margin-left: auto;
+  left: auto;
+  right: auto;
+  padding: 24px;
+  border-radius: 30px;
+}
