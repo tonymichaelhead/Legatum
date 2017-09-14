@@ -38,8 +38,13 @@ export class ChatComponent implements OnInit {
     this.userID = '';
   }
 
-  // initiate chat
+  // materialize
+  openChat(): void {
+    $('.tap-target').tapTarget('open');
+    // $('.tap-target').tapTarget('close');
+  }
 
+  // initiate chat
   getAdminCredentials(): void {
     this.socket.emit('getAdminSocketid');
   }
