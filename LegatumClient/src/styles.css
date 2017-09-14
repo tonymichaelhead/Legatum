@@ -1,6 +1,6 @@
 @import "~fullpage.js/dist/jquery.fullpage.css";
 @import 'https://fonts.googleapis.com/css?family=Lato:700,400|Julius+Sans+One:400';
-
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
 
 html {
     height: 100%;
@@ -34,6 +34,10 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+p {
+    font-family: 'Crimson Text', serif;
 }
 
 /*

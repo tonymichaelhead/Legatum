@@ -82,7 +82,8 @@ h3 {
     margin: 50px;
 }
 .homelogo{
-    height: 600px;
+    width: 35vw;
+    height: 50vh;
     align-items: center;
     opacity: 1;
 }
@@ -93,7 +94,6 @@ h3 {
 }
 .ethlogodiv{
     text-align: center;
-    margin: 50px;
 }
 
 .main-pitch  {

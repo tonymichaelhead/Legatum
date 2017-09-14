@@ -1,11 +1,13 @@
+
 <div id="pic-box">
+  <particles></particles>
   <div id="account-icon">
       <a routerLink="/home">
         <h1 class="left-align">Legatum</h1>
       </a>
   </div>
   <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
-  <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
+  <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">SIGN OUT</div></a>
   <h3 id="dash-greeting" class="center-align">Good evening, {{userInfo.username}}</h3>
 </div>
 <div id="mid-nav">
