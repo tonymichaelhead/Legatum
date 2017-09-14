@@ -29,7 +29,7 @@
         
         <div *ngIf="roomAvailable && haveUsername">
         <!-- <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul> -->
-            <ul id="chat-messages">You are connected. Start chat.</ul>
+            <ul id="chat-messages-admin">You are connected. Start chat.</ul>
             <form method="">
                 <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>
             </form>

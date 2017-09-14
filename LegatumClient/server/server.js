@@ -192,7 +192,6 @@ let adminUserid = '';
 
   // listen for connection
 io.on('connection', function(socket){
-  console.log('a user connected', socket.id);
 
   // listen for queue to update
   socket.on('getQueueSize', () => {
@@ -202,7 +201,6 @@ io.on('connection', function(socket){
   // listen for request for user socket id
   socket.on('getUserSocketid', () => {
     io.emit('userSocketid', userid);
-    console.log('******** TRACE ********* userSocketid sent to admin = ', userid);
   });
   
   socket.on('getUsername', () => {
@@ -212,49 +210,34 @@ io.on('connection', function(socket){
   // listen for request for admin socket id
   socket.on('getAdminSocketid', () => {
     io.emit('adminSocketid', adminUserid);
-    console.log('******** TRACE ********* adminSocketid sent to user = ', adminUserid);
   });
 
   // listen for user to initiate chat
   socket.on('userInitiateChat', function(username, socketid) {
-    console.log('#3 - CHAT SERVER: heard userInitiatedChat from client');
-    // store username in users object
-    // users.push([socket.id, username]);
     users.push([socketid, username]);
     io.emit('updateQueue', users.length);
     io.emit('firstInLine', username, socketid);
-    console.log('-------TRACE------- #2 user info on server side', username, socketid);
-    console.log('#3.1.1 - CHAT SERVER: users.length = ', users.length);
-    console.log('#3.1 - CHAT SERVER: current users = ', users);
-    // fire off userWaiting event with username
-    console.log('#3.2 - CHAT SERVER: firing off waitingForAdmin event to client, username = ', username);
     io.emit('waitingForAdmin', username);
   });
 
   // listen for admin to accept chat
   socket.on('adminAcceptChat', function(adminName, adminID) {
+    console.log('adminID SERVER SIDE = ', adminID);
     adminUsername = adminName;
-    adminUserID = adminID;
+    adminUserid = adminID;
 
-    console.log('### CHAT SERVER: users = ', users);
     let user = users.shift();
-    console.log('****** TRACE ****** user = ', user);
     username = user[1];
     userid = user[0];
-    console.log('#5 - CHAT SERVER: admin has accepted invite to chat');
-    console.log('#5.1 - CHAT SERVER: firing off startChatWithUserAndAdmin');
-    console.log('#5.2 - CHAT SERVER: username and userid = ', username, userid);
-    console.log('#5.3 - CHAT SERVER: adminUsername = ', adminUsername);
     io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
-    // dequeue user and reflect on admin page
     io.emit('updateQueue', users.length);
     io.emit('connectedWith', adminUsername, adminID);
   });
   
   // listen for new chat messages
   socket.on('chatMessage', (msg, sender) => {
-    io.emit('chatMessages', msg, sender);
-    console.log('server sent message', msg);
+    io.to(userid).emit('chatMessages', msg, sender);
+    io.to(adminUserid).emit('chatMessagesAdmin', msg, sender);
   });
 
   socket.on('endChatWithUser', (user) => {
@@ -265,14 +248,8 @@ io.on('connection', function(socket){
 
   // listen for disconnect
   socket.on('ended', (socketid) => {
-    console.log('SERVER HEARD ended from socketid = ', socketid);
     io.to(socketid).emit('ended');
   });
-
-  socket.on('disconnect', () => {
-    console.log('## CHAT SERVER: heard user disconnect');
-  });
-
 });
 
 server.listen(port, () => console.log(`We have lift off! Cruising at an altitude of: ${port} feet`));

@@ -41,7 +41,6 @@ export class AdminComponent implements OnInit {
     }
 
   // init chat
-
   getQueueSize(): void {
     this.socket.emit('getQueueSize');
   }
@@ -52,49 +51,40 @@ export class AdminComponent implements OnInit {
   }
 
   handleChatRequest(): void {
-    console.log('#1 ADMIN CHAT: admin chat button clicked');
     this.chatInitiated = true;
     this.haveUsername = false;
     if (!this.socket.connected) {
-      console.log('reconnecting socket!!!!!!!!!!');
       this.socket.connect();
     }
-    console.log('#1.1 ADMIN CHAT: Admin has clicked the chat button');
   }
 
   handleAdminAccept(): void {
-    console.log('^^^^^^^^^^^^^^ ADMIN SIDE: this.username = ', this.username);
-    console.log('#2 ADMIN CHAT: handleChatRequest button clicked');
     this.haveUsername = true;
     this.adminName = $('#chat-username').val() || 'admin';
     this.adminID = this.socket.id;
+    console.log('admin id is ', this.adminID);
     this.socket.emit('adminAcceptChat', this.adminName, this.adminID);
-    console.log('#3 ADMIN CHAT: firing off adminAcceptChat');
     this.roomAvailable = true;
   }
 
   // handle chat
-
   handleSendMessage(): void {
     const message = $('#chat-input').val();
     this.socket.emit('chatMessage', message, this.adminName);
     $('#chat-input').val('');
+    console.log('ADMIN sending message of', message);
   }
 
   // end chat
-
   handleEndChat(): void {
     this.getUserCredentials();
     this.chatInitiated = false;
-    console.log('##CHAT CLIENT: request to end chat button was clicked.');
     this.roomAvailable = false;
-    console.log('##CHAT CLIENT: sending disconnect event to server');
     this.username = '';
     this.userID = '';
     this.chatEnded = true;
     this.haveUsername = false;
     this.socket.emit('ended', this.userID);
-    console.log('ADMIN SENT ENDED TO SOCKET ID = ', this.userID);
   }
 
   ngOnInit() {
@@ -105,8 +95,12 @@ export class AdminComponent implements OnInit {
       this.username = username;
     });
 
+    this.socket.on('chatMessagesAdmin', (msg, sender) => {
+      $('#chat-messages-admin').append($('<li>').text(msg + ' ~ ' + sender));
+      console.log('Admin recvd msg ' + msg + ' from sender ' + sender);
+    });
+
     this.socket.on('userSocketid', (socketid) => {
-      // this.userID = socketid;
       this.socket.emit('ended', socketid);
       this.getQueueSize();
     });
@@ -115,28 +109,19 @@ export class AdminComponent implements OnInit {
       this.username = username;
       this.userID = socketid;
       this.haveUsername = true;
-      console.log('-------TRACE------- #3 user info on admin side', username, socketid);
-      console.log('ADMIN HEARD USERNAME AND SOCKET ID FROM SERVER ', this.username, this.userID);
     });
 
     this.socket.on('updateQueue', (length) => {
       this.queueSize = length;
-      console.log('## ADMIN CHAT - heard that queue was updated to size = ', length);
-      console.log('## ADMIN CHAT - queueSize = ', this.queueSize);
     });
 
-    // TODO: listen for connected with and store in local variable
-    // when chat is ended, send reponse back to that user
     this.socket.on('connectedWith', (user, id) => {
       this.username = user;
       this.userID = id;
-      console.log('Heard ADMIN connected with USER and id = ', this.username, this.userID);
     });
 
     // end chat
-
     this.socket.on('ended', () => {
-      console.log('ADMIN COMPONENT DISCONNECTED !!!!!!!!!!!!!!!!!!!!!!!!!');
       this.chatEnded = true;
       this.socket.disconnect();
       this.handleEndChat();
