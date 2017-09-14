@@ -35,6 +35,7 @@
     "express-history-api-fallback": "^2.2.1",
     "hammerjs": "^2.0.8",
     "jquery": "^3.2.1",
+    "materialize-css": "^0.100.2",
     "mysql2": "^1.4.2",
     "ngx-fullpage": "^4.0.6",
     "ng-socket-io": "^0.1.11",
