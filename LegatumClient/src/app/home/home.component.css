@@ -13,7 +13,28 @@ body {
     background-color: #390C65;
     opacity: .6;
 }
+.footer-logo-one {
+    padding-right: 14px;
+}
 
+.footer-logo-two {
+    margin-left: -3%;
+    padding-right: 2%;
+    vertical-align: -10px;
+}
+
+.powered-by-li {
+    padding-bottom: 3%;
+}
+
+.contact-section {
+    margin-left: 54%;
+}
+
+.email-icon {
+    padding-right: 1%;
+    vertical-align: -25%;
+}
 
 .section-one {
     /* background-color: rgb(249, 249, 249); */
@@ -157,7 +178,6 @@ ul li:hover ul li {
     /* color: #FE28A8; */
     cursor: pointer; cursor: hand;
 }
-
 
 .get-started {
     color: white;
