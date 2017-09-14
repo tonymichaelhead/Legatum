@@ -1,40 +1,40 @@
 <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
-<div mnFullpage>
-  <div class="button-table fp-section fp-table">
+<div [mnFullpage]="options" [mnFullpageNavigation]="true">
+  <div class="fp-section fp-table">
+    <h1>
+      LEGATUM
+    </h1>
     <div class="menu">
-      <h1>
-        LEGATUM
-      </h1>
-      <ul class="nav">
-        <!-- Load a conditional dashboard button -->
-        <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
-          <!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
-          <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
-            <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
-              <li><a>Menu</a>
-                <ul class="drop-menu">
-                  <li><a>Blockchain</a></li>
-                  <li><a>Our Team</a></li>
-                  <li><a>Contact</a></li>
-                </ul>
-              </li>
-      </ul>
+        <ul class="nav">
+
+          <!-- Load a conditional dashboard button -->
+          <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
+            <!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
+            <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
+              <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
+                <li><a>Menu</a>
+                  <ul class="drop-menu">
+                    <li><a a href="#section-two">Ethereum</a></li>
+                    <li><a a href="#">Our Team</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </li>
+        </ul>
     </div>
-    <div class="fp-tableCell landingpage">
+    <div class="fp-tableCell section-one">
       <div class="homelogodiv">
         <img class="homelogo" src="../../assets/legatumfinal.png">
       </div>
-      <h2 class="homeintro">Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
-      What is Legatum?
+      <h2 class="homeintro">Welcome to Legatum, a service with a mission to ensure your legacy doesn't fall into the wrong hands.</h2>
     </div>
   </div>
 
-  <div class="main-content fp-section fp-table">
-    <div class="fp-tableCell">
+  <div class="fp-section fp-table">
+    <div class="fp-tableCell section-two">
       <div class="ethlogodiv">
         <img class="ethlogo" src="../../assets/ETHEREUM-ICON_Black.png">
       </div>
-      <h3>What is Ethereum?</h3>
+      <h3>What Are Smart Contracts?</h3>
       <div class="about-section">
         <p>
           Uploading, securing and stamping your most precious legal-documents to the Ethereum Network.
@@ -50,16 +50,11 @@
         quis ante rhoncus, dignissim arcu at, tempus elit. Ut id convallis nibh. Vestibulum in magna ipsum. Phasellus eu
         turpis sed mi eleifend rhoncus. Nullam sagittis bibendum fringilla. Aenean vehicula nisl ac congue volutpat.
       </p>
-      <div>
-        <br>
-        <app-chat></app-chat>
-        <br>
-      </div>  
     </div>
   </div>
 
-  <div class="fp-section fp-table legatum-intro">
-    <div class="button-container fp-tableCell">
+  <div class="fp-section fp-table section-three">
+    <div class="fp-tableCell">
       <div class="get-started" (click)="handleLogin()">
         <div class="front">
           Get Started
@@ -68,18 +63,31 @@
           Get Started
         </div>
       </div>
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l6 s12">
+              <h5 class="white-text">NOTICE</h5>
+              <p class="grey-text text-lighten-4">Legatum is currently still in its Alpha phase, many updates and tweaks are expected to come!</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+              <h5 class="white-text">Powered By:</h5>
+              <ul>
+                <li><a class="grey-text text-lighten-3" href="https://ethereum.org/">Ethereum.org</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://metamask.io/">Metamask.io</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://aws.amazon.com/">Amazon Web Services</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://angular.io/">Angular 4</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">
+            © 2017 Legatum.io
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
-
-
-
 </div>
-<!-- </div>
-    </div>  -->
-  <div>
-
-  <br>
-  <app-chat></app-chat>
-  <br>
-
-    
