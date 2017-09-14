@@ -6,11 +6,16 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const db = require('../database/db');
 const fallback = require('express-history-api-fallback');
+const socketIO = require('socket.io');
+// const server = http.createServer(app);
 
 // Server Set-Up
 const port = process.env.PORT || '3000';
 app.set('port', port);
 const server = http.createServer(app);
+
+// Socket.io for chat
+const io = socketIO(server);
 
 // MiddleWare 
 app.use(bodyParser.json());
@@ -176,6 +181,75 @@ app.get('/findalluser', function (req, res){
   }).catch(function (err){
     return console.log(err)
   })
+});
+
+  // Chat functionality
+const users = [];
+let username = '';
+let userid = '';
+let adminUsername = '';
+let adminUserid = '';
+
+  // listen for connection
+io.on('connection', function(socket){
+
+  // listen for queue to update
+  socket.on('getQueueSize', () => {
+    io.emit('updateQueue', users.length);
+  });
+
+  // listen for request for user socket id
+  socket.on('getUserSocketid', () => {
+    io.emit('userSocketid', userid);
+  });
+  
+  socket.on('getUsername', () => {
+    io.emit('username', this.username);
+  });
+
+  // listen for request for admin socket id
+  socket.on('getAdminSocketid', () => {
+    io.emit('adminSocketid', adminUserid);
+  });
+
+  // listen for user to initiate chat
+  socket.on('userInitiateChat', function(username, socketid) {
+    users.push([socketid, username]);
+    io.emit('updateQueue', users.length);
+    io.emit('firstInLine', username, socketid);
+    io.emit('waitingForAdmin', username);
+  });
+
+  // listen for admin to accept chat
+  socket.on('adminAcceptChat', function(adminName, adminID) {
+    console.log('adminID SERVER SIDE = ', adminID);
+    adminUsername = adminName;
+    adminUserid = adminID;
+
+    let user = users.shift();
+    username = user[1];
+    userid = user[0];
+    io.emit('startChatWithUserAndAdmin', username, userid, adminUsername);
+    io.emit('updateQueue', users.length);
+    io.emit('connectedWith', adminUsername, adminID);
+  });
+  
+  // listen for new chat messages
+  socket.on('chatMessage', (msg, sender) => {
+    io.to(userid).emit('chatMessages', msg, sender);
+    io.to(adminUserid).emit('chatMessagesAdmin', msg, sender);
+  });
+
+  socket.on('endChatWithUser', (user) => {
+    if (user === 'admin') {
+      io.to(adminUserid).emit('ended');
+    }
+  });
+
+  // listen for disconnect
+  socket.on('ended', (socketid) => {
+    io.to(socketid).emit('ended');
+  });
 });
 
 server.listen(port, () => console.log(`We have lift off! Cruising at an altitude of: ${port} feet`));
