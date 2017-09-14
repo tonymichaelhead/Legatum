@@ -7,8 +7,8 @@ html, body, material-app, md-sidenav-container, .my-content {
 }
 .nav-fab {
   position: absolute;
-  left: 200px;
-  top: 10px;
+  left: 1%;
+  top: 2%;
 }
 
 .my-content {
@@ -19,11 +19,12 @@ html, body, material-app, md-sidenav-container, .my-content {
 }
 
 .example-sidenav {
-  padding: 20px;
-  width: 190px;
+  padding: 1.5%;
+  width: 13%;
+  background-color: #1e0b31
 }
 
 .navlink {
-  width: 150px;
+  width: 100%;
   text-align: center;
 }
