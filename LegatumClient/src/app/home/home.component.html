@@ -1,5 +1,5 @@
 <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
-<div mnFullpage>
+<div [mnFullpage]="options" [mnFullpageNavigation]="true">
   <div class="fp-section fp-table">
     <h1>
       LEGATUM
@@ -14,9 +14,9 @@
               <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
                 <li><a>Menu</a>
                   <ul class="drop-menu">
-                    <li><a>Blockchain</a></li>
-                    <li><a>Our Team</a></li>
-                    <li><a>Contact</a></li>
+                    <li><a a href="#section-two">Ethereum</a></li>
+                    <li><a a href="#">Our Team</a></li>
+                    <li><a href="#">Contact</a></li>
                   </ul>
                 </li>
         </ul>
@@ -25,7 +25,7 @@
       <div class="homelogodiv">
         <img class="homelogo" src="../../assets/legatumfinal.png">
       </div>
-      <h2 class="homeintro">Welcome to Legatum, let us help you ensure your legacy doesn't fall into the wrong hands.</h2>
+      <h2 class="homeintro">Welcome to Legatum, a service with a mission to ensure your legacy doesn't fall into the wrong hands.</h2>
     </div>
   </div>
 
@@ -34,7 +34,7 @@
       <div class="ethlogodiv">
         <img class="ethlogo" src="../../assets/ETHEREUM-ICON_Black.png">
       </div>
-      <h3>What is Ethereum?</h3>
+      <h3>What Are Smart Contracts?</h3>
       <div class="about-section">
         <p>
           Uploading, securing and stamping your most precious legal-documents to the Ethereum Network.
@@ -53,7 +53,7 @@
     </div>
   </div>
 
-  <div class="fp-section fp-table">
+  <div class="fp-section fp-table section-three">
     <div class="fp-tableCell">
       <div class="get-started" (click)="handleLogin()">
         <div class="front">
@@ -67,23 +67,23 @@
         <div class="container">
           <div class="row">
             <div class="col l6 s12">
-              <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <h5 class="white-text">NOTICE</h5>
+              <p class="grey-text text-lighten-4">Legatum is currently still in its Alpha phase, many updates and tweaks are expected to come!</p>
             </div>
             <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
+              <h5 class="white-text">Powered By:</h5>
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://ethereum.org/">Ethereum.org</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://metamask.io/">Metamask.io</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://aws.amazon.com/">Amazon Web Services</a></li>
+                <li><a class="grey-text text-lighten-3" href="https://angular.io/">Angular 4</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="footer-copyright">
           <div class="container">
-            © 2014 Copyright Text
+            © 2017 Legatum.io
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
           </div>
         </div>

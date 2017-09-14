@@ -92,6 +92,10 @@ h3 {
     text-transform: uppercase;
 }
 
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: #f177ed !important;
+}
+
 
 ul[class="nav"] {
     position: absolute;

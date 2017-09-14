@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, Output } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../auth.service';
 import { RegisterComponent } from '../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MnFullpageModule, MnFullpageService } from 'ngx-fullpage';
+import { MnFullpageOptions, MnFullpageService } from 'ngx-fullpage';
 import { ChatComponent } from '../chat/chat.component';
 
 @Component({
@@ -13,12 +13,21 @@ import { ChatComponent } from '../chat/chat.component';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
+
+
   isLoggedIn: boolean = false;
   urlParam: string;
   myStyle: object = {};
   myParams: object = {};
   width: number = 100;
   height: number = 100;
+
+  @Input() public options: MnFullpageOptions = new MnFullpageOptions({
+    controlArrows: true,
+    scrollingSpeed: 1000,
+    css3: true,
+    anchors: ['section-one', 'section-two', 'section-three']
+});
 
   constructor(
     private authService: AuthService,

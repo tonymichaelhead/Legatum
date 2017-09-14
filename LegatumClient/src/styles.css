@@ -23,6 +23,10 @@ body {
     /* text-align: center; */
 }
 
+#fp-nav ul li a span, .fp-slidesNav ul li a span {
+    background: #f177ed !important;
+}
+
 a {
     text-decoration: none;
     cursor: pointer; cursor: hand;
