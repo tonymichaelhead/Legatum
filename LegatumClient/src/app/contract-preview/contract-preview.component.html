@@ -1,14 +1,16 @@
 <div id="contract-preview">
     <table>
       <tr>
-        <th>Contract Nickname</th>
+        <th>Contract Name</th>
         <th>Contract ID</th> 
         <th>Date Created</th>
+        <th>Status</th>
       </tr>
       <tr>
         <td>{{contract.contract_nickname}}</td>
         <td>{{contract.contract_id}}</td>
         <td>{{contract.createdAt}}</td>
+        <td>{{contract.pending ? 'submitted and pending' : 'approved'}}</td>
       </tr>
     </table>
     <a [routerLink]="['/dashboard/contract-details', contract.contract_nickname]" routerLinkActive="active" class="link" id="details-link" >Contract details</a> |

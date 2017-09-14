@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterLinkActive } from '@angular/router';
 import { DashboardService } from '../dashboard.service';
 import { Observable } from 'rxjs/Observable';
 import { Contract } from '../models/contract/contract.interface';
@@ -41,7 +41,6 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): any {
-    // this.authService.logout();
     return new Promise(() => {
       this.authService.logout();
     }).then(() => {
@@ -50,34 +49,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // Previous getUserInfo that worked
-  // getUserInfo(email: string): void {
-  //   console.log('getUserInfo was fired');
-  //   this.http.get('/findemail', { params: new HttpParams().set('email', this.name)})
-  //     .subscribe((data: UserInfo) => {
-  //       console.log('userInfo GET: ', data);
-  //       this.userInfo = {
-  //         createdAt: data.createdAt,
-  //         email: data.email,
-  //         pub_key: data.pub_key,
-  //         ssn: data.ssn,
-  //         updatedAt: data.updatedAt,
-  //         user_id: data.user_id,
-  //         username: data.username
-  //       }
-  //       console.log('updated user info: ', this.userInfo);
-  //       //Update the dashboard service with user info so other components can access it
-
-  //       this.dashboardService.setUserInfo(this.userInfo);
-  //       //Call setContractsInfo
-  //       // this.dashboardService.getAndSetContracts();
-  //     });
-  //}
-
-  // New getUserInfo() being tested
+  // Instruct DashboardService to grab userInfo
   getUserInfo(): void {
     this.dashboardService.getAndSetUserInfo();
-    // this.name = this.dashboardService.userInfo.email;
   }
 
   // Subscribe to userInfo which is originally fetched from the dashboardService
@@ -91,8 +65,6 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     console.log('Dashboard is loaded!')
     console.log('Name is: :', this.name);
-    // Previous login flow
-    // this.getUserInfo(this.name);
 
     // Testing Login flow
     this.getUserInfo();
