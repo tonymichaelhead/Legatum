@@ -1,8 +1,6 @@
 @import "~fullpage.js/dist/jquery.fullpage.css";
-@font-face {
-    font-family: "Ancient Roman";
-    src: url(geek.ttf) format("truetype");
-}
+@import 'https://fonts.googleapis.com/css?family=Lato:700,400|Julius+Sans+One:400';
+
 
 html {
     height: 100%;
@@ -11,6 +9,7 @@ html {
 body {
     /* display: flex;
     flex-direction, */
+    font-family: "Julius Sans One", sans-serif;
     height: 100%;
     background-color: #10041C;
     /* background-image: url("background.jpg"); */
