@@ -4,7 +4,7 @@
   margin-top: 20%;
 }
 
-.contract-submit-admin[_ngcontent-c7] {
+.contract-submit-admin {
   background: white;
   margin: auto;
   border-radius: 15px;
@@ -15,11 +15,11 @@
   opacity: .7;
 }
 
-.buttons {
+.buttonz {
   margin:auto;
 }
 
-.create-button[_ngcontent-c7] {
+.create-button {
   background-color: aquamarine;
   margin-left: 17%;
   margin-bottom: 1%;

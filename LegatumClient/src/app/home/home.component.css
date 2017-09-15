@@ -262,7 +262,7 @@ div.tap-target-wave::before {
     text-align: center;
 }
 
-.card[_ngcontent-c1] {
+.card {
     margin: auto;
     width: 15%;
     opacity: 0.7;
@@ -295,7 +295,7 @@ div.tap-target-wave::before {
     width: 70%;
 }
 
-.link-text1[_ngcontent-c1][_ngcontent-c1] {
+.link-text1 {
     position: absolute;
     left: 20px;
     bottom: 4px;
@@ -305,7 +305,7 @@ div.tap-target-wave::before {
     text-align: center;
     margin: auto;
 }
-.link-text2[_ngcontent-c1][_ngcontent-c1] {
+.link-text2 {
     position: absolute;
     left: 55%;
     bottom: 4px;
