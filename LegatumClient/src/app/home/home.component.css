@@ -245,8 +245,14 @@ div.tap-target-wave::before {
     display: none;
 }
 
-#chat-input, #end-chat-btn {
+#chat-input {
     display: inline-block;
+    left: 0;
+}
+
+#end-chat-btn {
+    display: inline-block;
+    right: 0;
 }
 .whoweare {
     text-align: center;
