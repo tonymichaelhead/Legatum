@@ -115,6 +115,7 @@ export class ChatComponent implements OnInit {
     // handle chat
     this.socket.on('chatMessages', (msg, sender) => {
       $('#chat-messages').append($('<li>').text(msg + ' ~ ' + sender));
+      $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
     });
 
     this.socket.on('connectedWith', (user, id) => {

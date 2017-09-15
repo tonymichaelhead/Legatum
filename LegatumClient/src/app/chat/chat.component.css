@@ -14,11 +14,17 @@
 
 #chat-messages {
   list-style: none;
-  max-height: 100px;
+  max-height: 160px;
   margin: 0;
   overflow: auto;
   padding: 0;
   text-indent: 10px;
+  overflow-y: auto;
+  text-align: right;
+}
+
+#chat-messages::-webkit-scrollbar { 
+  display: none; 
 }
 
 #chat-popout {
