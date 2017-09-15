@@ -1,31 +1,54 @@
+<!-- <div id="mid-nav">
 
-<div id="pic-box">
-  <particles></particles>
-  <div id="account-icon">
-      <a routerLink="/home">
-        <h1 class="left-align">Legatum</h1>
-      </a>
-  </div>
-  <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
-  <a routerLink="/home" routerLinkActive="active" ><div id="dash-signout" (click)="logout()">Sign out</div></a>
-  <h3 id="dash-greeting" class="center-align">Hello, {{userInfo.username}}</h3>
-</div>
-<div id="mid-nav">
-  
   <ul class="nav-list">
     <li>
       <a class="mid-nav-button" id="my-contracts-button" routerLink="/dashboard/my-contracts" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-        true}">My Contracts</a>
+          true}">My Contracts</a>
     </li>
     <li>
-      <a class="mid-nav-button" id="nav-create-contracts-button" routerLink="/dashboard/create-contract" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
-        true}">Create Contract</a>
+      <a class="mid-nav-button" id="nav-create-contracts-button" routerLink="/dashboard/create-contract" [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{exact:
+            true}">Create Contract</a>
     </li>
   </ul>
-  
+
 </div>
+<div id="pic-box">
+  <particles></particles>
+  <div id="account-icon">
+    <a routerLink="/home">
+      <h1 class="left-align">Legatum</h1>
+    </a>
+  </div>
+  <a *ngIf="dashboardService.userInfo.admin" routerLink="/dashboard/admin/pending" routerLinkActive="active">Admin</a>
+  <a routerLink="/home" routerLinkActive="active">
+    <div id="dash-signout" (click)="logout()">Sign out</div>
+  </a>
+  <h3 id="dash-greeting" class="center-align">Hello, {{userInfo.username}}</h3>
+</div> -->
+
+
+
+
+<nav class="nav-extended">
+    <particles class="particles"></particles>
+  <div class="nav-wrapper">
+    <a routerLink="/home" class="brand-logo">LEGATUM</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="logout()">Sign Out</a></li>
+    </ul>
+  </div>
+  <div class="nav-content">
+    <ul class="tabs tabs-transparent">
+      <li class="tab"><a routerLink="/dashboard/my-contracts" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+          true}">My Contracts</a></li>
+      <li class="tab"><a routerLink="/dashboard/create-contract" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+              true}">Create Contract</a></li>
+    </ul>
+  </div>
+</nav>
 <div id="main-content">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   <!-- <app-my-contracts *ngIf="showMyContracts"(onCreateFormClick)="onCreateFormClick($event)"></app-my-contracts>
   <app-contract-form *ngIf="createFormWasClicked"></app-contract-form> -->
 </div>
