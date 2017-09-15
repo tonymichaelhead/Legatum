@@ -11,8 +11,18 @@
 .admin-chat-btn {
   display: inline-block;
   margin: 5px;
+  margin-top: 5px;
 }
 
 .chat-btn-secondary {
   background-color: #b8b8b8;;
+}
+
+input {
+  width: 25% !important;
+}
+
+.chat-input {
+  display: inline-block;
+  margin: 0 38% !important;
 }

@@ -84,6 +84,7 @@ export class ChatComponent implements OnInit {
 
   handleEndChat(): void {
     this.endChatWith('admin');
+    this.haveUsername = false;
     this.chatInitiated = false;
     this.roomAvailable = false;
     this.username = '';
@@ -115,6 +116,7 @@ export class ChatComponent implements OnInit {
     // handle chat
     this.socket.on('chatMessages', (msg, sender) => {
       $('#chat-messages').append($('<li>').text(msg + ' ~ ' + sender));
+      $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
     });
 
     this.socket.on('connectedWith', (user, id) => {
