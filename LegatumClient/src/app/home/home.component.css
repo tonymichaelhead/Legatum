@@ -63,6 +63,10 @@ body {
     text-align: center;
 }
 
+.team-header{
+    color: #B9B9B9;;
+}
+
 .homeintro {
     /* left: 50%; */
     left: 0;
@@ -303,7 +307,7 @@ div.tap-target-wave::before {
 }
 .link-text2[_ngcontent-c1][_ngcontent-c1] {
     position: absolute;
-    left: 81px;
+    left: 55%;
     bottom: 4px;
     color: #FFFFFF;
     font-weight: bold;
@@ -327,4 +331,11 @@ div.tap-target-wave::before {
 
 .card .card-action:last-child {
     border-radius: 0 0 50px 50px;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating){
+color: aquamarine !important;
+}
+.card-content {
+color: #FFFFFF;
 }

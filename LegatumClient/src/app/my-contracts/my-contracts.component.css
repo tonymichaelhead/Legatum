@@ -1,13 +1,11 @@
 .create-button {
     text-align: center;
-    margin-left: 10px;
+    margin-left: 45%;
     display: inline;
-    padding: 5px;
     border-radius: 5px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 350;
     font-size: 12px;
-    background: grey;
+    background: #6BDEB7;
     color: white;
 }
 
@@ -15,3 +13,7 @@
     border-color: #1D001D;
     color: #1C001C;
 }
+.my-contracts-header {
+    text-align: center;
+    color: aquamarine;
+  }
