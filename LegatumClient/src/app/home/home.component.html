@@ -4,27 +4,27 @@
       LEGATUM
     </h1>
     <div class="menu">
-        <ul class="nav">
+      <ul class="nav">
 
-          <!-- Load a conditional dashboard button -->
-          <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
-            <!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
-            <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
-              <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
-                <li><a>Menu</a>
-                  <ul class="drop-menu">
-                    <li><a a href="#section-two">Ethereum</a></li>
-                    <li><a a href="#">Our Team</a></li>
-                    <li><a a href="#section-three">Contact</a></li>
-                  </ul>
-                </li>
-        </ul>
+        <!-- Load a conditional dashboard button -->
+        <li><a *ngIf="this.isLoggedIn" routerLink="/dashboard"><span id="nav-button">Dashboard</span></a>
+          <!--     <li><a *ngIf="this.isLoggedIn" [routerLink]="['/dashboard', urlParam]"><span id="nav-button">Dashboard</span></a>       -->
+          <li><a *ngIf="!this.isLoggedIn" (click)="handleLogin()"><span id="nav-button">login</span></a>
+            <li><a *ngIf="!this.isLoggedIn" (click)="handleRegister()"><span id="nav-button">Signup</span></a>
+              <li><a>Menu</a>
+                <ul class="drop-menu">
+                  <li><a a href="#section-two">Ethereum</a></li>
+                  <li><a a href="#">Our Team</a></li>
+                  <li><a a href="#section-three">Contact</a></li>
+                </ul>
+              </li>
+      </ul>
     </div>
     <div class="fp-tableCell section-one">
       <div class="homelogodiv">
-        <img class="homelogo" src="../../assets/legatumfinal.png">
+        <img class="homelogo" src="../../assets/legatumwhite.png">
       </div>
-      <h2 class="homeintro">Welcome to Legatum, a service with a mission to ensure your legacy doesn't fall into the wrong hands.</h2>
+      <h2 class="homeintro">Welcome to Legatum, a revolutionary service with a mission to ensure your legacy stays clear of the wrong hands through the utilization of Ethereum Smart-Contracts.</h2>
     </div>
   </div>
 
@@ -72,7 +72,8 @@
             <div class="col l4 offset-l2 s12">
               <h5 class="white-text">Powered By:</h5>
               <ul>
-                <li class="powered-by-li"><img class="footer-logo-one" src="../../assets/rsz_ethereum-icon_black.png"><a class="grey-text text-lighten-3" href="https://ethereum.org/">Ethereum</a></li>
+                <li class="powered-by-li"><img class="footer-logo-one" src="../../assets/rsz_ethereum-icon_black.png"><a class="grey-text text-lighten-3"
+                    href="https://ethereum.org/">Ethereum</a></li>
                 <li class="powered-by-li"><img class="footer-logo-one" src="../../assets/metamask.png"><a class="grey-text text-lighten-3" href="https://metamask.io/">Metamask</a></li>
                 <li><img class="footer-logo-one" src="../../assets/rsz_angularicon.png"><a class="grey-text text-lighten-3" href="https://angular.io/">Angular 4</a></li>
                 <li><img class="footer-logo-two" src="../../assets/rsz_1aws.png"><a class="grey-text text-lighten-3" href="https://aws.amazon.com/">Amazon Web Services</a></li>

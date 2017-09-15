@@ -1,5 +1,16 @@
 @import 'https://fonts.googleapis.com/css?family=Lato:700,400|Julius+Sans+One:400';
+@import "~fullpage.js/dist/jquery.fullpage.css";
 
+html {
+    height: 100%;
+}
+
+h3 {
+    font-family: "Julius Sans One", sans-serif !important;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FCFCFC; 
+}
 body {
     width: 100%;
 }
@@ -64,28 +75,15 @@ body {
     font-size: 30px;
 }
 
-p {
-    color: #FDFCFF;
-    
-}
-
-h3 {
-    text-transform: uppercase;
-    font-family: "Julius Sans One", sans-serif;
-    text-align: center;
-    color: #FCFCFC;
-    
-}
 
 .homelogodiv{
     text-align: center;
-    margin: 50px;
 }
 .homelogo{
-    width: 35vw;
-    height: 50vh;
+    width: 30vw;
+    height: 54vh;
     align-items: center;
-    opacity: 1;
+    opacity: .8;
 }
 
 .ethlogo{
