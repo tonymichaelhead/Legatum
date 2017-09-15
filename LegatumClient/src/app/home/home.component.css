@@ -287,9 +287,25 @@ div.tap-target-wave::before {
     width: 70%;
 }
 
-.link-text {
+.link-text1[_ngcontent-c1][_ngcontent-c1] {
+    position: absolute;
+    left: 20px;
+    bottom: 4px;
     color: #FFFFFF;
     font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+.link-text2[_ngcontent-c1][_ngcontent-c1] {
+    position: absolute;
+    left: 81px;
+    bottom: 4px;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
 }
 
 .card-reveal-text {
@@ -302,4 +318,8 @@ div.tap-target-wave::before {
 
 .about-me-header {
     text-align: center;
+}
+
+.card .card-action:last-child {
+    border-radius: 0 0 50px 50px;
 }
