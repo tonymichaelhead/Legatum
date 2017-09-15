@@ -225,3 +225,57 @@ ul li:hover ul li {
     transform: rotateX(180deg);
     left: 0;
 }
+
+.whoweare {
+    text-align: center;
+}
+
+.card[_ngcontent-c1] {
+    margin: auto;
+    width: 15%;
+    opacity: 0.7;
+    border-radius: 20px;
+    border-width: thick;
+    background-color: #5d4674;
+}
+
+.card-content {
+    text-align: center;
+    color: #000000;
+}
+
+.card-title {
+    color: #000000 !important;
+}
+
+.header-name {
+    margin: auto;
+    text-align: center;
+    color: #FFFFFF;
+    padding: auto;
+}
+
+.card .card-image img {
+    display: block;
+    border-radius: 15px;
+    position: relative;
+    margin: auto;
+    width: 70%;
+}
+
+.link-text {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.card-reveal-text {
+    color: black;
+}
+
+.profile-grid {
+    display: flex;
+}
+
+.about-me-header {
+    text-align: center;
+}
