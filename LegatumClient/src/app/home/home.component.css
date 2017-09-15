@@ -242,3 +242,11 @@ ul li:hover ul li {
 div.tap-target-wave::before {
     display: none;
 }
+
+#hide {
+    display: none;
+}
+
+#chat-input, #end-chat-btn {
+    display: inline-block;
+}

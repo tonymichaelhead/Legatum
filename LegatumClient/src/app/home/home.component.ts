@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   // materialize
   openChat(event): void {
     // event.preventDefault();
-    // $('.tap-target').tapTarget('open');
+    $('.tap-target').tapTarget('open');
     console.log('click event = ', event);
     // $('.tap-target').tapTarget('close');
   }
