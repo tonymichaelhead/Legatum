@@ -12,21 +12,16 @@
     <button>Add another beneficiary</button>
   </form>
   </div>
-  <a><div id="submit-button" (click)="handleClickOnReview()">Review Details</div></a>
-  <a routerLink="/dashboard" routerLinkActive="active"><div id="cancel-button">Cancel</div></a>
+ 
+  
   
    <br>
    <br> 
-    <div>
-      <button (click)=this.deployWill()>Test Contract </button>
-    </div>
-    
-    <div>
-      <button (click)=this.setWillData()>Set Will Data</button>
-    </div>
-    
-    <div>
-      <button (click)=this.getWillText()> Get Will Text </button>
-    </div>
+        <button md-raised-button class="create-button" (click)=this.deployWill()>Deploy Contract</button> 
+
+        <button md-raised-button class="create-button" (click)=this.setWillData()>Set Will Data</button>  
+
+        <button md-raised-button class="create-button" (click)=this.getWillText()>Get Will Text</button>
+
     
     
