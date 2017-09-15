@@ -46,10 +46,12 @@ export class AdminChatComponent implements OnInit {
   }
 
   handleChatRequest(): void {
-    this.chatInitiated = true;
-    this.haveUsername = false;
-    if (!this.socket.connected) {
-      this.socket.connect();
+    if (this.queueSize > 0) {
+      this.chatInitiated = true;
+      this.haveUsername = false;
+      if (!this.socket.connected) {
+        this.socket.connect();
+      }
     }
   }
 

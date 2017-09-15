@@ -4,14 +4,19 @@
 
 <div class="tap-target" id="chat-popout" data-activates="menu">
     <div class="tap-target-content">
-      <h5>Chat</h5>
+      <h5 id="user-chat-title">Chat</h5>
 
-      <button class="btn" *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button>
+      <div class="chat-btn-wrapper">
+        <button class="btn chat-btn" *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button>
+      </div>
       <!-- <a class="waves-effect waves-light btn red" id="chat-btn-user" *ngIf="!chatInitiated"  (click)="openChat()">Chat</a> -->
       
       <div *ngIf="chatInitiated && !haveUsername">
         <form method="">
-          <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button class="btn"(click)="handleChatRequest()">Send</button>
+          <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/>
+          <div class="chat-btn-wrapper">
+            <button class="btn chat-btn"(click)="handleChatRequest()">Send</button>
+          </div>
         </form>
       </div>
       
@@ -24,8 +29,11 @@
         <ul id="chat-messages">Hi {{this.username | titlecase}}, my name is {{this.adminName | titlecase}}. How may I help you? </ul>
 
             <form method="">
-              <input type="text" id="chat-input" autocomplete="off" autofocus/><button class="btn" (click)="handleSendMessage()">Send</button>
-              <button class="btn" (click)="handleEndChat()">End Chat</button>
+              <input type="text" id="chat-input" autocomplete="off" autofocus/>
+              <div class="chat-btn-wrapper">
+                <button class="btn chat-btn" (click)="handleSendMessage()">Send</button>
+                <button class="btn chat-btn chat-btn-secondary" (click)="handleEndChat()">End Chat</button>
+              </div>
             </form>
             
 
