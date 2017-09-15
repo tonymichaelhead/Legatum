@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     controlArrows: true,
     scrollingSpeed: 1000,
     css3: true,
-    anchors: ['section-one', 'section-two', 'section-three', 'contact-section']
+    anchors: ['section-one', 'section-two', 'section-three', 'section-four', 'contact-section']
 });
 
   constructor(
