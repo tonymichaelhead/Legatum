@@ -248,3 +248,77 @@ div.tap-target-wave::before {
 #chat-input, #end-chat-btn {
     display: inline-block;
 }
+.whoweare {
+    text-align: center;
+}
+
+.card[_ngcontent-c1] {
+    margin: auto;
+    width: 15%;
+    opacity: 0.7;
+    border-radius: 20px;
+    border-width: thick;
+    background-color: #5d4674;
+}
+
+.card-content {
+    text-align: center;
+    color: #000000;
+}
+
+.card-title {
+    color: #000000 !important;
+}
+
+.header-name {
+    margin: auto;
+    text-align: center;
+    color: #FFFFFF;
+    padding: auto;
+}
+
+.card .card-image img {
+    display: block;
+    border-radius: 15px;
+    position: relative;
+    margin: auto;
+    width: 70%;
+}
+
+.link-text1[_ngcontent-c1][_ngcontent-c1] {
+    position: absolute;
+    left: 20px;
+    bottom: 4px;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+.link-text2[_ngcontent-c1][_ngcontent-c1] {
+    position: absolute;
+    left: 81px;
+    bottom: 4px;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+
+
+.card-reveal-text {
+    color: black;
+}
+
+.profile-grid {
+    display: flex;
+}
+
+.about-me-header {
+    text-align: center;
+}
+
+.card .card-action:last-child {
+    border-radius: 0 0 50px 50px;
+}
