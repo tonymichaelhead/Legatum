@@ -1,3 +1,27 @@
 #create-form{
   background: white;
+  width: 80%;
+  margin-top: 20%;
 }
+
+.contract-submit-admin[_ngcontent-c7] {
+  background: white;
+  margin: auto;
+  border-radius: 15px;
+  /* color: white; */
+  margin-top: 5%;
+  margin-left: 10%;
+  width: 80%;
+  opacity: .7;
+}
+
+.buttons {
+  margin:auto;
+}
+
+.create-button[_ngcontent-c7] {
+  background-color: aquamarine;
+  margin-left: 17%;
+  margin-bottom: 1%;
+}
+

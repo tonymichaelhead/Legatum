@@ -11,10 +11,10 @@ const db = new sequelize(credentials.DB_PATH);
 db
   .authenticate()
   .then( () => {
-    console.log('Good connection as fuck');
+    console.log('Database has connected.');
   })
   .catch(err => {
-    console.error('Error as fuck', err);
+    console.error('Error while attempting to connect.', err);
   });
 
 
