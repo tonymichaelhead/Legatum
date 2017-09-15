@@ -32,12 +32,6 @@ a {
     cursor: pointer; cursor: hand;
 }
 
-a:hover {
-    text-decoration: none;
-}
-
-
-
 
 h3 {
     font-family: "Julius Sans One", sans-serif !important;
