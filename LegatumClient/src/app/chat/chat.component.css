@@ -5,3 +5,22 @@
 #chat-messages li {
   padding: 5px 10px;
 }
+
+#chat-btn-user {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#chat-messages {
+  list-style:none;
+  max-height:100px;
+  margin:0;
+  overflow:auto;
+  padding:0;
+  text-indent:10px;
+}
+
+#chat-popout {
+  background-color: #390C65;
+}

@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MnFullpageOptions, MnFullpageService } from 'ngx-fullpage';
 import { ChatComponent } from '../chat/chat.component';
 
+declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,6 +37,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     private register: RegisterComponent,
     private fullPageService: MnFullpageService,
     private chat: ChatComponent) {}
+
+
+  // materialize
+  openChat(event): void {
+    // event.preventDefault();
+    $('.tap-target').tapTarget('open');
+    console.log('click event = ', event);
+    // $('.tap-target').tapTarget('close');
+  }
+
 
   // Check to see if user is logged in and if so display logged in features
   checkIfLoggedIn() {

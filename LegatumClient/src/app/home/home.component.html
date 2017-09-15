@@ -92,3 +92,32 @@
   </div>
 </div>
 <particles [style]="myStyle" [width]="width" [height]="height" [params]="myParams"></particles>
+
+
+
+
+<div>
+  <!-- <a id="menu" class="waves-effect waves-light btn red" *ngIf="!chatInitiated"  (click)="openChat()">Chat</a> -->
+  <button id="menu" class="waves-effect waves-light btn btn-floating" ><i (click)="openChat($event)"class="material-icons">menu</i></button>
+  
+  <app-chat></app-chat> 
+  
+  <!-- Tap Target Structure -->
+  <div class="tap-target" id="hide" data-activates="menu">
+    <div class="tap-target-content">
+      <h5>Title</h5>
+    </div>
+  </div>
+</div>  
+
+<!-- Element Showed -->
+
+
+
+
+<!--  -->
+
+
+  
+
+    

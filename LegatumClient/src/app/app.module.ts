@@ -33,6 +33,7 @@ import { DeployContractsComponent } from './adminpage/deploy-contracts/deploy-co
 import { PendingContractIndividualComponent } from './adminpage/pending-contract-individual/pending-contract-individual.component';
 import { ContractDetailsComponent } from './contract-details/contract-details.component';
 import { ChatComponent } from './chat/chat.component';
+import { AdminChatComponent } from './adminpage/admin-chat/admin-chat.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -52,7 +53,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     DeployContractsComponent,
     PendingContractIndividualComponent,
     ContractDetailsComponent,
-    ChatComponent
+    ChatComponent,
+    AdminChatComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MnFullpageModule.forRoot(),
     SocketIoModule.forRoot(config)
   ],
-  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent, ChatComponent],
+  providers: [AuthGuardService, AuthService, AngularFireAuth, LoginComponent, RegisterComponent, ChatComponent, AdminChatComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,6 +17,7 @@ import { ContractDetailsComponent } from './contract-details/contract-details.co
 
 import { ContractPreviewComponent } from './contract-preview/contract-preview.component';
 import { LoginComponent } from './login/login.component';
+import { AdminChatComponent } from './adminpage/admin-chat/admin-chat.component';
 
 const appRoutes: Routes = [
     {
@@ -68,6 +69,10 @@ const appRoutes: Routes = [
                     {
                       path: 'pending',
                       component: PendingContractsComponent
+                    },
+                    {
+                      path: 'admin-chat',
+                      component: AdminChatComponent
                     }
                   ]
                 }

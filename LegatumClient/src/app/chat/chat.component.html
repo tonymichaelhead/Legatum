@@ -1,25 +1,39 @@
-<h3>Chat</h3>
+<!-- <h3>Chat</h3> -->
 
-<button *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button>
+<!-- (click)="handleChat()" -->
 
-<div *ngIf="chatInitiated && !haveUsername">
-  <form method="">
-    <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button (click)="handleChatRequest()">Send</button>
-  </form>
+<div class="tap-target" id="chat-popout" data-activates="menu">
+    <div class="tap-target-content">
+      <h5>Chat</h5>
+
+      <button class="btn" *ngIf="!chatInitiated" (click)="handleChat()" >Chat</button>
+      <!-- <a class="waves-effect waves-light btn red" id="chat-btn-user" *ngIf="!chatInitiated"  (click)="openChat()">Chat</a> -->
+      
+      <div *ngIf="chatInitiated && !haveUsername">
+        <form method="">
+          <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button class="btn"(click)="handleChatRequest()">Send</button>
+        </form>
+      </div>
+      
+      <div *ngIf="!roomAvailable && haveUsername">
+        <p id="chat-wait-msg">Thank you {{this.username | titlecase}} for your patience. We will be with you shortly.</p>
+      </div>
+      
+      <div *ngIf="roomAvailable && haveAdminName">
+
+        <ul id="chat-messages">Hi {{this.username | titlecase}}, my name is {{this.adminName | titlecase}}. How may I help you? </ul>
+
+            <form method="">
+              <input type="text" id="chat-input" autocomplete="off" autofocus/><button class="btn" (click)="handleSendMessage()">Send</button>
+            </form>
+            <button class="btn" (click)="handleEndChat()">End Chat</button>
+
+      </div>
+      
+      <div id="end-chat-btn" *ngIf="chatEnded && !chatInitiated">
+        <p id="chatEnded">Thank you!</p>
+      </div>
+
+  </div>
 </div>
 
-<div *ngIf="!roomAvailable && haveUsername">
-  <p id="chat-wait-msg">Thank you {{this.username | titlecase}} for your patience. We will be with you shortly.</p>
-</div>
-
-<div *ngIf="roomAvailable && haveAdminName">
-  <ul id="chat-messages">Hi {{this.username | titlecase}}, my name is {{this.adminName | titlecase}}. How may I help you? </ul>
-  <form method="">
-    <input type="text" id="chat-input" autocomplete="off" autofocus/><button (click)="handleSendMessage()">Send</button>
-  </form>
-  <button (click)="handleEndChat()">End Chat</button>
-</div>
-
-<div *ngIf="chatEnded && !chatInitiated">
-  <p id="chatEnded">Thank you!</p>
-</div>
