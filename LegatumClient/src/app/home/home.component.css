@@ -226,7 +226,6 @@ ul li:hover ul li {
     left: 0;
 }
 
-<<<<<<< HEAD
 /*
   ====================================
   Chat Feature
@@ -251,7 +250,6 @@ div.tap-target-wave::before {
 #chat-input, #end-chat-btn {
     display: inline-block;
 }
-=======
 .whoweare {
     text-align: center;
 }
@@ -305,4 +303,3 @@ div.tap-target-wave::before {
 .about-me-header {
     text-align: center;
 }
->>>>>>> About me being worked on
