@@ -1,27 +1,22 @@
 <div id="create-form">
-  <h3>Create Will</h3>
+  <h3>Deploy Will</h3>
   <form action="">
-   
-    Last Will and Testament Text<br> 
+
+    Last Will and Testament Text<br>
     <textarea [(ngModel)]="newContract.will_text" name="willText"></textarea><br>
-    <br>
-   
-    Additional Beneficiary Address (optional)<br>
-  
-    <input type="text" [(ngModel)]="newContract.beneficiary" name="benificiary"/><br>
+    <br> Additional Beneficiary Address (optional)<br>
+
+    <input type="text" [(ngModel)]="newContract.beneficiary" name="benificiary" /><br>
     <button>Add another beneficiary</button>
   </form>
-  </div>
- 
-  
-  
-   <br>
-   <br> 
-        <button md-raised-button class="create-button" (click)=this.deployWill()>Deploy Contract</button> 
+</div>
 
-        <button md-raised-button class="create-button" (click)=this.setWillData()>Set Will Data</button>  
 
-        <button md-raised-button class="create-button" (click)=this.getWillText()>Get Will Text</button>
 
-    
-    
+<br>
+<br>
+<button md-raised-button class="create-button" (click)=this.deployWill()>Deploy Contract</button>
+
+<button md-raised-button class="create-button" (click)=this.setWillData()>Set Will Data</button>
+
+<button md-raised-button class="create-button" (click)=this.getWillText()>Get Will Text</button>
