@@ -1,6 +1,7 @@
 @import "~fullpage.js/dist/jquery.fullpage.css";
 @import 'https://fonts.googleapis.com/css?family=Lato:700,400|Julius+Sans+One:400';
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text');
+
+@import 'https://fonts.googleapis.com/css?family=Arya:700,400';
 
 html {
     height: 100%;
@@ -9,9 +10,9 @@ html {
 body {
     /* display: flex;
     flex-direction, */
-    font-family: "Julius Sans One", sans-serif;
     height: 100%;
     background-color: #10041C;
+    font-family: "Julius Sans One", sans-serif !important;
     /* background-image: url("background.jpg"); */
     /* background: url("background.jpg") no-repeat fixed; */
     -webkit-background-size: cover;
@@ -28,7 +29,6 @@ body {
 }
 
 a {
-    text-decoration: none;
     cursor: pointer; cursor: hand;
 }
 
@@ -36,8 +36,14 @@ a:hover {
     text-decoration: none;
 }
 
-p {
-    font-family: 'Crimson Text', serif;
+
+
+
+h3 {
+    font-family: "Julius Sans One", sans-serif !important;
+    text-transform: uppercase;
+    text-align: center;
+    color: #FCFCFC; 
 }
 
 /*
