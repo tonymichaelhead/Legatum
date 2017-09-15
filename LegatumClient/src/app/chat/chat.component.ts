@@ -84,6 +84,7 @@ export class ChatComponent implements OnInit {
 
   handleEndChat(): void {
     this.endChatWith('admin');
+    this.haveUsername = false;
     this.chatInitiated = false;
     this.roomAvailable = false;
     this.username = '';
