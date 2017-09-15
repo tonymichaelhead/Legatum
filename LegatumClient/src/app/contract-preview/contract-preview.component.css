@@ -1,30 +1,16 @@
 #contract-preview {
-<<<<<<< HEAD
     margin: 10px;
-=======
-    width: 75%;
-    margin: auto;
->>>>>>> 880697b37801f6239289535ef2ffe8fcf5bdd17c
     padding: 5px;
     background-color: #fdfcff;
     box-shadow: 2px 2px 5px #888888;
     border-top: 4px solid gray;
     font-size: 11px;
-<<<<<<< HEAD
   }
   
   table { 
     margin: 10px;
   }
   
-=======
-}
-
-table { 
-    width: 100%;
-    margin: auto;
-}
->>>>>>> 880697b37801f6239289535ef2ffe8fcf5bdd17c
 
 th {
     text-align: center;
