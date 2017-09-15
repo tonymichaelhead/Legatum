@@ -9,8 +9,18 @@ html, body, material-app, md-sidenav-container, .my-content {
   top: 2%;
 }
 
+#main-content {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: black;
+  margin-top: -2.5% !important;
+}
+
 .my-content {
-  display: flex;
   height: 100%;
   align-items: center;
   justify-content: center;
