@@ -1,10 +1,15 @@
 <div id="admin-chat">
-    <p>There are {{this.queueSize || 0}} people waiting to chat.</p>
-    <button class="btn" *ngIf="!chatInitiated" id="admin-chat-btn" (click)="handleChatRequest()">Chat</button>
+    <div class="admin-chat-btn-wrapper">
+        <p>There are {{this.queueSize || 0}} people waiting to chat.</p>
+        <button class="btn" *ngIf="!chatInitiated" (click)="handleChatRequest()">Chat</button>
+    </div>
 
     <div *ngIf="chatInitiated && !haveUsername">
         <form method="">
-            <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/><button class="btn" (click)="handleAdminAccept()">Send</button>
+            <input placeholder="What is your name?" type="text" id="chat-username" autocomplete="off" autofocus/>
+            <div class="admin-chat-btn-wrapper">
+                <button class="btn admin-chat-btn" (click)="handleAdminAccept()">Send</button>
+            </div>
         </form>
     </div>
     
@@ -12,16 +17,19 @@
     <!-- <ul id="chat-messages">Hello {{this.adminName | titlecase}}, you are chatting with {{this.username | titlecase}}.</ul> -->
         <ul id="chat-messages-admin">You are connected. Start chat.</ul>
         <form method="">
-            <input type="text" id="chat-input" autocomplete="off" autofocus/><button class="btn" (click)="handleSendMessage()">Send</button>
+            <input type="text" id="chat-input" autocomplete="off" autofocus/>
+            <div class="admin-chat-btn-wrapper">
+                <button class="btn admin-chat-btn" (click)="handleSendMessage()">Send</button>
+                <button class="btn admin-chat-btn chat-btn-secondary" (click)="handleEndChat()">End Chat</button>
+            </div>
         </form>
-        <button class="btn" (click)="handleEndChat()">End Chat</button>
     </div>
     
     <br>
     <br>
     <br>
 
-    <div *ngIf="chatEnded && !chatInitiated">
+    <!-- <div *ngIf="chatEnded && !chatInitiated">
     <p id="chatEnded">Thank you!</p>
-    </div>
+    </div> -->
 </div>

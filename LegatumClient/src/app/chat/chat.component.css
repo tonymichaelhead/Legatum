@@ -13,14 +13,31 @@
 }
 
 #chat-messages {
-  list-style:none;
-  max-height:100px;
-  margin:0;
-  overflow:auto;
-  padding:0;
-  text-indent:10px;
+  list-style: none;
+  max-height: 100px;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  text-indent: 10px;
 }
 
 #chat-popout {
   background-color: #390C65;
+}
+
+#user-chat-title {
+  text-align: right;
+}
+
+.chat-btn-wrapper {
+  text-align: center;
+}
+
+.chat-btn {
+  display: inline-block;
+  margin: 5px;
+}
+
+.chat-btn-secondary {
+  background-color: #b8b8b8;
 }

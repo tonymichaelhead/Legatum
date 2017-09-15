@@ -1,3 +1,17 @@
 #admin-chat {
   color: white;
 }
+
+.admin-chat-btn-wrapper {
+  /* margin: 0 auto; */
+  text-align: center;
+}
+
+.admin-chat-btn {
+  display: inline-block;
+  margin: 5px;
+}
+
+.chat-btn-secondary {
+  background-color: #b8b8b8;;
+}
