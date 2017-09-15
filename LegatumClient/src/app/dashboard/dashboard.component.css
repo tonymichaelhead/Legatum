@@ -107,6 +107,7 @@ body {
     top: 0px;
     margin-right: 33px;
     color: white;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 12px;
 }
 
@@ -117,8 +118,9 @@ body {
 .active {
     top: -2px;
     color: white;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
     font-size: 15px;
-    text-shadow: 2px 2px #450647;
+    text-shadow: 2px 2px #504D4D;
 }
 
 #my-contracts-button {
@@ -129,4 +131,47 @@ body {
 #nav-create-contracts-button {
     margin-left: 150px;
     margin-top: 7px;
+}
+
+/* MOVE LATER!! */
+.dash-signout2 {
+    /* display: inline; */
+    position: absolute;
+    width:100px;
+    right: 100px;
+    top: 10px;
+    /* padding: 5px; */
+    font-size: 12px;
+    color: white;
+    
+    transition: all .6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.dash-signout2:hover {
+    cursor: pointer; cursor: hand;
+    transform: rotateX(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    right: 100px;
+    top: 10px;
+    width:100px;
+    /* padding: 5px; */
+    font-size: 12px;
+    color: white;
+    backface-visibility: hidden;
+}
+
+.front:hover {
+    color: #FE28A8;
+}
+
+.back {
+
+    color: #FE28A8;
+    border-color: #FE28A8;
+    background: rgba(0, 0, 0, 0.20);
+    transform: rotateX(180deg);
 }
